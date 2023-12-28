@@ -1,3 +1,65 @@
 @import 'tailwindcss/base';
 @import 'tailwindcss/components';
 @import 'tailwindcss/utilities';
+
+
+@keyframes bounce-img {
+0%, 100% {
+    transform: translateY(-2%);
+    animation-timing-function: cubic-bezier(0.0,0,0,0);
+}
+50% {
+    transform: none;
+    animation-timing-function: cubic-bezier(0,0,0.0,0);
+}
+}
+.animate-bounce-img {
+    animation: bounce-img 5s infinite;
+}
+
+.crypto-widget-container {
+position: relative;
+width: 100%;
+overflow: hidden;
+}
+
+/* .tradingview-widget-container { */
+    /* width: 100%; */
+    /* height: 100px;  */
+    /* animation: moveCircular 10s linear infinite; */
+  /* } */
+  
+  /* @keyframes moveCircular {
+    0% {
+      transform: translateX(100%) rotate(0deg);
+    }
+    100% {
+      transform: translateX(-100%) rotate(360deg);
+    }
+  } */
+  
+  /* .tradingview-widget-container {
+    width: 100%;
+    white-space: nowrap;
+    overflow: hidden;
+    animation: moveLeft 30s linear infinite; /* Adjust the duration and timing function as needed */
+  /* } */ 
+  
+  /* @keyframes moveLeft {
+    0% {
+      transform: translateX(100%);
+    }
+    100% {
+      transform: translateX(-100%);
+    }
+  } */
+  
+  
+  
+  
+  
+  
+
+
+  
+  
