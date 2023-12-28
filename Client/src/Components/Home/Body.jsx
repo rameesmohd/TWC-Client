@@ -1,4 +1,8 @@
 import React from 'react'
+import {FacebookIcon,InstagramIcon,TwitterIcon,Whatsapp} from '../../Components/Common/SocialMediaIcons'
+import icon1 from '../../assets/Frame.png'
+import icon2 from '../../assets/Framee.png'
+import Button from '../Common/Button'
 
 const Body = () => {
   return (
@@ -39,35 +43,48 @@ const Body = () => {
         <div className='text-3xl my-2 font-semibold'> 
             Skills you will achieve
         </div>
-        <div className='w-full h-auto bg-slate-200'>
-          {/* {
-            [...Array(6)].map((value,i)=>{
-              return(
-              )
-            })
-          } */}
-              <div className='border p-2 bg-blue-200 flex text-center rounded-xl '>
-                trading in different currecy pairs
-              </div>   
-              <div className='border p-2 bg-blue-200 flex text-center rounded-xl'>
-                trading in different currecy pairs
-              </div> 
-              <div className='border p-2 bg-blue-200 flex text-center rounded-xl'>
-                trading in different currecy pairs
-              </div>       
-              <div className='border p-2 bg-blue-200 flex text-center rounded-xl'>
-                trading in different currecy pairs
-              </div>   
+        <div className='w-full' >
+          <div className='w-full flex py-2'>
+          <div className='border p-1 bg-blue-200 mx-1 text-center rounded-xl '>
+            trading in different currecy pairs
+          </div>   
+          <div className='border px-4 py-1 bg-blue-200 mx-1 text-center rounded-xl'> 
+            forex analysis
+          </div>        
+          </ div>
+          <div className='w-full flex py-1'>
+          <div className='border px-4 mx-1 bg-blue-200 text-center rounded-xl '>
+            technical analysis currecy pairs
+          </div>   
+          <div className='border px-4 py-1 mx-1 bg-blue-200 text-center rounded-xl'> 
+            fundamental analysis
+          </div>   
+          <div className='border px-4 py-1 mx-1 bg-blue-200 text-center rounded-xl'> 
+            trading mindset
+          </div>       
+          </ div>
+          <div className='w-full flex py-1'>
+          <div className='border px-2 bg-blue-200 mx-1 text-center rounded-xl '>
+            trading in different currecy pairs
+          </div>   
+          <div className='border px-4 py-1 bg-blue-200 mx-1 text-center rounded-xl'> 
+            forex analysis
+          </div>        
+          </ div>
+              
         </div>
         </div>
       </div>
+
       <div className='col-span-2 flex justify-center'>
         <div className='w-2/3'>
-            <div className='rounded-xl w-full h-48 bg-gray-200 flex justify-center items-center'>
-                    Play Video
+            <div className='rounded-xl w-full h-48 bg-gray-100 flex justify-center items-center'>
+                   <img
+                   src="https://cdn.dribbble.com/userupload/8570778/file/original-37f90c018a0ac7de55ea7a331e659af1.png?resize=400x300&vertical=center"
+                   alt="" className='w-full h-full object-cover'/>
             </div>
-            <div className='text-2xl my-2 mx-2'>
-                $500
+            <div className='text-2xl my-2 mx-2 font-extrabold animate-bounce'>
+            $500 <span className='line-through text-sm text-red-700'>$549</span> 
             </div>
             <div className='flex'>
             <div className='border rounded-lg p-2 bg-blue-600 text-white'>
@@ -84,15 +101,43 @@ const Body = () => {
                     )
                 })
             }
-            <div className='w-fulll bg-blue-200 h-36'>
-
+            <div className='w-full bg-blue-50 rounded-xl py-1'>
+                  <div className='text-base text-center'>Share now</div>
+                  <div className='flex justify-center py-2'>
+                      <FacebookIcon/>
+                      <InstagramIcon/>
+                      <TwitterIcon/>
+                      <Whatsapp/>
+                  </div>
             </div>
         </div>
       </div>
     </section>
 
-    <section>
-          
+    <section className='w-full  bg-yellow-300 border-t-black border-t-2 border-b-2 px-16 py-8 grid grid-cols-2 mt-2'>
+      <div className='col-span-1'>
+          <div className='text-2xl font-sans '>Get ahead with course certification</div>
+          <div className='text-base mt-2'>
+          On successful completion of the course participants will be awarded a certificate of course completion issued by FINPROV.
+           This certificate is a golden ticket to the job of your dreams at leading finance firms and beyond.
+          </div>
+          <div className='w-full flex justify-start mt-2'>
+            <img src={icon1} alt="" />
+            <div className='text-base my-2 mx-2'>
+              Earn your certificate
+          </div>
+            <img src={icon2} alt="" />
+            <div className='text-base my-2 mx-2'>
+              Share your acheivement
+          </div>
+          </div>
+          <div className='flex my-2'>
+          <Button className={'bg-blue-500 px-3 py-1 flex rounded-md mt-2 text-white '} text={'Encroll course now'}/>
+          </div>
+      </div>
+      <div className='col-span-1 flex justify-center'>
+            <img src="https://html.scribdassets.com/78tqe38i0w8w965v/images/1-c33644bdc5.jpg" className='h-56' alt="" />
+      </div>
     </section>
     </>
   )

@@ -36,7 +36,8 @@ const Header = () => {
                 </div>
             </div>
             <div className='col-span-1 '>
-                <img src={headerImag} className='animate-bounce-img ' alt="" />
+                <img 
+                src={'https://img.freepik.com/free-vector/hand-drawn-stock-market-concept-with-analysts_23-2149163670.jpg?size=626&ext=jpg&ga=GA1.1.1546980028.1703721600&semt=ais'} className='animate-bounce-img ' alt="" />
             </div>
             </div>
         <div className='z-30 my-8'>
