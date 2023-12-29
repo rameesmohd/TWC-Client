@@ -3,7 +3,6 @@ import {FacebookIcon,InstagramIcon,TwitterIcon,Whatsapp} from '../../Components/
 import icon1 from '../../assets/Frame.png'
 import icon2 from '../../assets/Framee.png'
 import Button from '../Common/Button'
-// import ScrollList from '../Common/Scrolllist'
 import reviewOne from '../../assets/Harshita-kumari 1.png'
 import reviewTwoImg from '../../assets/kushboo 1.png'
 import reviewThreeImg from '../../assets/hari_ram 1.png'
@@ -12,16 +11,17 @@ import mt4Img from '../../assets/metatrader4.png'
 import mt5Img from '../../assets/mt5img.png'
 import Collapse from '../../Components/Common/Collapse'
 import Footer from '../Common/Footer'
+import { RiWhatsappLine } from 'react-icons/ri'
 
 const Body = () => {
   return (
     <>
-    <section className='grid grid-cols-5'>
+    <section id='enroll-course' className='grid grid-cols-5'>
       <div className='w-full pl-16 col-span-3 font-sans '>
         <div className='text-3xl mb-2 font-semibold'> 
             About the course
         </div>
-        <p className='text-sm my-2'>
+        <p className='text-sm my-2 '>
         Get empowered digitally and start earning wisely! Our course is designed  thoughtfully
         to empower every student <br /> to leverage the latest job opportunities. 
         Starting from the basics the course covers 
@@ -192,7 +192,7 @@ const Body = () => {
           </div>
     </section>
 
-    <div className='my-12'>
+    <div className='my-12 px-16'>
       <div className='text-3xl my-4'>Frequenly asked questions</div>
       <Collapse/>
     </div>       
@@ -217,13 +217,16 @@ const Body = () => {
             <div className='w-full text-6xl text-center px-36 text-white'>
               We are here
             </div>
-            <div className='text-white text-center my-16'> 
-              Whatsapp Now!
+            <div className='text-white  text-center my-16 flex justify-center'> 
+            <div className='bg-green-500 p-2 rounded-lg flex items-center'>
+            <RiWhatsappLine/>
+             <span className='mx-2 '>Whatsapp Now!</span> 
+            </div>
             </div>
       </div>
     </section>
 
-    <section className='container md:h-[400px] mx-auto '>
+    <section className='container md:h-[500px] mx-auto '>
             <div className='grid grid-cols-1 md:grid-cols-4 h-full gap-5 mt-2'>
                 <div className='col-span-1 mr-1'></div>
                 <a href='https://download.mql5.com/cdn/web/metaquotes.software.corp/mt5/mt5setup.exe?utm_source=www.metatrader4.com&utm_campaign=download'  className='col-span-1 mr-1  rounded-md flex flex-col justify-center text-center p-5 hover:scale-110 transition'> 

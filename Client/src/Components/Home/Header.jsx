@@ -26,10 +26,10 @@ const Header = () => {
                 learn with Trade House.
                 </div>
                 <div className='flex my-8'>
-                    <div className='bg-blue-500 rounded-lg text-white p-2 flex'>
+                    <div onClick={''} className='bg-blue-500 rounded-lg text-white p-2 flex cursor-pointer'>
                         Enroll for the course now
                     </div>
-                    <div className='mx-2 rounded-lg text-black p-2 flex border'>
+                    <div className='mx-2 rounded-lg text-black p-2 flex border cursor-pointer'>
                         Contact us
                     </div>
                 </div>

@@ -11,18 +11,8 @@ const Navbar = () => {
   };
 
   const options = [
-    { option: "Userpanel" },
-    { option: "About" },
-    {
-      option: (
-        <Button className={"px-2 py-2 sm:-mr-6 border "} text={"Login"} />
-      ),
-    },
-    {
-      option: (
-        <Button className={"px-4 py-2 bg-blue-500 border"} text={"Signup"} />
-      ),
-    },
+    {option: "Userpanel"},
+    {option: "About"},
   ];
 
   return (
@@ -63,11 +53,10 @@ const Navbar = () => {
           className={`w-full md:block md:w-auto transition ${
             isMobileMenuOpen ? "block" : "hidden"
           }`}
-          id="navbar-default"
-        >
+          id="navbar-default">
           <ul className="font-medium md:flex flex-col p-4 md:p-0 mt-4 border items-center
            border-gray-100 rounded-lg bg-gray-50 md:flex-row md:space-x-8 rtl:space-x-reverse md:mt-0 md:border-0 md:bg-white">
-            {options.map((obj, index) => {
+            { options.map((obj, index) => {
               return (
                 <li key={index * 2}>
                   <Link
@@ -80,6 +69,12 @@ const Navbar = () => {
                 </li>
               );
             })}
+            <li>
+            <Button className={"px-2 py-2 sm:-mr-6 border cursor-pointer"} text={"Login"} action={'/login'}/>
+            </li>
+            <li>
+            <Button className={"px-4 py-2 bg-blue-500 border cursor-pointer"} text={"Signup"} action={'/signup'}/>
+            </li>
           </ul>
         </div>
       </div>

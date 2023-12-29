@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { BrowserRouter,Route,Routes } from 'react-router-dom'
-import Home from './Pages/Home'
+import UserRoutes from './Routes/User'
+import AdminRoutes from './Routes/Admin'
 
 function App() {
 
@@ -8,7 +9,8 @@ function App() {
     <>
       <BrowserRouter>
       <Routes>
-        <Route path="/" element={<Home />} />
+        <Route path="/twc/admin/*" element={<AdminRoutes/>} />
+        <Route path="/*" element={<UserRoutes />} />
       </Routes>
     </BrowserRouter>
     </>
