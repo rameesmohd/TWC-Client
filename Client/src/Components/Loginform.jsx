@@ -1,11 +1,19 @@
 import { Spinner } from "@material-tailwind/react";
 import { Formik } from "formik";
-import React from "react";
-import { Link } from "react-router-dom";
-// import userAxios from "../axios/userAxios";
+import React, { useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
+import userAxios from "../Axios/Useraxios";
 import img from '../assets/01 (1).png'
+import toast from "react-hot-toast";
+import { IoWarningOutline } from "react-icons/io5";
+import { useDispatch,useSelector} from 'react-redux'
+import { setUser } from '../Redux/ClientSlice'
 
 const Login = () => {
+  const navigate = useNavigate()
+  const [errMsg,setErrMsg] = useState('')
+  const dispatch = useDispatch()
+
   return (
     <div className="flex min-h-full flex-col justify-center px-6 py-12 lg:px-8">
       <div className="sm:mx-auto sm:w-full sm:max-w-sm ">
@@ -16,11 +24,11 @@ const Login = () => {
           Sign in to your account
         </h2>
       </div>
-
       <div className="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
       <Formik
        initialValues={{ email: '', password: '' }}
        validate={values => {
+         setErrMsg('')
          const errors = {};
          if (!values.email) {
            errors.email = 'Required';
@@ -36,21 +44,25 @@ const Login = () => {
        }}
        onSubmit={async (values, { setSubmitting }) => {
         try {
-        //   const response = await userAxios.post("/login", {
-        //     email: values.email,
-        //     password: values.password
-        //   });
-        //   console.log("Server response:", response.data);
+          const response = await userAxios.post("/login", {
+            email: values.email,
+            password: values.password
+          });
+          const result = response.data.result
+          dispatch(setUser({
+              user_id : result.user_id,
+              user_name : result?.user_name,
+              token : result.token,
+              email : result.email,
+              is_purchased : result.is_purchased
+            }))
+          navigate('/');
         } catch (error) {
-          console.error("Error:", error.message);
+          toast.error(error.response.data.message)
+          setErrMsg(error.response.data.message)
         } finally {
           setSubmitting(false);
         }
-
-         setTimeout(() => {
-           alert(JSON.stringify(values, null, 2));
-           setSubmitting(false);
-         }, 400);
        }}
      >
        {({
@@ -64,6 +76,12 @@ const Login = () => {
          /* and other goodies */
        }) => (
         <form className="space-y-6" onSubmit={handleSubmit}>
+          {errMsg.length>0 && <div className="border border-red-600 text-red-800 bg-red-200 text-sm p-2 flex justify-start">
+            <div className="flex items-center"> 
+              <IoWarningOutline className="text-xl "/>
+              <p className="mx-2">{errMsg}</p>
+            </div>
+          </div>}
           <div>
             <label
               for="email"

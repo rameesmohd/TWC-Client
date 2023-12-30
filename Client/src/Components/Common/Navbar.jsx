@@ -1,10 +1,20 @@
 import React, { useState } from "react";
 import Button from "./Button";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import img from '../../assets/01 (1).png'
+import { useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
+import {logout} from '../../Redux/ClientSlice'
 
 const Navbar = () => {
+  const dispatch = useDispatch()
+  const navigate = useNavigate()
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const token = useSelector((state)=>state.Client.token)
+
+  const signout=()=>{
+    dispatch(logout())
+  }
 
   const toggleMobileMenu = () => {
     setIsMobileMenuOpen(!isMobileMenuOpen);
@@ -16,7 +26,7 @@ const Navbar = () => {
   ];
 
   return (
-    <nav className="bg-white border-gray-200 shadow-xl fixed z-50 w-full">
+    <nav className="bg-white border-gray-200 shadow-xl fixed z-50 w-full px-4 pb-2">
       <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto ">
         <a href="/" className="flex items-center space-x-3 rtl:space-x-reverse">
           <span className="self-center text-xl font-semibold whitespace-nowrap text-blue-800">
@@ -69,12 +79,19 @@ const Navbar = () => {
                 </li>
               );
             })}
+            { token ?
             <li>
-            <Button className={"px-2 py-2 sm:-mr-6 border cursor-pointer"} text={"Login"} action={'/login'}/>
+            <Button className={"px-2 py-2 sm:-mr-6 border cursor-pointer"} text={"Logout"} action={()=>signout()}/>
+            </li> :
+            <>
+            <li>
+            <Button className={"px-2 py-2 sm:-mr-6 border cursor-pointer"} text={"Login"} action={()=>navigate('/login')}/>
             </li>
             <li>
-            <Button className={"px-4 py-2 bg-blue-500 border cursor-pointer"} text={"Signup"} action={'/signup'}/>
+            <Button className={"px-4 py-2 bg-blue-500 border cursor-pointer"} text={"Signup"} action={()=>navigate('/signup')}/>
             </li>
+            </> 
+            }
           </ul>
         </div>
       </div>
