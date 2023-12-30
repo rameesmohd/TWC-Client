@@ -5,6 +5,7 @@ import img from '../assets/01 (1).png'
 import { Spinner } from "@material-tailwind/react";
 import toast from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
+import Useraxios from "../Axios/Useraxios";
 
 const SignupForm = () => {
   const navigate = useNavigate()
@@ -68,24 +69,24 @@ const SignupForm = () => {
           }}
 
           onSubmit={ async (values, { setSubmitting }) => {
-            // try {
-            //   const response = await userAxios.post("/signup", {
-            //     email: values.email,
-            //     password: values.password,
-            //     mobile: values.mobile,
-            //     name : values.name
-            //   });
-            //   console.log("Server response:", response.data);
-            //   toast.success("Created successfully!")
-            //   setTimeout(() => {
-            //     setSubmitting(false);
-            //     navigate('/login')
-            //   }, 500);
-            // } catch (error) {
-            //   console.error("Error:", error.message);
-            // } finally {
-            //   setSubmitting(false);
-            // }
+            try {
+              const response = await Useraxios.post("/signup", {
+                email: values.email,
+                password: values.password,
+                mobile: values.mobile,
+                name : values.name
+              });
+              console.log("Server response:", response.data);
+              toast.success("Created successfully!")
+              setTimeout(() => {
+                setSubmitting(false);
+                navigate('/login')
+              }, 500);
+            } catch (error) {
+              console.error("Error:", error.message);
+            } finally {
+              setSubmitting(false);
+            }
           } }
         >
           {({
