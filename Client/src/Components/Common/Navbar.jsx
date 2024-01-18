@@ -21,18 +21,18 @@ const Navbar = () => {
   };
 
   const options = [
-    {option: "My Course"},
-    {option: "About"},
+    {option: "My Course",nav : '/my-course'},
+    // {option: "About",nav : ''},
   ];
 
   return (
     <nav className="bg-white border-gray-200 shadow-xl fixed z-50 w-full px-4 pb-2">
       <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto ">
-        <a href="/" className="flex items-center space-x-3 rtl:space-x-reverse">
+        <Link to={'/'} className="flex items-center space-x-3 rtl:space-x-reverse">
           <span className="self-center text-xl font-semibold whitespace-nowrap text-blue-800">
             <img src={img} alt="" className="w-32 h-20" />
           </span>
-        </a>
+        </Link>
         <button
           onClick={toggleMobileMenu}
           type="button"
@@ -68,7 +68,7 @@ const Navbar = () => {
            border-gray-100 rounded-lg bg-gray-50 md:flex-row md:space-x-8 rtl:space-x-reverse md:mt-0 md:border-0 md:bg-white">
             { options.map((obj, index) => {
               return (
-                <li key={index * 2}>
+                <li key={index}>
                   <Link
                     to={obj?.nav}
                     className="block py-2 px-3 text-gray-900 w-full rounded hover:bg-gray-100
@@ -85,10 +85,10 @@ const Navbar = () => {
             </li> :
             <>
             <li>
-            <Button className={"px-2 py-2 sm:-mr-6 border cursor-pointer"} text={"Login"} action={()=>navigate('/login')}/>
+              <Button className={"px-2 py-2 sm:-mr-6 border cursor-pointer"} text={"Login"} action={()=>navigate('/login')}/>
             </li>
             <li>
-            <Button className={"px-4 py-2 bg-blue-500 border cursor-pointer"} text={"Signup"} action={()=>navigate('/signup')}/>
+              <Button className={"px-4 py-2 bg-blue-500 border cursor-pointer"} text={"Signup"} action={()=>navigate('/signup')}/>
             </li>
             </> 
             }

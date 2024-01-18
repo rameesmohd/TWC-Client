@@ -10,7 +10,8 @@ import Useraxios from "../Axios/Useraxios";
 const SignupForm = () => {
   const navigate = useNavigate()
   return (
-    <div className="flex flex-col justify-center px-6 lg:px-8 ">
+    <div className="px-6 lg:px-8 flex min-h-full flex-col justify-center py-12  animate-fade-right transition-opacity ">
+      <div className=" sm:mx-auto sm:w-full sm:max-w-sm  p-4 rounded-md">
       <div className="sm:mx-auto sm:w-full sm:max-w-sm">
         <img
           className="mx-auto h-16 w-20 "
@@ -21,8 +22,6 @@ const SignupForm = () => {
           Create new account
         </h2>
       </div>
-
-      <div className=" sm:mx-auto sm:w-full sm:max-w-sm">
         <Formik
           initialValues={{
             email: "",
@@ -83,6 +82,7 @@ const SignupForm = () => {
                 navigate('/login')
               }, 500);
             } catch (error) {
+              toast.error(error.message)
               console.error("Error:", error.message);
             } finally {
               setSubmitting(false);
@@ -112,7 +112,7 @@ const SignupForm = () => {
             >
                 User name
             </label>
-            <div className="mt-2">
+            <div className="mt-1">
                 <input
                 id="name"
                 name="name"
@@ -141,7 +141,7 @@ const SignupForm = () => {
             >
                 Email address
             </label>
-            <div className="mt-2">
+            <div className="mt-1">
                 <input
                 id="email"
                 name="email"
@@ -169,7 +169,7 @@ const SignupForm = () => {
             >
                 Mobile number
             </label>
-            <div className="mt-2">
+            <div className="mt-1">
                 <input
                 id="mobile"
                 name="mobile"
@@ -199,7 +199,7 @@ const SignupForm = () => {
                 Password
                 </label>
             </div>
-            <div className="mt-2">
+            <div className="mt-1">
                 <input
                 id="password"
                 name="password"
@@ -226,10 +226,10 @@ const SignupForm = () => {
                 htmlFor="confirmpass"
                 className="block text-sm font-medium leading-6 text-gray-900"
                 >
-                Confirm Password
+                Confirm password
                 </label>
             </div>
-            <div className="mt-2">
+            <div className="mt-1">
                 <input
                 id="confirmpass"
                 name="confirmpass"

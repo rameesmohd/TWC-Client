@@ -1,22 +1,27 @@
 import { Spinner } from "@material-tailwind/react";
 import { Formik } from "formik";
-import React from "react";
-import { Link } from "react-router-dom";
+import React, { useState } from "react";
 import img from '../../assets/01 (1).png'
+import Adminaxios from '../../Axios/Adminaxios'
+import toast from "react-hot-toast";
+const OTPVerification = React.lazy(() => import( "../../Components/Common/EmailVerification"));
+
+function generateOTP() {
+  return Math.floor(100000 + Math.random() * 900000);
+}
 
 const Login = () => {
+  const [otpState,setOtpState]=useState('')
+  const [enterOtp,setEnterOtp] = useState(0)
+
   return (
-    <div className="flex min-h-full flex-col justify-center px-6 py-12 lg:px-8">
+    <div className="flex min-h-full flex-col justify-center px-6  lg:px-8">
     <div className="sm:mx-auto sm:w-full sm:max-w-sm ">
       <div className="flex justify-center">
-      <img src={img} alt="" className="w-40" />
+      <img src={img} alt="" className="w-32" />
       </div>
-      <h2 className="text-center text-2xl font-bold leading-9 tracking-tight text-gray-900">
-       Admin Panel
-      </h2>
     </div>
-
-    <div className="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
+    { !enterOtp ?
     <Formik
      initialValues={{ email: '', password: '' }}
      validate={values => {
@@ -35,12 +40,18 @@ const Login = () => {
      }}
      onSubmit={async (values, { setSubmitting }) => {
       try {
-      //   const response = await userAxios.post("/login", {
-      //     email: values.email,
-      //     password: values.password
-      //   });
-      //   console.log("Server response:", response.data);
+        const newOtp =  generateOTP()
+        setOtpState(newOtp)
+        const response = await Adminaxios.post("/login", {
+          email: values.email,
+          password: values.password,
+          OTP : newOtp
+        });
+        setEnterOtp(true)
+        console.log("Server response:", response.data);
+
       } catch (error) {
+        toast.error(error.response.data.message)
         console.error("Error:", error.message);
       } finally {
         setSubmitting(false);
@@ -62,7 +73,16 @@ const Login = () => {
        isSubmitting,
        /* and other goodies */
      }) => (
-      <form className="space-y-6" onSubmit={handleSubmit}>
+    <div className="relative flex  flex-col justify-center overflow-hidden  sm:py-12">
+    <div className="relative bg-white px-6 pt-10 pb-9 shadow-xl mx-auto w-full max-w-lg rounded-2xl">
+      <div className="mx-auto flex w-full max-w-md flex-col space-y-16 sm:px-8">
+        <div className="flex flex-col items-center justify-center text-center space-y-2">
+          <div className="font-semibold text-3xl">
+            <p>Admin Panel</p>
+          </div>
+        </div>
+        <div>
+        <form className="space-y-6" onSubmit={handleSubmit}>
         <div>
           <label
             for="email"
@@ -125,17 +145,20 @@ const Login = () => {
         <div>
           <button
             type="submit"
-            className="flex w-full justify-center rounded-md bg-indigo-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+            className="flex w-full justify-center mb-10 rounded-md bg-indigo-600 px-3 p-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
             disabled={isSubmitting}
           >
             {isSubmitting ? <Spinner/> : 'Sign in'}
           </button>
         </div>
       </form>
+      </div>
+      </div>
+      </div>
+      </div>
       )}
-      </Formik>
-    </div>
-  </div>
+    </Formik> : <OTPVerification otp={otpState} /> }      
+    </div> 
   );
 };
 

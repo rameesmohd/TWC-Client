@@ -4,7 +4,6 @@ import icon2 from '../../assets/Framee.png'
 import Button from '../Common/Button'
 
 const CertificateSection = () => {
-
     const CerticateRef = useRef();
     const [scrolled, setScrolled] = useState(false);
   

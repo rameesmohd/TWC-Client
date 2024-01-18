@@ -56,13 +56,13 @@ const Footer = () => {
                     </ul>
                 </div>          
         </div>
-        <div className='w-auto h-auto bg-white flex justify-center mt-5'>
-            {/* <img className='w-44 h-20' src={footericon} alt="" /> */}
-            <div className='text-sm '>Trade Walker & Co.</div>
-        </div>
         <div className='w-auto h-auto flex justify-center text-center text-gray-500 md:text-xs my-2'>
             <p className=' mx-3'>Terms</p>
             <p className='mx-3'>Policy</p>
+        </div>
+        <div className='w-auto h-auto flex justify-center p-5'>
+            {/* <img className='w-44 h-20' src={footericon} alt="" /> */}
+            <div className='text-sm '>Trade Walker & Co.</div>
         </div>
         <ScrollToTopButton/>
     </div> 

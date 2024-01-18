@@ -1,13 +1,32 @@
-import React from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import reviewOne from '../../assets/Harshita-kumari 1.png'
 import reviewTwoImg from '../../assets/kushboo 1.png'
 import reviewThreeImg from '../../assets/hari_ram 1.png'
 
 const ReviewSections = () => {
+    const ReviewRef = useRef();
+    const [scrolled, setScrolled] = useState(false);
+  
+    const handleScroll = () => {
+      const scrollPosition = window.scrollY + window.innerHeight;
+      const footerPosition = ReviewRef.current.offsetTop;
+  
+      if (scrollPosition > footerPosition) {
+        setScrolled(true);
+      } else {
+        setScrolled(false);
+      }
+    };
+  
+    useEffect(() => {
+      window.addEventListener('scroll', handleScroll);
+      return () => window.removeEventListener('scroll', handleScroll);
+    }, []);
+  
   return (
-    <section className='grid gap-16 grid-cols-3 px-16 mt-5 '>
-    <div className='col-span-1 h-full  '>
-        <div className='flex h-56 justify-center'>
+    <section ref={ReviewRef} className={`grid gap-16 grid-cols-3 pt-16  mt-5 ${ scrolled ? "animate-fade-down animate-once" : "opacity-0"}`}>
+    <div className='col-span-1 h-full '>
+        <div className='flex h-44 justify-center'>
             <img src={reviewOne} alt="" />
         </div>
           <div className='text-sm text-center my-4 px-12'>
@@ -20,7 +39,7 @@ const ReviewSections = () => {
           </div>
     </div>
     <div className='col-span-1 h-full '>
-        <div className='flex h-56 justify-center'>
+        <div className='flex h-44 justify-center'>
             <img src={reviewTwoImg} alt="" />
         </div>
           <div className='text-sm text-center my-4 px-12'>
@@ -32,7 +51,7 @@ const ReviewSections = () => {
           </div>
     </div>
     <div className='col-span-1 h-full '>
-        <div className='flex h-56 justify-center'>
+        <div className='flex h-44 justify-center'>
             <img src={reviewThreeImg} alt="" />
         </div>
           <div className='text-sm text-center my-4 px-12'>

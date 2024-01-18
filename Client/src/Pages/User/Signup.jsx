@@ -1,18 +1,19 @@
 import React from "react";
 import SignupForm from "../../components/Signupform";
+import img from '../../assets/adam-nowakowski-D4LDw5eXhgg-unsplash-825bba2f.jpg'
 
 const Signup = () => {
   return (
-    <div className="md:grid grid-cols-3">
-      <div className="col-span-1 h-full">
-        <SignupForm />
-      </div>
-      <div className="hidden md:block col-span-2 bg-blue-gray-100 ">
+    <div className="md:grid grid-cols-2">
+      <div className="hidden md:block col-span-1  ">
         <img
-          src={'https://images.unsplash.com/photo-1640340434855-6084b1f4901c?q=80&w=1000&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTB8fHRyYWRpbmd8ZW58MHx8MHx8fDA%3D'}
+          src={img}
           className="transition-opacity object-cover w-full h-screen"
           alt=""
         />
+      </div>
+      <div className="col-span-1 h-full">
+        <SignupForm />
       </div>
     </div>
   );

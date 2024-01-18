@@ -1,15 +1,16 @@
 import React from 'react'
 import Navbar from '../../Components/Common/Navbar'
 import Header from '../../Components/Home/Header'
-const Body = React.lazy(() => import('../../Components/Home/Body'));
+import Spinner from '../../Components/Common/Spinner'
 
+const Body = React.lazy(() => import('../../Components/Home/Mainbody'));
 const Home = () => {
   return (
     <>
     <Navbar/>
-    <div className='container mx-auto'>
+    <div className='container mx-auto pt-28'>
       <Header/>
-      <React.Suspense fallback={<div>Loading...</div>}>
+      <React.Suspense fallback={<Spinner size={'lg'}/>}>
         <Body />
       </React.Suspense>
     </div>

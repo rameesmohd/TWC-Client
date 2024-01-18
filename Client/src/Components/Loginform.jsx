@@ -15,8 +15,9 @@ const Login = () => {
   const dispatch = useDispatch()
 
   return (
-    <div className="flex min-h-full flex-col justify-center px-6 py-12 lg:px-8">
-      <div className="sm:mx-auto sm:w-full sm:max-w-sm ">
+    <div className="flex min-h-full flex-col justify-center px-6 py-12 lg:px-8 animate-fade-right transition-opacity ">
+      <div className="py-8 px-6 sm:mx-auto sm:w-full sm:max-w-sm rounded-lg">
+      <div className="sm:mx-auto sm:w-full sm:max-w-sm mb-8">
         <div className="flex justify-center">
         <img src={img} alt="" className="w-40" />
         </div>
@@ -24,7 +25,6 @@ const Login = () => {
           Sign in to your account
         </h2>
       </div>
-      <div className="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
       <Formik
        initialValues={{ email: '', password: '' }}
        validate={values => {
