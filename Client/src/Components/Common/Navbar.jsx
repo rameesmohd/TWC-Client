@@ -21,7 +21,7 @@ const Navbar = () => {
   };
 
   const options = [
-    {option: "Userpanel"},
+    {option: "My Course"},
     {option: "About"},
   ];
 

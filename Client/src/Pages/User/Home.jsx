@@ -1,7 +1,7 @@
 import React from 'react'
 import Navbar from '../../Components/Common/Navbar'
 import Header from '../../Components/Home/Header'
-import Body from '../../Components/Home/Body'
+const Body = React.lazy(() => import('../../Components/Home/Body'));
 
 const Home = () => {
   return (
@@ -9,7 +9,9 @@ const Home = () => {
     <Navbar/>
     <div className='container mx-auto'>
       <Header/>
-      <Body/>
+      <React.Suspense fallback={<div>Loading...</div>}>
+        <Body />
+      </React.Suspense>
     </div>
     </>
   )

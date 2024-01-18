@@ -1,9 +1,10 @@
 import React from 'react'
-import footericon from '../../assets/01 (1).png'
+// import footericon from '../../assets/01 (1).png'
 import { Link, useNavigate } from 'react-router-dom'
 import {AiFillPhone} from 'react-icons/ai'
 import {FiMail} from 'react-icons/fi'
 import {RiHomeOfficeFill} from 'react-icons/ri'
+import ScrollToTopButton from './Scrolltotop'
 
 const Footer = () => {
   const navigate =  useNavigate()
@@ -14,7 +15,7 @@ const Footer = () => {
                     <ul>
                         <h3 className='font-bold' >NAVIGATIONS</h3>
                         <li className='my-2 '>
-                            <a>Homepage</a>
+                            <a href='/'>Homepage</a>
                         </li>
                         <li className='my-2 '>
                         <a ></a></li>
@@ -22,7 +23,7 @@ const Footer = () => {
                         <a >About Course</a>
                         </li>
                         <li className='my-2 '>
-                        <a > User Account</a>
+                        <a > My Courses</a>
                         </li>
                     </ul>
                 </div>
@@ -63,6 +64,7 @@ const Footer = () => {
             <p className=' mx-3'>Terms</p>
             <p className='mx-3'>Policy</p>
         </div>
+        <ScrollToTopButton/>
     </div> 
 )}
 
