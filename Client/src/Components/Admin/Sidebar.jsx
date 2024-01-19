@@ -39,22 +39,22 @@ let mobileView = true;
         <p className='text-center pt-2'>TWC ADMIN</p>
 		<div className="w-full px-2">
 			<div className="flex flex-col items-center w-full mt-3 border-t border-gray-700">
-				<Link className={`flex items-center w-full h-12 px-3 mt-2 rounded ${location.pathname === '/admin/sales' ? 'bg-gray-700 text-gray-300' : ''} 
-					hover:bg-gray-700 hover:text-gray-300`} to={'/admin/sales'} >
+				<Link className={`flex items-center w-full h-12 px-3 mt-2 rounded ${location.pathname === '/twc/admin/sales' ? 'bg-gray-700 text-gray-300' : ''} 
+					hover:bg-gray-700 hover:text-gray-300`} to={'/twc/admin/sales'} >
 					<svg className="w-6 h-6 stroke-current" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
 						<path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z" />
 					</svg>
 					<span className="ml-2 text-sm font-medium">Sales</span>
 				</Link>
-				<Link className={`flex items-center w-full h-12 px-3 mt-2 rounded ${location.pathname === '/admin/users' ? 'bg-gray-700 text-gray-300' : ''} 
-					hover:bg-gray-700 hover:text-gray-300`} to={'/admin/users'}>
+				<Link className={`flex items-center w-full h-12 px-3 mt-2 rounded ${location.pathname === '/twc/admin/users' ? 'bg-gray-700 text-gray-300' : ''} 
+					hover:bg-gray-700 hover:text-gray-300`} to={'/twc/admin/users'}>
 					<svg className="w-6 h-6 stroke-current" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
 						<path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
 					</svg>
 					<span className="ml-2 text-sm font-medium" >Users</span>
 				</Link>
 		
-				<Link to={'/admin/courses'} className={`flex items-center w-full h-12 px-3 mt-2 rounded ${location.pathname === '/admin/courses' ? 'bg-gray-700 text-gray-300' : ''} 
+				<Link to={'/twc/admin/course'} className={`flex items-center w-full h-12 px-3 mt-2 rounded ${location.pathname === '/twc/admin/course' ? 'bg-gray-700 text-gray-300' : ''} 
 					hover:bg-gray-700 hover:text-gray-300`} >
 					<svg className="w-6 h-6 stroke-current" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
 						<path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M8 7v8a2 2 0 002 2h6M8 7V5a2 2 0 012-2h4.586a1 1 0 01.707.293l4.414 4.414a1 1 0 01.293.707V15a2 2 0 01-2 2h-2M8 7H6a2 2 0 00-2 2v10a2 2 0 002 2h8a2 2 0 002-2v-2" />
@@ -66,7 +66,7 @@ let mobileView = true;
 		</div>
 	</div>
 </>
-  )
+)
 }
 
 export default Sidebar

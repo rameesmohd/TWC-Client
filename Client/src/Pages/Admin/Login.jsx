@@ -4,6 +4,7 @@ import React, { useState } from "react";
 import img from '../../assets/01 (1).png'
 import Adminaxios from '../../Axios/Adminaxios'
 import toast from "react-hot-toast";
+import {useNavigate} from 'react-router-dom'
 const OTPVerification = React.lazy(() => import( "../../Components/Common/EmailVerification"));
 
 function generateOTP() {
@@ -12,7 +13,13 @@ function generateOTP() {
 
 const Login = () => {
   const [otpState,setOtpState]=useState('')
-  const [enterOtp,setEnterOtp] = useState(0)
+  const [enterOtp,setEnterOtp] = useState(false)
+  const [email,setEmail] = useState('')
+  const navigate = useNavigate()
+  
+  const redirectFunc=()=>{
+    navigate('/twc/admin/users')
+  }
 
   return (
     <div className="flex min-h-full flex-col justify-center px-6  lg:px-8">
@@ -47,16 +54,15 @@ const Login = () => {
           password: values.password,
           OTP : newOtp
         });
+        setEmail(values.email)
         setEnterOtp(true)
         console.log("Server response:", response.data);
-
       } catch (error) {
         toast.error(error.response.data.message)
         console.error("Error:", error.message);
       } finally {
         setSubmitting(false);
       }
-
        setTimeout(() => {
          alert(JSON.stringify(values, null, 2));
          setSubmitting(false);
@@ -157,7 +163,7 @@ const Login = () => {
       </div>
       </div>
       )}
-    </Formik> : <OTPVerification otp={otpState} /> }      
+    </Formik> : <OTPVerification otp={otpState} setOtp={setOtpState} verify={redirectFunc} generateOTP={generateOTP} email={email}/> }      
     </div> 
   );
 };
