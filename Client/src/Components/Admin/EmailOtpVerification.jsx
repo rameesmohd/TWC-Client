@@ -2,11 +2,23 @@ import React, { useEffect, useState } from 'react'
 import OtpInput from "react-otp-input";
 import { Spinner } from "@material-tailwind/react";
 import toast from 'react-hot-toast';
+import { useDispatch, useSelector } from 'react-redux';
+import {setUser ,clearTemp} from '../../Redux/AdminSclice'
+import { useNavigate } from 'react-router-dom'
 
-const EmailVerification = ({otp,verify,setOtp,generateOTP,email}) => {
+const EmailVerification = ({otp,setOtp,generateOTP,email}) => {
   const [code, setCode] = useState("");
   const [loading,setLoading ] = useState(false)
-  const [count,setCount] = useState(30)
+  const [count,setCount] = useState(60)
+  const dispatch = useDispatch()
+  const navigate = useNavigate()
+  const data = useSelector((store)=>store.Admin.tempStore)
+
+  const verify=()=>{
+    dispatch(setUser(data.token))
+    dispatch(clearTemp())
+    navigate('/twc/admin/users')
+  }
 
   useEffect(()=>{
     if(count>0){
@@ -17,6 +29,10 @@ const EmailVerification = ({otp,verify,setOtp,generateOTP,email}) => {
       setOtp('')
     }
   },[count])
+
+  const handleFormSubmit = (event) => {
+    event.preventDefault();
+  };
 
   const handleChange=(code) => {
     setCode(code)
@@ -47,9 +63,8 @@ const EmailVerification = ({otp,verify,setOtp,generateOTP,email}) => {
             <p>We have sent a code to your email</p>
           </div>
         </div>
-
         <div>
-          <form action="" method="post">
+          <form>
             <div className="flex flex-col space-y-12">
               <div className="flex flex-row items-center justify-between mx-auto w-full max-w-xs">
               <OtpInput
@@ -83,7 +98,7 @@ const EmailVerification = ({otp,verify,setOtp,generateOTP,email}) => {
               </div>}
               <div className="flex flex-col space-y-5">
                 <div>
-                  { count>0 && <button className="flex flex-row items-center justify-center text-center w-full border rounded-xl outline-none py-5 bg-blue-700 border-none text-white text-sm shadow-sm">
+                  { count>0 && <button onClick={()=>handleFormSubmit()} className="flex flex-row items-center justify-center text-center w-full border rounded-xl outline-none py-5 bg-blue-700 border-none text-white text-sm shadow-sm">
                     Verify Account
                   </button> }
                   { count===0 && <button className="flex flex-row items-center justify-center text-center w-full border rounded-xl outline-none py-5 bg-blue-700 border-none text-white text-sm shadow-sm">
@@ -91,7 +106,7 @@ const EmailVerification = ({otp,verify,setOtp,generateOTP,email}) => {
                     </button> }
                 </div>
 
-                {/* <div className="flex flex-row items-center justify-center text-center text-sm font-medium space-x-1 text-gray-500">
+               <div className="flex flex-row items-center justify-center text-center text-sm font-medium space-x-1 text-gray-500">
                   <p>Didn't receive the code?</p>{" "}
                   <a
                     className="flex flex-row items-center text-blue-600"
@@ -100,9 +115,8 @@ const EmailVerification = ({otp,verify,setOtp,generateOTP,email}) => {
                   >
                     Resend
                   </a>
-                </div> */}
+                </div>
               </div>
-
             </div>
           </form>
         </div>

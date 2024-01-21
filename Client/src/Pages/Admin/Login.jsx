@@ -4,8 +4,10 @@ import React, { useState } from "react";
 import img from '../../assets/01 (1).png'
 import Adminaxios from '../../Axios/Adminaxios'
 import toast from "react-hot-toast";
-import {useNavigate} from 'react-router-dom'
-const OTPVerification = React.lazy(() => import( "../../Components/Common/EmailVerification"));
+import { useNavigate } from 'react-router-dom'
+import {useSelector,useDispatch} from 'react-redux'
+import {setTemp ,setUser} from '../../Redux/AdminSclice'
+const OTPVerification = React.lazy(() => import( "../../Components/Admin/EmailOtpVerification"));
 
 function generateOTP() {
   return Math.floor(100000 + Math.random() * 900000);
@@ -16,8 +18,14 @@ const Login = () => {
   const [enterOtp,setEnterOtp] = useState(false)
   const [email,setEmail] = useState('')
   const navigate = useNavigate()
+  const dispatch = useDispatch()
+  const axiosInstance = Adminaxios()
   
   const redirectFunc=()=>{
+    const data = useSelector((store)=>store.Admin.tempStore)
+    console.log('Redux Store:', store);
+    console.log(data,'temporary stored data');
+    dispatch(setUser(data.token))
     navigate('/twc/admin/users')
   }
 
@@ -45,20 +53,22 @@ const Login = () => {
       }
        return errors;
      }}
-     onSubmit={async (values, { setSubmitting }) => {
+     onSubmit={ async (values, {setSubmitting}) => {
       try {
-        const newOtp =  generateOTP()
+        const newOtp = generateOTP()
         setOtpState(newOtp)
-        const response = await Adminaxios.post("/login", {
+        const response = await axiosInstance.post("/login", {
           email: values.email,
           password: values.password,
           OTP : newOtp
         });
         setEmail(values.email)
-        setEnterOtp(true)
+        dispatch(setTemp(response.data))
         console.log("Server response:", response.data);
+        setEnterOtp(true)
       } catch (error) {
         toast.error(error.response.data.message)
+        toast.error(error.message)
         console.error("Error:", error.message);
       } finally {
         setSubmitting(false);

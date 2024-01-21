@@ -1,10 +1,45 @@
-import React from 'react'
+import React, { useState } from 'react'
 import {FacebookIcon,InstagramIcon,TwitterIcon,Whatsapp} from '../../Components/Common/SocialMediaIcons'
 import Card from '../Common/Card'
+import { Button } from 'antd'
+import { useNavigate } from 'react-router-dom'
 
 const CourseSection = () => {
     const whatYouWillLearn = ["Introduction to Trading Fundamentals","Indicators Deep Dive","Liquidity Dynamics","Market Structure Analysis","Insights into Market Makers","ICT Concepts"]
     const SkillsYouWillAchieve = ["Trading in different currency pairs ","Forex analysis","Technical analysis currency pairs","Fundamental analysis","Trading mindset","Trading in different currency pairs","Liquidity analysis"]
+    const navigate= useNavigate()
+    const [loadings, setLoadings] = useState([]);
+
+    const enterLoading = (index) => {
+      setLoadings((prevLoadings) => {
+        const newLoadings = [...prevLoadings];
+        newLoadings[index] = true;
+        return newLoadings;
+      });
+      setTimeout(() => {
+        setLoadings((prevLoadings) => {
+          const newLoadings = [...prevLoadings];
+          newLoadings[index] = false;
+          return newLoadings;
+        });
+      }, 2000);
+    };
+
+    const purchase = (index) => {
+      setLoadings((prevLoadings) => {
+        const newLoadings = [...prevLoadings];
+        newLoadings[index] = true;
+        return newLoadings;
+      });
+      setTimeout(() => {
+        setLoadings((prevLoadings) => {
+          const newLoadings = [...prevLoadings];
+          newLoadings[index] = false;
+          return newLoadings;
+        });
+        navigate('/checkout')
+      }, 2000);
+    };
 
   return (
     <section id='enroll-course' className='grid grid-cols-5 mb-4'>
@@ -58,10 +93,13 @@ const CourseSection = () => {
           <div className='text-2xl my-2 mx-2 font-extrabold animate-bounce'>
           $497 <span className='line-through text-sm text-red-700'>$549</span> 
           </div>
-          <div className='flex'>
-          <div className='border rounded-lg p-2 bg-blue-600 text-white'>
-              Download course syllabus
-          </div>
+          <div className='flex justify-between'>
+          <Button type="primary" danger loading={loadings[1]} onClick={() => purchase(1)}>
+             Purchase Now
+          </Button>
+          <Button type="default" loading={loadings[0]} onClick={() => enterLoading(0)}>
+            Download syllabus
+          </Button>
           </div>
           {
             [{key :"Coursemode",value : "Online"},{key :"Duration",value : "2 Months"},{key :"Language",value : "Eng/Mal"},{key : "Students Enrolled",value : "100+"},{},{}].map((value,index)=>{

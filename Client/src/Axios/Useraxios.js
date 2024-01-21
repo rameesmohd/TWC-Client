@@ -1,9 +1,27 @@
-import axios from 'axios'
+import axios from 'axios';
+import { useSelector } from 'react-redux';
 
-const Useraxios = axios.create({
+const userAxios = () => {
+  const token = useSelector((store) => store.Client.token);
+
+  const userAxiosInstance = axios.create({
     baseURL: 'http://localhost:3000/api/',
-    // timeout: 1000,
-    headers: {'X-Custom-Header': 'foobar'}
+    withCredentials: true,
   });
 
-export default Useraxios
+  userAxiosInstance.interceptors.request.use(
+    (config) => {
+      if (token) {
+        config.headers['Authorization'] = `Bearer ${token}`;
+      }
+      return config;
+    },
+    (error) => {
+      return Promise.reject(error);
+    }
+  );
+
+  return userAxiosInstance;
+};
+
+export default userAxios;

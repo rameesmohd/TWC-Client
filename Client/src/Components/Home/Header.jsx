@@ -19,12 +19,12 @@ const Header = () => {
                     to select a performing trade. This is exactly what you will learn with Trade House.
                 </div>
                 <div className='flex my-8'>
-                    <div onClick={''} className='bg-blue-500 rounded-lg text-white p-2 flex cursor-pointer'>
-                       Enroll the course now
+                    <div className='mx-2 rounded-lg bg-blue-500 text-white p-2 px-6 flex border cursor-pointer'>
+                    Lets talk!
                     </div>
-                    <div className='mx-2 rounded-lg text-black p-2 flex border cursor-pointer'>
-                        Contact us
-                    </div>
+                    {/* <div onClick={''} className='bg-blue-500 rounded-lg text-white p-2 flex cursor-pointer'>
+                      
+                    </div> */}
                 </div>
                 </div>
             </div>

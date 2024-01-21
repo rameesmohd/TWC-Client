@@ -9,48 +9,8 @@ import { CheckOutlined, UserOutlined ,CloseOutlined} from '@ant-design/icons';
 import { Spin } from 'antd';
 import { TfiReload } from "react-icons/tfi";
 
-// const data = [
-//   {
-//     key: '1',
-//     name: 'John Brown',
-//     email : 'john@gmail.com',
-//     date: 32,
-//     mobile:8547822807,
-//     place: 'New York No. 1 Lake Park',
-//     action : <Button>Block</Button>
-//   },
-//   {
-//     key: '2',
-//     name: 'Jim Green',
-//     email : 'john@gmail.com',
-//     date: 42,
-//     mobile:8547822807,
-//     place: 'London No. 1 Lake Park',
-//     action : <Button>Block</Button>
-//   },
-//   {
-//     key: '3',
-//     name: 'Joe Black',
-//     email : 'john@gmail.com',
-//     date: 32,
-//     mobile:8547822807,
-//     place: 'Sydney No. 1 Lake Park',
-//     action : <Button>Block</Button>
-
-//   },
-//   {
-//     key: '4',
-//     name: 'Jim Red',
-//     email : 'john@gmail.com',
-//     date: 32,
-//     mobile:8547822807,
-//     place: 'London No. 2 Lake Park',
-//     action : <Button>Block</Button>
-
-//   },
-// ];
-
 const Users = () => {
+  const axiosInstance = adminAxios()
   const [userList,setUserList] = useState([])
   const [loading,setloading] = useState(false)
   const [reloaded,setReloaded] = useState(false)
@@ -65,22 +25,21 @@ const Users = () => {
   const fetchUserData=async()=>{
     try {
       setloading(true)
-      const response = await adminAxios.get(`/users?search=${searchInput}&${filter}`)
+      const response = await axiosInstance.get(`/users?search=${searchInput}&${filter}`)
       const userData = response.data.result
-      console.log(userData);
       const formattedData = userData.map(item => ({
-          key: item._id,
-          _id : item._id,
-          name: item.username,
-          email: item.email,
-          date: item.date,
-          mobile: item.mobile,
-          location: item.location,
-          purchased: item.purchased?<div align="center"><CheckOutlined/></div> : <CloseOutlined />,
-          is_blocked : item.is_blocked,
-          action: <Button className={`${!item.is_blocked ? 'bg-green-200' : 'bg-red-200'}`} onClick={()=>blockToggler(item._id,item.is_blocked)}>{item.is_blocked?'Resume':'Suspend'}</Button>
+        key: item._id,
+        _id : item._id,
+        name: item.username,
+        email: item.email,
+        date: item.date,
+        mobile: item.mobile,
+        location: item.location,
+        purchased: item.purchased?<div align="center"><CheckOutlined/></div> : <CloseOutlined />,
+        is_blocked : item.is_blocked,
+        action: <Button className={`${!item.is_blocked ? 'bg-green-200' : 'bg-red-200'}`} onClick={()=>blockToggler(item._id,item.is_blocked)}>{item.is_blocked?'Resume':'Suspend'}</Button>
       }));
-      console.log(formattedData ,'formated data');
+
       setUserList(formattedData)
     } catch (error) {
       toast.error(error.message)
@@ -93,7 +52,7 @@ const Users = () => {
 
   const blockToggler= async(id,currStatus)=>{
       try {
-        await adminAxios.patch('/users',{id,currStatus}) 
+        await axiosInstance.patch('/users',{id,currStatus}) 
         fetchUserData()
       } catch (error) {
         toast.error(error.message)
@@ -123,7 +82,7 @@ const Users = () => {
     { title: 'Mobile', dataIndex: 'mobile', key: 'mobile' },
     { title: 'Date', dataIndex: 'date', key: 'date' },
     { title: 'Location', dataIndex: 'location', key: 'location' },
-    { title: 'Puchased', dataIndex: 'purchased', key: 'purchased' },
+    { title: 'Purchased', dataIndex: 'purchased', key: 'purchased' },
     { title: 'Action', dataIndex: 'action', key: 'action' },
   ];
 
@@ -156,7 +115,7 @@ const Users = () => {
           setFilter('is_completed=true')
         }
   }
-  
+
   useEffect(()=>{
     fetchUserData()
   },[searchInput,filter])
@@ -167,9 +126,9 @@ const Users = () => {
       <div className='pl-16 md:pl-40'>
         <div className=' py-8 px-2 sm:px-8'>
           <div className='my-5 w-full flex justify-end animate-fade-left'>
-              <Dropdownbtn items={options} loading={spin.filter} handleSelect={handleFilter}/>
-              <SearchInput search={search}/>
-              <Button className='mx-2' disabled={reloaded} onClick={()=>reload()}><TfiReload  className={`${spin.reload ? 'animate-spin' : ''}`}/></Button>
+            <Dropdownbtn items={options} loading={spin.filter} handleSelect={handleFilter}/>
+            <SearchInput search={search}/>
+            <Button className='mx-2' disabled={reloaded} onClick={()=>reload()}><TfiReload  className={`${spin.reload ? 'animate-spin' : ''}`}/></Button>
           </div>
           {
             loading ?

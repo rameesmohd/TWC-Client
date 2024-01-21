@@ -1,18 +1,35 @@
 import React from 'react'
 import { useEffect } from 'react'
-// import { useDispatch, useSelector } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { Link } from 'react-router-dom'
 import { useLocation } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 // import { setMobileViewMenuToggler } from '../../Redux/AdminAuth'
+import { Button, message, Popconfirm } from 'antd';
+import {logout} from '../../Redux/AdminSclice'
+import {PoweroffOutlined} from '@ant-design/icons'
+
 
 const Sidebar = () => {
 const location = useLocation()
-// const dispatch = useDispatch()
+const navigate = useNavigate()
+const dispatch = useDispatch()
 // const mobileView = useSelector((store)=>store.Admin.mobileView)
+
 let mobileView = true;
- return (
+const confirm = (e) => {
+	console.log(e);
+	dispatch(logout())
+	navigate('/twc/admin/login')
+};
+
+const cancel = (e) => {
+	
+};
+
+return (
 <>
-<div className="flex items-center h-screen fixed z-50">
+<div className="flex flex-col items-center h-screen fixed z-50">
 	{/* component sm */}
 	<div onClick={'()=>dispatch(setMobileViewMenuToggler(!mobileView))'} className={` flex-col items-center w-16 transition h-full ${mobileView ? "" : '-translate-x-full'} overflow-hidden text-gray-400 bg-gray-900  md:hidden`}>
 			<div className="flex flex-col items-center mt-3 border-t border-gray-700">
@@ -35,9 +52,9 @@ let mobileView = true;
 	</div>
 
 	{/* component md*/}
-	<div className=" flex-col items-center w-40 h-full overflow-hidden text-gray-400 bg-black hidden md:block">
-        <p className='text-center pt-2'>TWC ADMIN</p>
-		<div className="w-full px-2">
+	<div className=" flex-col justify-between items-center w-40 h-full overflow-hidden text-gray-400 bg-black hidden md:block">
+        <p className='text-center p-2'>TWC ADMIN</p>
+			<div className="w-full flex flex-col justify-between h-full pb-10 px-2">
 			<div className="flex flex-col items-center w-full mt-3 border-t border-gray-700">
 				<Link className={`flex items-center w-full h-12 px-3 mt-2 rounded ${location.pathname === '/twc/admin/sales' ? 'bg-gray-700 text-gray-300' : ''} 
 					hover:bg-gray-700 hover:text-gray-300`} to={'/twc/admin/sales'} >
@@ -62,6 +79,23 @@ let mobileView = true;
 					<span className="ml-2 text-sm font-medium">Course</span>
 				</Link>
 			</div>
+			<Popconfirm
+				title="Logout"
+				description="Are you sure to logout?"
+				onConfirm={confirm}
+				onCancel={cancel}
+				okButtonProps={{ style: { backgroundColor: 'blue', color: 'white' } }}
+				okText={'Yes'}
+				style={{backgroundColor :'red'}}
+				cancelText="No"
+			>
+				<button className={`flex items-center w-full h-12 px-3 mt-2 rounded} 
+				hover:bg-gray-700 hover:text-gray-300`} >
+				<PoweroffOutlined style={{ color: 'white' }} />
+				<span className="ml-2 text-sm font-medium">Logout</span>
+				</button>
+
+			</Popconfirm>
 			</div>
 		</div>
 	</div>
