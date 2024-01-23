@@ -5,7 +5,6 @@ const { Search } = Input;
 const SearchInput = ({search}) => {
 const onSearch = (value, _e, info) =>{
   search(value)
-  // console.log(info?.source, value);
 }
 return (
     <>

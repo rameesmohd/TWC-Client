@@ -13,6 +13,7 @@ const Login = () => {
   const navigate = useNavigate()
   const [errMsg,setErrMsg] = useState('')
   const dispatch = useDispatch()
+  const axiosInstance = userAxios()
 
   return (
     <div className="flex min-h-full flex-col justify-center px-6 py-12 lg:px-8 animate-fade-right transition-opacity ">
@@ -44,7 +45,7 @@ const Login = () => {
        }}
        onSubmit={async (values, { setSubmitting }) => {
         try {
-          const response = await userAxios.post("/login", {
+          const response = await axiosInstance.post("/login", {
             email: values.email,
             password: values.password
           });

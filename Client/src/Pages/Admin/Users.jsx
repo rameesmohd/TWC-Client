@@ -1,12 +1,11 @@
 import React, { useEffect, useState } from 'react'
 import Sidebar from '../../Components/Admin/Sidebar'
-import { Button, Table } from 'antd';
+import { Button, Divider, Table } from 'antd';
 import Dropdownbtn from '../../Components/Common/Dropdownbtn'
 import SearchInput from '../../Components/Common/SearchInput'
 import toast from "react-hot-toast";
 import adminAxios from '../../Axios/Adminaxios'
 import { CheckOutlined, UserOutlined ,CloseOutlined} from '@ant-design/icons';
-import { Spin } from 'antd';
 import { TfiReload } from "react-icons/tfi";
 
 const Users = () => {
@@ -77,7 +76,7 @@ const Users = () => {
   }
 
   const columns = [
-    { title: 'Name', dataIndex: 'name', key: 'name' },
+    { title: 'Name', dataIndex: 'name', key: 'name'},
     { title: 'Email', dataIndex: 'email', key: 'email' },
     { title: 'Mobile', dataIndex: 'mobile', key: 'mobile' },
     { title: 'Date', dataIndex: 'date', key: 'date' },
@@ -125,18 +124,19 @@ const Users = () => {
       <Sidebar/>
       <div className='pl-16 md:pl-40'>
         <div className=' py-8 px-2 sm:px-8'>
+        <Divider orientation="left" style={{fontSize : '30px'}}>Our Users</Divider>
           <div className='my-5 w-full flex justify-end animate-fade-left'>
             <Dropdownbtn items={options} loading={spin.filter} handleSelect={handleFilter}/>
             <SearchInput search={search}/>
             <Button className='mx-2' disabled={reloaded} onClick={()=>reload()}><TfiReload  className={`${spin.reload ? 'animate-spin' : ''}`}/></Button>
           </div>
           {
-            loading ?
-            <div align="center" className='w-full bg-gray-50 animate-pulse items-center justify-center flex' >
-              <Spin size="large" style={{margin : 20}}/>
-              <Spin size="large" />
-            </div> : 
-            <Table className='animate-fade-up' columns={columns} dataSource={userList} pagination={false} scroll={{ x: true }}/>
+            <Table className='animate-fade-up border-b shadow-md' 
+            columns={columns.map((col) => ({
+              ...col,
+              onHeaderCell: (column) => ({
+              style: { background: '	#383838', color: 'white' },
+              })}))} dataSource={userList} pagination={true} loading={loading} scroll={{ x: true }}/>
           }
         </div>
       </div>

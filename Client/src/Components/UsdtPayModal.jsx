@@ -2,9 +2,8 @@ import React, { useState } from 'react';
 import { Button, Modal ,Input, Flex, message} from 'antd';
 import {CopyOutlined} from '@ant-design/icons'
 
-const UsdtPayModal = ({open,setOpen}) => {
+const UsdtPayModal = ({open,setOpen,amount}) => {
   const [confirmLoading, setConfirmLoading] = useState(false);
-  const [modalText, setModalText] = useState('Content of the modal');
   const [address, setAddress] = useState('TMxsxcRohW8wGPwW14mZXsBaQYYnQJ21cA');
 
   const copyToClipboard = () => {
@@ -13,7 +12,6 @@ const UsdtPayModal = ({open,setOpen}) => {
   };
 
   const handleOk = () => {
-    setModalText('The modal will be closed after two seconds');
     setConfirmLoading(true);
     setTimeout(() => {
       setOpen(false);
@@ -37,6 +35,10 @@ const UsdtPayModal = ({open,setOpen}) => {
         <div className='flex justify-center my-2'>
           <img src="https://switch2voip.us/wp-content/uploads/2021/07/Buy-VoIP-with-USDT-Tether-TRC20-wallet.png" alt="" />
         </div>
+        <Flex align='center' justify='space-between' className='my-8'>
+          <p className=''>Amount:</p>
+          <p className='font-bold'>${amount}</p>
+        </Flex>
         <Flex align='center' justify='space-between' className='my-8'>
           <p className=''>Network:</p>
           <p>TRX</p>

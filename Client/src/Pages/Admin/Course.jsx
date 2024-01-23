@@ -4,7 +4,7 @@ import { DeleteOutlined, EditOutlined, FileAddOutlined, PlusOutlined } from '@an
 import ChapterModal from '../../Components/Admin/ChapterModal'
 import toast from 'react-hot-toast'
 import adminAxios from '../../Axios/Adminaxios'
-import { Button, Popconfirm } from 'antd'
+import { Button, Divider, Popconfirm } from 'antd'
 import LessonModal from '../../Components/Admin/LessonModal'
 import {Spin} from 'antd'
 
@@ -114,10 +114,11 @@ const Course = () => {
       <Sidebar/>
       <div className='pl-16 md:pl-40'>
           <div className='p-2'>
+          <Divider orientation="left" style={{fontSize : '30px'}}>Our Course</Divider>
             <div className='grid grid-cols-2 h-full'>
                 <div className='col-span-1 border-r p-8 animate-fade-up'>
                   <div className=' flex items-center px-1 justify-between w-2/3'>
-                  <p className='font-bold my-2 text-xl'>COURSE</p>
+                  <p className='font-bold my-2 text-xl'>Chapters</p>
                   <Button onClick={()=>handleModalView(0)}>
                       Add Chapter
                   </Button>

@@ -3,10 +3,6 @@ import { useSpring, animated, config } from 'react-spring';
 import { useDrag } from 'react-use-gesture';
 import reviewOne from '../../assets/Harshita-kumari 1.png'
 
-
-
-// const items = ['Item 1', 'Item 2', 'Item 3', 'Item 4', 'Item 5'];
-
 const ScrollList = ({items}) => {
   const [props, set] = useSpring(() => ({
     x: 0,

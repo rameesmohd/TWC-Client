@@ -17,10 +17,10 @@ const Admin = () => {
         <Route path='/login' element={adminAuth? <Navigate to={'/twc/admin/'}/> : <Login />}/>
 
         {/* Private */}
-        <Route path='/' element={<PrivateRoute element={<Users/>}/>}/>
         <Route path='/users' element={<PrivateRoute element={<Users/>}/>}/>
         <Route path='/sales' element={<PrivateRoute element={<Sales/>}/>}/>
         <Route path='/course' element={<PrivateRoute element={<Course/>}/>}/>
+        <Route path='/' element={<PrivateRoute element={<Users/>}/>}/>
 
          {/* 404 route */}
         <Route path='*' element={<NotFoundPage />}/>

@@ -1,6 +1,5 @@
 import React, { useState } from 'react'
 import {FacebookIcon,InstagramIcon,TwitterIcon,Whatsapp} from '../../Components/Common/SocialMediaIcons'
-import Card from '../Common/Card'
 import { Button } from 'antd'
 import { useNavigate } from 'react-router-dom'
 
@@ -75,7 +74,9 @@ const CourseSection = () => {
           {
             SkillsYouWillAchieve.map((value,i)=>{
               return (
-                <Card text={value}/>
+                <div className='border text-base p-2 mx-1 my-1 bg-blue-50 '>
+                   {value}
+                </div>
               )
             })
           }
@@ -94,7 +95,7 @@ const CourseSection = () => {
           $497 <span className='line-through text-sm text-red-700'>$549</span> 
           </div>
           <div className='flex justify-between'>
-          <Button type="primary" danger loading={loadings[1]} onClick={() => purchase(1)}>
+          <Button type="primary" className='bg-blue-500 font-semibold animate-jump-in' loading={loadings[1]} onClick={() => purchase(1)}>
              Purchase Now
           </Button>
           <Button type="default" loading={loadings[0]} onClick={() => enterLoading(0)}>

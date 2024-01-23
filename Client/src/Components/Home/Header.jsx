@@ -16,7 +16,7 @@ const Header = () => {
                 <div className='text-lg '>
                     Our tutors will walk you through the different steps to make a trade profitable. <br />
                     With each trade being different, you have to understand how the market works
-                    to select a performing trade. This is exactly what you will learn with Trade House.
+                    to select a performing trade. This is exactly what you will learn with Trade Walker Academy.
                 </div>
                 <div className='flex my-8'>
                     <div className='mx-2 rounded-lg bg-blue-500 text-white p-2 px-6 flex border cursor-pointer'>

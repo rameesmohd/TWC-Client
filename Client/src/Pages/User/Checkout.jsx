@@ -7,15 +7,14 @@ import { SiTether } from "react-icons/si";
 import { RiBankLine } from "react-icons/ri";
 import Footer from '../../Components/Common/Footer';
 import phonepayIcon from '../../assets/phonepe-logo-icon (1).svg'
-const UsdtPayModal = lazy(() => import('../../Components/UsdtPayModal'));
-const LocalBankModal = lazy(() => import('../../Components/LocalBankModal'));
+import UsdtPayModal from '../../Components/UsdtPayModal'
+import LocalBankModal from '../../Components/LocalBankModal'
 
 const Checkout = () => {
   const [selectedMethod,setSelectedMethod]=useState(0)
   const [loading,setLoading]= useState({
       paynowButton : false
    })
-  
   const [price,setPrice]=useState({
     currency : null,
     originalPrice : 0,
@@ -83,7 +82,6 @@ const Checkout = () => {
 
   return (
     <>
-   
     <div className='bg-slate-50'>
         <Navbar/>
         <div className='container mx-auto pt-28 h-full px-4 '>
@@ -150,8 +148,8 @@ const Checkout = () => {
         <Footer/>
         </div>
     </div>
-    {modal===0 && <UsdtPayModal open={openModal} setOpen={setOpenModal}/>}
-    {modal===1 && <LocalBankModal open={openModal} setOpen={setOpenModal}/>}
+    {modal===0 && <UsdtPayModal open={openModal} setOpen={setOpenModal} amount={price.total}/>}
+    {modal===1 && <LocalBankModal open={openModal} setOpen={setOpenModal} amount={price.total} />}
     </>
   )
 }
