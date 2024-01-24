@@ -9,6 +9,7 @@ import Footer from '../../Components/Common/Footer';
 import phonepayIcon from '../../assets/phonepe-logo-icon (1).svg'
 import UsdtPayModal from '../../Components/UsdtPayModal'
 import LocalBankModal from '../../Components/LocalBankModal'
+import PhonePay from '../../Components/PhonePayModal';
 
 const Checkout = () => {
   const [selectedMethod,setSelectedMethod]=useState(0)
@@ -150,6 +151,7 @@ const Checkout = () => {
     </div>
     {modal===0 && <UsdtPayModal open={openModal} setOpen={setOpenModal} amount={price.total}/>}
     {modal===1 && <LocalBankModal open={openModal} setOpen={setOpenModal} amount={price.total} />}
+    {modal===2 && <PhonePay open={openModal} setOpen={setOpenModal} amount={price.total}/>}
     </>
   )
 }

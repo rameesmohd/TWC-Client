@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import Sidebar from '../../Components/Admin/Sidebar'
-import { Button, Divider, Table } from 'antd';
+import { Button, Divider, Popconfirm, Table } from 'antd';
 import Dropdownbtn from '../../Components/Common/Dropdownbtn'
 import SearchInput from '../../Components/Common/SearchInput'
 import toast from "react-hot-toast";
@@ -36,9 +36,8 @@ const Users = () => {
         location: item.location,
         purchased: item.purchased?<div align="center"><CheckOutlined/></div> : <CloseOutlined />,
         is_blocked : item.is_blocked,
-        action: <Button className={`${!item.is_blocked ? 'bg-green-200' : 'bg-red-200'}`} onClick={()=>blockToggler(item._id,item.is_blocked)}>{item.is_blocked?'Resume':'Suspend'}</Button>
+        action: ''
       }));
-
       setUserList(formattedData)
     } catch (error) {
       toast.error(error.message)
@@ -82,7 +81,25 @@ const Users = () => {
     { title: 'Date', dataIndex: 'date', key: 'date' },
     { title: 'Location', dataIndex: 'location', key: 'location' },
     { title: 'Purchased', dataIndex: 'purchased', key: 'purchased' },
-    { title: 'Action', dataIndex: 'action', key: 'action' },
+    { 
+      title: 'Action', 
+      dataIndex: 'action', 
+      key: 'action',
+      render : (text,record)=>
+      <Popconfirm
+                title="Approve Order"
+                description="Are you sure to Approve?"
+                onConfirm={()=>blockToggler(record._id,record.is_blocked)}
+                onCancel={'cancel'}
+                okButtonProps={{ style: { backgroundColor: 'blue', color: 'white' } }}
+                okText={'Yes'}
+                style={{backgroundColor :'red'}}
+                cancelText="No"
+			>
+        <Button className={`${!record.is_blocked ? 'bg-green-200' : 'bg-red-200'}`}>{record.is_blocked?'Resume':'Suspend'}</Button>
+      </Popconfirm>
+      
+    },
   ];
 
   const options = [

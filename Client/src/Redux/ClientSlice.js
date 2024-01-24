@@ -7,14 +7,16 @@ export const UserAuth = createSlice({
     user_name : null,
     token : null,
     email : null,
+    mobile : null,
     is_purchased : false
   },
   reducers: {
     setUser: (state, action) => {
-      state.user_name = action.payload.name
-      state.user_id = action.payload._id
+      state.user_name = action.payload.user_name
+      state.user_id = action.payload.user_id
       state.token = action.payload.token
       state.email = action.payload.email
+      state.mobile = action.payload.mobile
       state.is_purchased = action.payload.is_purchased
     },
     logout: (state,action)=>{
@@ -23,6 +25,9 @@ export const UserAuth = createSlice({
       state.token = null
       state.email = null
       state.is_purchased = false 
+    },
+    setPurchase :(state,action)=>{
+      state.is_purchased = action.payload.is_purchased
     }
   },
 });

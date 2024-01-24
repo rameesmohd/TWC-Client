@@ -50,11 +50,13 @@ const Login = () => {
             password: values.password
           });
           const result = response.data.result
+          console.log(result);
           dispatch(setUser({
               user_id : result.user_id,
               user_name : result?.user_name,
               token : result.token,
               email : result.email,
+              mobile : result.mobile,
               is_purchased : result.is_purchased
             }))
           navigate('/');

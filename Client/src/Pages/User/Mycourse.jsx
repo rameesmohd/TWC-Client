@@ -7,23 +7,30 @@ import userAxios from '../../Axios/Useraxios'
 import {toast} from 'react-hot-toast'
 import {CheckOutlined, LockOutlined, UnlockOutlined  } from '@ant-design/icons'
 import { useNavigate } from 'react-router-dom'
+import { Skeleton } from 'antd';
 
 const Mycourse = () => {
   const [ course,setCourse ]=useState([])
+  const [loading,setLoading ] = useState(true)
   const axiosInstance = userAxios()
   const navigate =useNavigate()
 
   const fetchCourseData=async()=>{
       try {
-        const response = await axiosInstance.get('/course')
-        setCourse(response.data.result)
+        setLoading(true)
+        setTimeout(async()=>{
+          const response = await axiosInstance.get('/course')
+          setCourse(response.data.result)
+          setLoading(false)
+        },1000)
       } catch (error) {
         toast.error(error.message)
         console.log(error);
+        setLoading(false)
       }
     }
     
-    console.log(course);
+  console.log(course);
   useEffect(()=>{
     fetchCourseData()
   },[])
@@ -34,12 +41,15 @@ const Mycourse = () => {
       <div className='container mx-auto pt-28'>
         <div className='font-poppins text-2xl my-2 font-bold'>My Course</div>
         <hr />
-        <section className=' flex justify-center animate-fade-right my-8'>
-          {
-          course.length ? 
-            <div className='w-full h-[500px]'>
+        <div className='my-8 animate-fade-right'>
+            <Skeleton loading={loading} rows={20} active className='my-8'/>
+            <Skeleton loading={loading} rows={20} active />
+        </div>
+        <section className='flex justify-center  my-8'>
+          { course.length ? 
+            <div className='w-full h-[500px] animate-fade-right'>
                  <div className=' h-full md:w-2/3'>
-                 <Card className='bg-slate-200'    title={<h3 style={{ fontSize: '20px' }}>Mastering Trading Essentials</h3>}>
+                 <Card className='bg-slate-200' title={<h3 style={{ fontSize: '20px' }}>Mastering Trading Essentials</h3>}>
                   { course.map((chapters,i)=>
                     <Card onClick={()=>navigate('/chapter',{state : {chapters}})} className='font-semibold my-1 hover:bg-slate-100 cursor-pointer'> 
                       <Flex justify={'space-between'} align={'center'}>
@@ -58,16 +68,15 @@ const Mycourse = () => {
                 </Card>
                 </div>   
             </div>
-          :
-          <div className='my-8 sm:h-96'>
-                <img className='h-72 ' src="https://img.freepik.com/free-vector/order-paying-contactless-payment-by-credit-card-order-basket-laptop-bank-card-male-online-customer-with-tablet-cartoon-character_335657-2563.jpg" alt="" />
-                <p>My course cart is feeling pretty lonely.</p>
-                <div className='flex justify-center mt-4 mb-2'>
-                    <Button type='primary' style={{backgroundColor :'blue'}} className={'animate-pulse border'}>
-                          Purchase our course now
-                    </Button>
-                </div>
-            </div>}
+          : ( !loading && <div className='my-8 sm:h-96 animate-fade-right'>
+          <img className='h-72 ' src="https://img.freepik.com/free-vector/order-paying-contactless-payment-by-credit-card-order-basket-laptop-bank-card-male-online-customer-with-tablet-cartoon-character_335657-2563.jpg" alt="" />
+          <p>My course cart is feeling pretty lonely.</p>
+          <div className='flex justify-center mt-4 mb-2'>
+              <Button type='primary' style={{backgroundColor :'blue'}} className={'animate-pulse border font-poppins'}>
+                    Purchase our course now
+              </Button>
+          </div>
+        </div>) }
         </section>
         <Footer/>
       </div>

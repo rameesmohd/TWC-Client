@@ -4,9 +4,9 @@ import { DeleteOutlined, EditOutlined, FileAddOutlined, PlusOutlined } from '@an
 import ChapterModal from '../../Components/Admin/ChapterModal'
 import toast from 'react-hot-toast'
 import adminAxios from '../../Axios/Adminaxios'
-import { Button, Divider, Popconfirm } from 'antd'
+import { Button, Card, Divider, Popconfirm } from 'antd'
 import LessonModal from '../../Components/Admin/LessonModal'
-import {Spin} from 'antd'
+import { Spin } from 'antd'
 
 const Course = () => {
   const axiosInstance = adminAxios()
@@ -18,6 +18,7 @@ const Course = () => {
   const [modalRole,setModaRole]=useState()
   const [editId,setEditId]= useState()
   const[selectedLesson,setSelectedLesson]=useState({})
+  const [iframeLoading, setIframeLoading] = useState(false);
 
   const showModal = () => {
     setOpen(true);
@@ -105,6 +106,11 @@ const Course = () => {
     }
   }
 
+  const handleIframeLoad = () => {
+    setIframeLoading(false);
+  };
+
+
   useEffect(()=>{
     fetchChapters()
   },[])
@@ -149,7 +155,7 @@ const Course = () => {
                         {chapter.lessons.map((lesson,i)=>  
                           <div 
                             key={lesson._id} 
-                            onClick={()=>setSelectedLesson(lesson)} 
+                            onClick={()=>{setSelectedLesson(lesson),setIframeLoading(true);}} 
                             className={`w-2/3 h-12 flex ${ chapter.lessons.length===i+1 && 'rounded-b-lg '} ${selectedLesson._id === lesson._id && 'shadow-inner outline-1 outline bg-gray-200'} justify-between px-4 items-center border border-gray-300 text-black font-semibold`}>
                             {index+1}.{i+1} Video 
                           <div>
@@ -174,23 +180,21 @@ const Course = () => {
                 </div>  
                 <div className='col-span-1 p-8 animate-fade-up'>
                       <div className='text-3xl my-2 font-bold w-full'>1.1 Video</div>
-                     <div className='border w-full p-4 bg-slate-50'>
-                     {selectedLesson && 
-                     <>
-                     <Suspense fallback={<Spin/>}>
-                     <iframe
-                        width='100%'
-                        height='294px'
-                        src={selectedLesson.lessonVideoUrl}
-                        frameBorder='0'
-                        allow='accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture'
-                        allowFullScreen
-                        className='animate-fade-left'
-                        ></iframe>
-                      </Suspense >
-                        </>
-                      }
-                      </div>
+                     <Card className='border w-full h-96 p-4 bg-slate-50'> 
+                      <iframe
+                          width='100%'
+                          height='294px'
+                          src={selectedLesson.lessonVideoUrl}
+                          // frameBorder='0'
+                          allow='accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture'
+                          allowFullScreen
+                          className='animate-fade-left'
+                          onLoad={handleIframeLoad}
+                          ></iframe> 
+                         {iframeLoading && <Spin tip="Loading" size="large">
+                              <div className="content" />
+                          </Spin>}
+                      </Card>
                 </div>
             </div>
           </div>
