@@ -1,7 +1,6 @@
 import React from 'react'
 import {SlArrowUp} from 'react-icons/sl'
 
-
 const ScrollToTopButton = () => {
   return (
     <div className="fixed z-50 h-12 w-12 text-center rounded-full bg-slate-300 right-2 bottom-2 animate-bounce">

@@ -26,15 +26,15 @@ const Users = () => {
       setloading(true)
       const response = await axiosInstance.get(`/users?search=${searchInput}&${filter}`)
       const userData = response.data.result
+      console.log(userData);
       const formattedData = userData.map(item => ({
         key: item._id,
         _id : item._id,
-        name: item.username,
+        name: item.user_name,
         email: item.email,
-        date: item.date,
+        date: item.join_date,
         mobile: item.mobile,
-        location: item.location,
-        purchased: item.purchased?<div align="center"><CheckOutlined/></div> : <CloseOutlined />,
+        purchased: item.is_purchased ?<CheckOutlined className='text-green-400 font-semibold'/> : <CloseOutlined className='text-red-600 font-semibold'/>,
         is_blocked : item.is_blocked,
         action: ''
       }));
@@ -79,7 +79,6 @@ const Users = () => {
     { title: 'Email', dataIndex: 'email', key: 'email' },
     { title: 'Mobile', dataIndex: 'mobile', key: 'mobile' },
     { title: 'Date', dataIndex: 'date', key: 'date' },
-    { title: 'Location', dataIndex: 'location', key: 'location' },
     { title: 'Purchased', dataIndex: 'purchased', key: 'purchased' },
     { 
       title: 'Action', 

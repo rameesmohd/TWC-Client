@@ -3,6 +3,7 @@ import {FacebookIcon,InstagramIcon,TwitterIcon,Whatsapp} from '../../Components/
 import { Button } from 'antd'
 import { useNavigate } from 'react-router-dom'
 
+
 const CourseSection = () => {
     const whatYouWillLearn = ["Introduction to Trading Fundamentals","Indicators Deep Dive","Liquidity Dynamics","Market Structure Analysis","Insights into Market Makers","ICT Concepts"]
     const SkillsYouWillAchieve = ["Trading in different currency pairs ","Forex analysis","Technical analysis currency pairs","Fundamental analysis","Trading mindset","Trading in different currency pairs","Liquidity analysis"]
@@ -41,7 +42,7 @@ const CourseSection = () => {
     };
 
   return (
-    <section id='enroll-course' className='grid grid-cols-5 mb-4'>
+    <section id='enroll-course' className='md:grid grid-cols-5 mb-4'>
     <div className='w-full pl-16 col-span-3 font-sans animate-fade-right'>
       <div className='text-3xl mb-2 font-semibold'> 
           About the course
@@ -74,7 +75,7 @@ const CourseSection = () => {
           {
             SkillsYouWillAchieve.map((value,i)=>{
               return (
-                <div className='border text-base p-2 mx-1 my-1 bg-blue-50 '>
+                <div key={i} className='border text-base p-2 mx-1 my-1 bg-blue-50 '>
                    {value}
                 </div>
               )
@@ -105,7 +106,7 @@ const CourseSection = () => {
           {
             [{key :"Coursemode",value : "Online"},{key :"Duration",value : "2 Months"},{key :"Language",value : "Eng/Mal"},{key : "Students Enrolled",value : "100+"},{},{}].map((value,index)=>{
                   return (
-                    <div className='w-full flex justify-between px-2 py-2'>
+                    <div key={index} className='w-full flex justify-between px-2 py-2'>
                       <div>{value.key}</div>
                       <div>{value.value}</div>
                     </div>

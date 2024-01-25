@@ -1,8 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react'
 import icon1 from '../../assets/Frame.png'
 import icon2 from '../../assets/Framee.png'
-import Button from '../Common/Button'
-
+import {Button} from 'antd'
 const CertificateSection = () => {
     const CerticateRef = useRef();
     const [scrolled, setScrolled] = useState(false);
@@ -10,7 +9,6 @@ const CertificateSection = () => {
     const handleScroll = () => {
       const scrollPosition = window.scrollY + window.innerHeight;
       const footerPosition = CerticateRef.current.offsetTop;
-  
       if (scrollPosition > footerPosition) {
         setScrolled(true);
       } else {
@@ -24,7 +22,7 @@ const CertificateSection = () => {
     }, []);
   
   return (
-    <section className='w-full bg-yellow-300 border shadow-lg  border-b-2 px-16 py-8 grid grid-cols-2 mt-2 '>
+    <section className='w-full bg-yellow-300 border shadow-lg border-b-2 px-16 py-8 sm:grid grid-cols-2 mt-2 '>
     <div  ref={CerticateRef} className={`col-span-1 ${
         scrolled ? 'animate-fade-right animate-once' : 'opacity-0'
       }`}>
@@ -40,7 +38,9 @@ const CertificateSection = () => {
           <div className='text-base my-2 mx-2'>Share your acheivement</div>
         </div>
         <div className='flex my-3'>
-        <Button className={'bg-blue-500 px-3 py-1 flex rounded-md mt-2 text-white '} text={'Encroll course now'}/>
+        <Button type='primary' className='bg-blue-500 text-white'>
+          Encroll course now
+        </Button>
         </div>
     </div>
     <div className='col-span-1 flex justify-center '>

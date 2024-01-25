@@ -1,10 +1,13 @@
 import React, { useState } from "react";
-import Button from "./Button";
+import { Button } from "antd";
 import { Link, useNavigate } from "react-router-dom";
 import img from '../../assets/01 (1).png'
 import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
 import {logout} from '../../Redux/ClientSlice'
+import Drawer from './Drawer'
+import Loginform from '../Loginform'
+import Signupfrom from '../Signupform'
 
 const Navbar = () => {
   const dispatch = useDispatch()
@@ -21,16 +24,17 @@ const Navbar = () => {
   };
 
   const options = [
-    {option: "My Course",nav : '/my-course'},
-    // {option: "About",nav : ''},
+    {option: "Home",nav : '/'},
+    {option: "Userpanel",nav : '/my-course'},
   ];
 
   return (
-    <nav className="bg-white border-gray-200 shadow-xl fixed z-50 w-full px-4 pb-2">
+    <>
+    <nav className="bg-opacity-10 backdrop-blur-lg bg-black/10 border-gray-200 shadow-xl fixed z-50 w-full px-4 py-4">
       <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto ">
         <Link to={'/'} className="flex items-center space-x-3 rtl:space-x-reverse">
           <span className="self-center text-xl font-semibold whitespace-nowrap text-blue-800">
-            <img src={img} alt="" className="w-32 h-20" />
+            <img src={img} alt="" className="w-32 h-32 absolute -top-8" />
           </span>
         </Link>
         <button
@@ -59,44 +63,45 @@ const Navbar = () => {
           </svg>
         </button>
 
-        <div
-          className={`w-full md:block md:w-auto transition ${
-            isMobileMenuOpen ? "block" : "hidden"
-          }`}
-          id="navbar-default">
-          <ul className="font-medium md:flex flex-col p-4 md:p-0 mt-4 border items-center
-           border-gray-100 rounded-lg bg-gray-50 md:flex-row md:space-x-8 rtl:space-x-reverse md:mt-0 md:border-0 md:bg-white">
-            { options.map((obj, index) => {
-              return (
-                <li key={index}>
-                  <Link
-                    to={obj?.nav}
-                    className="block py-2 px-3 text-gray-900 w-full rounded hover:bg-gray-100
-                     md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0"
-                  >
-                    {obj.option}
-                  </Link>
-                </li>
-              );
-            })}
-            { token ?
-            <li>
-            <Button className={"px-2 py-2 sm:-mr-6 border cursor-pointer"} text={"Logout"} action={()=>signout()}/>
-            </li> :
-            <>
-            <li>
-              <Button className={"px-2 py-2 sm:-mr-6 border cursor-pointer"} text={"Login"} action={()=>navigate('/login')}/>
-            </li>
-            <li>
-              <Button className={"px-4 py-2 bg-blue-500 border cursor-pointer"} text={"Signup"} action={()=>navigate('/signup')}/>
-            </li>
-            </> 
-            }
+        <div className={`w-full md:block md:w-auto transition ${isMobileMenuOpen ? "block" : "hidden"}`} id="navbar-default">
+          <ul className="font-medium md:flex flex-col p-4 md:p-0 mt-4 border items-center border-gray-100 rounded-lg  md:flex-row md:space-x-8 rtl:space-x-reverse md:mt-0 md:border-0">
+            {options.map((obj, index) => (
+              <li key={index}>
+                <Link
+                  to={obj?.nav}
+                  className="block py-2 px-3 text-blue-800 w-full rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0"
+                >
+                  {obj.option}
+                </Link>
+              </li>
+            ))}
+            {token ? (
+              <>
+              <li>
+                <Button className="border border-red-700 text-red-700 " onClick={signout}>Logout</Button>
+              </li>
+              </>
+            ) : (
+              <>
+                <li>
+                  <Drawer btnText={'Login'} 
+                  btnClassname={'bg-transparent border-blue-500 border my-1 '}
+                  Body={<Loginform/>}
+                  />
+                   <Drawer btnText={'Signup'} 
+                  btnClassname={'bg-blue-500 border text-white mx-1 my-1 '}
+                  Body={<Signupfrom/>}
+                  />
+                </li> 
+              </>
+            )}
           </ul>
         </div>
       </div>
     </nav>
+    </>
   );
 };
 
 export default Navbar;
+

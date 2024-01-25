@@ -9,6 +9,7 @@ import Useraxios from "../Axios/Useraxios";
 
 const SignupForm = () => {
   const navigate = useNavigate()
+  const axiosInstance = Useraxios()
   return (
     <div className="px-6 lg:px-8 flex min-h-full flex-col justify-center py-12  animate-fade-right transition-opacity ">
       <div className=" sm:mx-auto sm:w-full sm:max-w-sm  p-4 rounded-md">
@@ -69,7 +70,7 @@ const SignupForm = () => {
 
           onSubmit={ async (values, { setSubmitting }) => {
             try {
-              const response = await Useraxios.post("/signup", {
+              const response = await axiosInstance.post("/signup", {
                 email: values.email,
                 password: values.password,
                 mobile: values.mobile,

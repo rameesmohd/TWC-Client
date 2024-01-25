@@ -58,7 +58,7 @@ const Login = () => {
               email : result.email,
               mobile : result.mobile,
               is_purchased : result.is_purchased
-            }))
+          }))
           navigate('/');
         } catch (error) {
           toast.error(error.response.data.message)

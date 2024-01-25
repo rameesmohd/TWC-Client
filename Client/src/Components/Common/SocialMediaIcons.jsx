@@ -63,4 +63,4 @@ const InstagramIcon = () => {
     );
   };
 
-export { FacebookIcon , InstagramIcon ,TwitterIcon ,Whatsapp};
+  export { FacebookIcon, InstagramIcon, TwitterIcon, Whatsapp };

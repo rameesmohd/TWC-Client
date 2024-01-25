@@ -8,7 +8,8 @@ export const UserAuth = createSlice({
     token : null,
     email : null,
     mobile : null,
-    is_purchased : false
+    is_purchased : false,
+    completed_chapters : []
   },
   reducers: {
     setUser: (state, action) => {
@@ -26,11 +27,13 @@ export const UserAuth = createSlice({
       state.email = null
       state.is_purchased = false 
     },
-    setPurchase :(state,action)=>{
+    setCourseData :(state,action)=>{
       state.is_purchased = action.payload.is_purchased
+      state.completed_chapters=action.payload.completed_chapters
+      console.log(action.payload,'redux')
     }
   },
 });
 
-export const { setUser ,logout} = UserAuth.actions;
+export const { setUser ,logout ,setCourseData } = UserAuth.actions;
 export default UserAuth.reducer;
