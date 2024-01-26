@@ -78,7 +78,25 @@ const Users = () => {
     { title: 'Name', dataIndex: 'name', key: 'name'},
     { title: 'Email', dataIndex: 'email', key: 'email' },
     { title: 'Mobile', dataIndex: 'mobile', key: 'mobile' },
-    { title: 'Date', dataIndex: 'date', key: 'date' },
+    { 
+      title: 'Date', 
+      dataIndex: 'date', 
+      key: 'date',
+      render: (date) => {
+      const dateTime = new Date(date);
+      const options = {
+        year: 'numeric',
+        month: 'numeric',
+        day: 'numeric',
+        hour: 'numeric',
+        minute: 'numeric',
+        second: 'numeric',
+        hour12: true,
+        timeZone: 'Asia/Kolkata',
+      };
+      return dateTime.toLocaleString('en-IN', options);
+      },
+    },
     { title: 'Purchased', dataIndex: 'purchased', key: 'purchased' },
     { 
       title: 'Action', 

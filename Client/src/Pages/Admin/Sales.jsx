@@ -135,7 +135,7 @@ const sales = () => {
         <div className='relative'>
           {screenshot ? <>
           <div className='border w-fit'>
-              <img className='blur-sm' alt={screenshot} src={screenshot} style={{ height : 80 }} />
+              <img className='blur-sm object-cover' alt={screenshot} src={screenshot} style={{ height : 80 ,width : 100 }} />
           </div>
           <EyeOutlined className='absolute top-8 left-12 text-2xl text-slate-300' key="view" onClick={() => handleViewImage(screenshot)} />
           </> : <div>--</div>}
