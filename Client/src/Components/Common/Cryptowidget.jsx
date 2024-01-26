@@ -20,8 +20,8 @@ const CryptoWidget = () => {
           proName: 'COINBASE:ETHUSD',
         },
         {
-          description: 'USD/EUR',
-          proName: 'FX_IDC:USDEUR',
+          description: 'EUR/USD',
+          proName: 'FX_IDC:EURUSD',
         },
         {
           description: 'GBP/USD',
@@ -36,8 +36,8 @@ const CryptoWidget = () => {
           proName: 'COINBASE:BTCUSD',
         },
         {
-          description: 'ETH/USD',
-          proName: 'COINBASE:ETHUSD',
+          description: 'XAU/USD',
+          proName: 'FX_IDC:XAUEUR',
         },
         {
           description: 'USD/EUR',

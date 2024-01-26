@@ -1,8 +1,7 @@
 import React, { lazy, useEffect, useMemo, useState } from 'react'
 import  Navbar  from '../../Components/Common/Navbar';
-import { Button} from 'antd';
+import { Button, Divider, Table} from 'antd';
 import { Card} from 'antd';
-const { Meta } = Card;
 import { SiTether } from "react-icons/si";
 import { RiBankLine } from "react-icons/ri";
 import Footer from '../../Components/Common/Footer';
@@ -10,11 +9,17 @@ import phonepayIcon from '../../assets/phonepe-logo-icon (1).svg'
 import UsdtPayModal from '../../Components/UsdtPayModal'
 import LocalBankModal from '../../Components/LocalBankModal'
 import PhonePay from '../../Components/PhonePayModal';
+import userAxios from '../../Axios/Useraxios';
+import toast from 'react-hot-toast';
+import { ClockCircleOutlined } from '@ant-design/icons';
+const { Meta } = Card;
 
 const Checkout = () => {
   const [selectedMethod,setSelectedMethod]=useState(0)
+  const [salesData,setSalesData] = useState([])
   const [loading,setLoading]= useState({
-      paynowButton : false
+      paynowButton : false,
+      transactionTable : false
    })
   const [price,setPrice]=useState({
     currency : null,
@@ -26,6 +31,7 @@ const Checkout = () => {
   })
   const [modal,setModal]=useState()
   const [openModal,setOpenModal]=useState(false)
+  const axiosInstance = userAxios()
 
   const PriceItem = ({ label, price,bold }) => (
     <div className={`flex justify-between font-poppins text-gray-600 ${ bold && 'font-bold'}`}>
@@ -68,6 +74,20 @@ const Checkout = () => {
       }
   }
 
+  const fetchTransData=async()=>{
+      try {
+        const response = await axiosInstance.get('/transaction')
+        setSalesData(response.data.result)
+      } catch (error) {
+        toast.error(error.message)
+        console.log(error);
+      }
+  }
+
+  useEffect(()=>{
+    fetchTransData()
+  },[])
+
   const handlePayment=()=>{
       setLoading({...loading , paynowButton : true})
       setTimeout(()=>{
@@ -80,6 +100,53 @@ const Checkout = () => {
   useEffect(()=>{
     calculateSummary()
   },[selectedMethod])
+
+  const columns = [
+    { title: 'Trasanction Id', dataIndex: 'transaction_id', key: 'transaction_id' },
+    { 
+      title: 'Date', 
+      dataIndex: 'date', 
+      key: 'date',
+      render: (date) => {
+        const dateTime = new Date(date);
+        const options = {
+          year: 'numeric',
+          month: 'numeric',
+          day: 'numeric',
+          hour: 'numeric',
+          minute: 'numeric',
+          second: 'numeric',
+          hour12: true,
+          timeZone: 'Asia/Kolkata',
+        };
+        return dateTime.toLocaleString('en-IN', options);
+      },
+    },
+    { 
+      title: 'Amount', 
+      dataIndex: 'amount', 
+      key: 'amount',
+      render: (amount,record) => 
+      (<span style={{ fontSize: '16px' }}>
+        {record.payment_method === 'local_bank' && <>₹ {amount}</>}
+        {record.payment_method === 'phonepe' && <>₹ {amount}</>}
+        {record.payment_method === 'usdt' && <>$ {amount}</>}
+      </span>)
+    },
+    { title: 'Payment Mode', dataIndex: 'payment_method', key: 'payment_method' },
+    { title: 'Email', dataIndex: 'user_email', key: 'user_email' },
+    { 
+      title: 'Status', 
+      dataIndex: 'payment_status', 
+      key: 'payment_status' ,
+      render: (status) => 
+      <>
+        {status==='pending' && <span style={{ fontSize: '16px',color : 'orangered'}}><ClockCircleOutlined className='mx-1'/>Pending</span> }
+        {status==='success' && <span style={{ fontSize: '16px',color: 'green' }}>Success</span>}
+        {status==='rejected' && <span style={{ fontSize: '16px',color : 'red' }}>Rejected</span>}
+      </>
+    }
+  ]
 
   return (
     <>
@@ -143,9 +210,24 @@ const Checkout = () => {
               </Card>
               </div>
           </div>
-          <hr />
+          {/* <hr /> */}
           <div className='w-1/2'>
           </div>
+          <Divider style={{fontSize : 'xx-large'}} orientation="left" >Transactions</Divider>
+          <Table className='animate-fade-up border-b shadow-md' 
+            columns={columns.map((col) => ({
+                ...col,
+                onHeaderCell: (column) => ({
+                style: { background: '	#383838', color: 'white' },
+                })}))}
+            dataSource={salesData} 
+            loading={loading.transactionTable} 
+            pagination={{
+              pageSize: 5, 
+              total: salesData.length, 
+            }}
+            scroll={{ x: true }}
+          />
         <Footer/>
         </div>
     </div>

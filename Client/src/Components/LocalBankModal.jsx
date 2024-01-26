@@ -49,18 +49,13 @@ const LocalBankModal = ({open,setOpen,amount}) => {
     setOpen(false);
   };
 
-
-
-  useEffect(()=>{
-  },[])
-
   return (
     <>
       {contextHolder}
       <Modal
         title={<><BankOutlined className='mr-2' style={{fontSize : '24px'}} /> Local Bank Transfer </>}
         open={open}
-        okText="Upload" 
+        okText="Submit" 
         okButtonProps={
           {...(Object.keys(uploadedFile).length
             ? { style: { backgroundColor: 'blue', color: 'white' } }

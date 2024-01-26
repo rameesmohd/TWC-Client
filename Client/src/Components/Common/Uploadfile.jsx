@@ -1,7 +1,7 @@
 import React from 'react';
 import { UploadOutlined } from '@ant-design/icons';
 import { Button, message, Upload } from 'antd';
-const App = ({setUploadedFile}) => {
+const App = ({danger,setUploadedFile}) => {
     const props = {
       name: 'file',
       action: 'https://run.mocky.io/v3/435e224c-44fb-4773-9faf-380c5e6a2188',
@@ -36,7 +36,7 @@ const App = ({setUploadedFile}) => {
 
 return ( 
   <Upload {...props}>
-    <Button icon={<UploadOutlined />}>Click to Upload Screenshot</Button>
+    <Button danger={danger} icon={<UploadOutlined />}>Click to Upload Screenshot</Button>
   </Upload>
 )};
 export default App;

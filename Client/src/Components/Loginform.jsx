@@ -1,22 +1,28 @@
 import { Spinner } from "@material-tailwind/react";
 import { Formik } from "formik";
-import React, { useState } from "react";
+import React, { Suspense, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import userAxios from "../Axios/Useraxios";
 import img from '../assets/01 (1).png'
 import toast from "react-hot-toast";
 import { IoWarningOutline } from "react-icons/io5";
-import { useDispatch,useSelector} from 'react-redux'
+import { useDispatch} from 'react-redux'
 import { setUser } from '../Redux/ClientSlice'
+import { Flex, Spin } from "antd";
+const ForgetPasswordForm = React.lazy(() => import('./forgetPassForm'));
 
 const Login = () => {
   const navigate = useNavigate()
   const [errMsg,setErrMsg] = useState('')
+  const [forget,setForget]=useState(false)
   const dispatch = useDispatch()
   const axiosInstance = userAxios()
 
+
   return (
+    <>
     <div className="flex min-h-full flex-col justify-center px-6 py-12 lg:px-8 animate-fade-right transition-opacity ">
+    {!forget ?
       <div className="py-8 px-6 sm:mx-auto sm:w-full sm:max-w-sm rounded-lg">
       <div className="sm:mx-auto sm:w-full sm:max-w-sm mb-8">
         <div className="flex justify-center">
@@ -123,7 +129,7 @@ const Login = () => {
               </label>
               <div className="text-sm">
                 <a
-                  href="#"
+                  onClick={()=>setForget(true)}
                   className="font-semibold text-indigo-600 hover:text-indigo-500"
                 >
                   Forgot password?
@@ -174,7 +180,13 @@ const Login = () => {
           </Link>
         </p>
       </div>
-    </div>
+      : 
+      <React.Suspense fallback={<Flex justify='center'><Spin size={'lg'}/></Flex>}>
+          <ForgetPasswordForm setForget={setForget}/>
+      </React.Suspense>
+    }
+    </div> 
+    </>
   );
 };
 

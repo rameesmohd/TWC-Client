@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useMemo, useState } from 'react'
 import Navbar from '../../Components/Common/Navbar'
 // import Mainbody from '../../Components/Mycourse/Mainbody'
 import Footer from '../../Components/Common/Footer'
@@ -10,15 +10,19 @@ import { Skeleton } from 'antd';
 import { useDispatch, useSelector } from 'react-redux'
 import { setCourseData } from '../../Redux/ClientSlice'
 import Classroom from './Classroom'
+import Congrates from '../../Components/Common/Congrates'
+import { Progress } from 'antd';
 
 const Mycourse = () => {
   const [ course,setCourse ]=useState([])
   const [loading,setLoading ] = useState(true)
   const [classroomChapter,setClassroomChapter]=useState({})
   const [chapterIndex,setChapterIndex]=useState('')  
+  const [progress,setProgress]=useState(0)
   const axiosInstance = userAxios()
   const dispatch = useDispatch()
   const completedChapters = useSelector((store)=>store.Client.completed_chapters)
+
   const fetchCourseData=async()=>{
       try {
           setLoading(true)
@@ -46,16 +50,31 @@ const Mycourse = () => {
           is_purchased : response.data.result.is_purchased,
           completed_chapters : response.data.result.completed_chapters 
         }))
+        if(progress<100){
+          toast.success('Next chapter unlocked')
+        }
         setClassroomChapter({})
       } catch (error) {
         toast.error(error.message)
         console.log(error);
       }
+    }
+
+    
+  function calculateProgress(){
+    if (completedChapters.length === 0 || course.length === 0) {
+      return 0; 
+    }
+    return (completedChapters.length/course.length)*100 
   }
 
   useEffect(()=>{
     fetchCourseData()
   },[])
+
+  useEffect(()=>{
+    setProgress(calculateProgress())
+  },[completedChapters,course])
 
   return (
     <div className='bg-slate-50'>
@@ -74,6 +93,7 @@ const Mycourse = () => {
             <div className='w-full min-h-[500px] animate-fade-right'>
                  <div className=' h-full md:w-2/3'>
                  <Card className='bg-slate-300' title={<h3 style={{ fontSize: '20px',color : 'black' }}>Mastering Trading Essentials</h3>}>
+                 <Progress percent={progress} />
                   { course.map((chapters,i)=>
                   <>
                     {completedChapters.includes(chapters._id) ? (  
@@ -110,6 +130,12 @@ const Mycourse = () => {
                     </Card>)}
                   </>
                   )}
+                {completedChapters.includes(course[course.length-1]._id) && <Flex className='mt-4' justify='end' align='center'>
+                  <div className='mx-2 font-bold text-green-700 text-xl'>
+                      Congratulations !!
+                  </div>
+                    <Congrates/>
+                </Flex>}
                 </Card>
                 </div>   
             </div>
@@ -118,15 +144,16 @@ const Mycourse = () => {
           <p>My course cart is feeling pretty lonely.</p>
           <div className='flex justify-center mt-4 mb-2'>
             <Button type='primary' style={{backgroundColor :'blue'}} className={'animate-pulse border font-poppins'}>
-                  Purchase our course now
+                Purchase our course now
             </Button>
           </div>
         </div>)}
         </section>:
          <Classroom chapter={classroomChapter} chapterIndex={chapterIndex} goBack={()=>setClassroomChapter({})} handleChapterComplete={handleChapterComplete}/> }
-        <Footer/> 
+        <Footer/>
       </div>
     </div>
+
   )
 }
 
