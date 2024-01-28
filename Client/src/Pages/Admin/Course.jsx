@@ -52,7 +52,6 @@ const Course = () => {
     try {
       setLoading(true);
       await axiosInstance.patch('/chapter',{title,id:editId})
-      fetchChapters()
       toast.success('Chapter updated successfully');
     } catch (error) {
       console.error('Error editing chapter:', error);
@@ -72,7 +71,6 @@ const Course = () => {
     try {
       setLoading(true);
       await axiosInstance.post('/chapter', { title });
-      fetchChapters()
       toast.success('Chapter created successfully');
     } catch (error) {
       console.error('Error creating chapter:', error);
@@ -91,7 +89,6 @@ const Course = () => {
   const deleteChapter=async(id)=>{
     try {
       await axiosInstance.delete(`/chapter?id=${id}`);
-      fetchChapters()
       toast.success('Chapter deleted successfully');
     } catch (error) {
       console.log(error);
@@ -102,7 +99,6 @@ const Course = () => {
   const deleteLesson=async({chapterId,lessonId})=>{
     try {
       await axiosInstance.delete(`/lesson?chapterId=${chapterId}&lessonId=${lessonId}`);
-      fetchChapters()
       toast.success('Chapter deleted successfully');
     } catch (error) {
       console.log(error);
@@ -114,10 +110,11 @@ const Course = () => {
     setIframeLoading(false);
   };
 
+  console.log(chapters.lesson);
 
   useEffect(()=>{
     fetchChapters()
-  },[])
+  },[chapters])
 
   return (
     <div>

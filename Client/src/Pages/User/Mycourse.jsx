@@ -27,6 +27,8 @@ const Mycourse = () => {
       try {
           setLoading(true)
           const response = await axiosInstance.get('/course')
+          console.log(response.data);
+          console.log(response.data.result.length);
           if(response.data.result.length){
             setCourse(response.data.result)
             dispatch(setCourseData({
@@ -60,7 +62,6 @@ const Mycourse = () => {
       }
     }
 
-    
   function calculateProgress(){
     if (completedChapters.length === 0 || course.length === 0) {
       return 0; 
