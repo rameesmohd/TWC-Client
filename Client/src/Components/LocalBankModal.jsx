@@ -32,7 +32,6 @@ const LocalBankModal = ({open,setOpen,amount}) => {
         }
         const response = await axiosInstance.post('/order?method=localbank',formData, { headers: { 'Content-Type':'multipart/form-data' }})
         openNotification()
-        
         console.log('API Response:', response.data);
       } catch (error) {
         toast.error(error.message)

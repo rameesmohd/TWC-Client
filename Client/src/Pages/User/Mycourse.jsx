@@ -66,7 +66,7 @@ const Mycourse = () => {
     if (completedChapters.length === 0 || course.length === 0) {
       return 0; 
     }
-    return (completedChapters.length/course.length)*100 
+    return Math.floor((completedChapters.length/course.length)*100)
   }
 
   useEffect(()=>{
