@@ -1,5 +1,5 @@
 import React from "react";
-import Signupform from "../../Components/SignupForm";
+import Signupform from "../../Components/SignupCard.jsx";
 import img from '../../assets/adam-nowakowski-D4LDw5eXhgg-unsplash-825bba2f.jpg'
 
 const Signup = () => {

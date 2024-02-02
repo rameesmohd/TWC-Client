@@ -7,7 +7,7 @@ import { useDispatch } from "react-redux";
 import {logout} from '../../Redux/ClientSlice'
 import Drawer from './Drawer'
 import Loginform from '../Loginform'
-import Signupfrom from '../Signupform'
+import Signupfrom from '../SignupCard'
 
 const Navbar = () => {
   const dispatch = useDispatch()

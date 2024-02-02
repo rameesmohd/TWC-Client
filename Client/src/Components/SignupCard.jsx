@@ -7,7 +7,7 @@ import toast from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
 import Useraxios from "../Axios/Useraxios";
 
-const SignupForm = () => {
+const App = () => {
   const navigate = useNavigate()
   const axiosInstance = Useraxios()
   return (
@@ -281,4 +281,4 @@ const SignupForm = () => {
   );
 };
 
-export default SignupForm;
+export default App;
