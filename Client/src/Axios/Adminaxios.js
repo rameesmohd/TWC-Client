@@ -1,11 +1,13 @@
 import axios from 'axios';
 import { useSelector } from 'react-redux';
+const adminAPI = import.meta.env.VITE_ADMIN_API
+
 
 const adminAxios = () => {
   const token = useSelector((store) => store.Admin.token);
 
   const adminAxiosInstance = axios.create({
-    baseURL: 'http://localhost:3000/api/admin/',
+    baseURL: adminAPI,
     withCredentials: true,
   });
 

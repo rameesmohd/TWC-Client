@@ -1,6 +1,5 @@
 import React, { useEffect, useMemo, useState } from 'react'
 import Navbar from '../../Components/Common/Navbar'
-// import Mainbody from '../../Components/Mycourse/Mainbody'
 import Footer from '../../Components/Common/Footer'
 import {Button, Card, Flex} from 'antd'
 import userAxios from '../../Axios/Useraxios'
@@ -96,7 +95,7 @@ const Mycourse = () => {
                  <Card className='bg-slate-300' title={<h3 style={{ fontSize: '20px',color : 'black' }}>Mastering Trading Essentials</h3>}>
                  <Progress percent={progress} />
                   { course.map((chapters,i)=>
-                  <>
+                  <div key={chapters._id}>
                     {completedChapters.includes(chapters._id) ? (  
                       <Card key={chapters._id} onClick={()=>{setClassroomChapter(chapters), setChapterIndex(i+1)}} className='font-semibold my-1 hover:bg-slate-100 cursor-pointer'> 
                         <Flex justify={'space-between'} align={'center'}>
@@ -129,7 +128,7 @@ const Mycourse = () => {
                       </div> 
                     </Flex>
                     </Card>)}
-                  </>
+                  </div>
                   )}
                 {completedChapters.includes(course[course.length-1]._id) && <Flex className='mt-4' justify='end' align='center'>
                   <div className='mx-2 font-bold text-green-700 text-xl'>

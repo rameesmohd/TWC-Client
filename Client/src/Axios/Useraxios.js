@@ -1,11 +1,13 @@
 import axios from 'axios';
 import { useSelector } from 'react-redux';
 
+const userAPI = import.meta.env.VITE_USER_API
+
 const userAxios = () => {
   const token = useSelector((store) => store.Client.token);
 
   const userAxiosInstance = axios.create({
-    baseURL: 'http://localhost:3000/api/',
+    baseURL: userAPI,
     withCredentials: true,
   });
 
