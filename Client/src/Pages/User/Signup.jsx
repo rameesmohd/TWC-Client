@@ -1,5 +1,5 @@
 import React from "react";
-import SignupForm from "../../components/Signupform";
+import Signupform from "../../Components/SignupForm";
 import img from '../../assets/adam-nowakowski-D4LDw5eXhgg-unsplash-825bba2f.jpg'
 
 const Signup = () => {
@@ -13,7 +13,7 @@ const Signup = () => {
         />
       </div>
       <div className="col-span-1 h-full">
-        <SignupForm />
+        <Signupform />
       </div>
     </div>
   );
