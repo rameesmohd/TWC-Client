@@ -9,7 +9,7 @@ import { IoWarningOutline } from "react-icons/io5";
 import { useDispatch} from 'react-redux'
 import { setUser } from '../Redux/ClientSlice'
 import { Flex, Spin } from "antd";
-const ForgetPasswordForm = React.lazy(() => import('./forgetPassForm'));
+const ForgetPasswordForm = React.lazy(() => import('./ForgetPassForm'));
 
 const Login = () => {
   const navigate = useNavigate()
