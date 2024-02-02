@@ -183,7 +183,7 @@ const Checkout = () => {
                     onClick={()=>setSelectedMethod(2)} 
                     icon={<img src={phonepayIcon} className='w-7 h-7'/>} 
                     className={`w-full ${selectedMethod===2 && 'outline-2 outline'} flex items-center bg-white justify-start p-8 text-xl my-2`}>
-                    Phonepay
+                    Phonepe
                   </Button>
 
                   <hr />

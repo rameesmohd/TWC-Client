@@ -8,6 +8,7 @@ import Classroom from '../Pages/User/Classroom'
 import Checkout from '../Pages/User/Checkout'
 import { useSelector } from 'react-redux'
 import NotFoundPage from '../Pages/404'
+import Resetpassword from '../Pages/User/Resetpassword'
 
 const User = () => {
   const userAuth = useSelector((state) => state.Client.token)
@@ -20,6 +21,7 @@ const User = () => {
         <Route path="/home" element={<Home />} />
         <Route path="/signup" element={<Signup />}/>
         <Route path="/login" element={userAuth? <Navigate to={'/home'}/> : <Login />} />
+        <Route path="/resetpassword" element={<Resetpassword />}/>
         
         {/* Private */}
         <Route path='/my-course' element={<PrivateRoute element={<Mycourse/>}/>}/>
