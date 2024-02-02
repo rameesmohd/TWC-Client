@@ -224,7 +224,7 @@ const Checkout = () => {
             loading={loading.transactionTable} 
             pagination={{
               pageSize: 5, 
-              total: salesData.length, 
+              total: salesData?.length, 
             }}
             scroll={{ x: true }}
           />

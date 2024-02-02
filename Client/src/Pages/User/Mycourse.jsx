@@ -26,9 +26,7 @@ const Mycourse = () => {
       try {
           setLoading(true)
           const response = await axiosInstance.get('/course')
-          console.log(response.data);
-          console.log(response.data.result.length);
-          if(response.data.result.length){
+          if(response.data.result && response.data.result.length){
             setCourse(response.data.result)
             dispatch(setCourseData({
               is_purchased : response.data.user.is_purchased,
