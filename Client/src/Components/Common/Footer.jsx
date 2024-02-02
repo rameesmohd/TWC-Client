@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { AiFillPhone } from 'react-icons/ai';
 import { FiMail } from 'react-icons/fi';
 import { RiHomeOfficeFill } from 'react-icons/ri';
-import ScrollToTopButton from './Scrolltotop';
+import ScrollToTopButton from './ScrollToTop';
 
 const Footer = () => {
     const data=[
