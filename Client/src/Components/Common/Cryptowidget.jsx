@@ -12,16 +12,16 @@ const CryptoWidget = () => {
     script3.text = JSON.stringify({
       symbols: [
         {
+          description: 'EUR/USD',
+          proName: 'FX_IDC:EURUSD',
+        },
+        {
           description: 'BTC/USD',
           proName: 'COINBASE:BTCUSD',
         },
         {
           description: 'ETH/USD',
           proName: 'COINBASE:ETHUSD',
-        },
-        {
-          description: 'EUR/USD',
-          proName: 'FX_IDC:EURUSD',
         },
         {
           description: 'GBP/USD',

@@ -32,7 +32,7 @@ const Header = () => {
                 className='animate-bounce-img ' alt="" /> */}
             </div>
         </div>
-        <div className='z-30 my-4 sm:my-8'>
+        <div className='z-30 my-4 sm:my-8 hidden sm:block'>
             <CryptoWidget/>
         </div>
     </>

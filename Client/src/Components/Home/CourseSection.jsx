@@ -95,13 +95,13 @@ const CourseSection = () => {
           <div className='text-2xl my-2 mx-2 font-extrabold animate-bounce'>
           $497 <span className='line-through text-sm text-red-700'>$549</span> 
           </div>
-          <div className='flex justify-between'>
+          <div className='flex justify-start'>
           <Button type="primary" className='bg-blue-500 font-semibold animate-jump-in' loading={loadings[1]} onClick={() => purchase(1)}>
              Purchase Now
           </Button>
-          <Button type="default" loading={loadings[0]} onClick={() => enterLoading(0)}>
+          {/* <Button type="default" loading={loadings[0]} onClick={() => enterLoading(0)}>
             Download syllabus
-          </Button>
+          </Button> */}
           </div>
           {
             [{key :"Coursemode",value : "Online"},{key :"Duration",value : "2 Months"},{key :"Language",value : "Eng/Mal"},{key : "Students Enrolled",value : "100+"},{},{}].map((value,index)=>{

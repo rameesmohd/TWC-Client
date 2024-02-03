@@ -24,7 +24,7 @@ const Footer = () => {
           title: 'CONTACT',
           links: [
             {
-              text: 'city tower, baby hospital, Ernamkulam, 94126',
+              text: 'Door No 2,First Floor,Oryx Arcade,Vmb Road,Pathadipalam,Ernamkulam,Kerala',
               icon: <RiHomeOfficeFill className='text-1xl mt-2 md:text-2xl' />,
             },
             {
@@ -32,7 +32,7 @@ const Footer = () => {
               icon: <AiFillPhone className='mt-1' />,
             },
             {
-              text: 'tradewalker@gmail.com',
+              text: 'tradewalker007@gmail.com',
               icon: <FiMail className='mt-1' />,
               isLink: true,
             },
@@ -66,7 +66,7 @@ const Footer = () => {
       <p className='mx-3'>Terms</p>
       <p className='mx-3'>Policy</p>
     </div>
-    <div className='w-auto h-auto flex justify-center p-5'>
+    <div className='w-auto h-auto flex justify-center px-5'>
       <div className='text-sm'>Trade Walker & Co.</div>
     </div>
     <ScrollToTopButton />

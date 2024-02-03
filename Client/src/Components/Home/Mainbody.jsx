@@ -88,7 +88,7 @@ const Body = () => {
         <div className='flex justify-center'>
             <Button >Start learning now</Button>
         </div>
-          <p className='text-sm text-right px-8'>100+ Students joined </p>
+          <p className='text-sm text-right py-4 px-8'>100+ Students joined </p>
       </div>
       <div className='col-span-1 bg-black py-12'>
             <div className={`w-full text-3xl sm:text-6xl text-center px-16 sm:px-36 text-white animate-fade-up ${scrolled.queryScroll ? 'animate-fade-down' : 'opacity-0'}`}>
@@ -111,7 +111,7 @@ const Body = () => {
 
     <section ref={MetaAppRef} className={`container relative my-8 mx-auto`}>
                 {/* <img className='-z-20 w-full h-full opacity-50 absolute' src={img} alt="" /> */}
-                <Space className={`gap-5 mt-2 sm:flex justify-center  ${scrolled.footerScroll ? 'animate-fade-up' : 'opacity-0'}`}>
+                <div className={`gap-5 mt-2 px-2 sm:flex justify-center  ${scrolled.footerScroll ? 'animate-fade-up' : 'opacity-0'}`}>
                   <Card className=''>
                     <a href='https://download.mql5.com/cdn/web/metaquotes.software.corp/mt5/mt5setup.exe?utm_source=www.metatrader4.com&utm_campaign=download'  className='col-span-1 mr-1  rounded-md flex flex-col justify-center text-center p-5 hover:scale-110 transition'> 
                       <h4 className='mb-5'>MetaTrader 4</h4>
@@ -128,7 +128,7 @@ const Body = () => {
                       <img className='' src={mt5Img} alt="" />
                     </a>
                   </Card>
-            </Space>
+            </div>
       </section>
     <Footer/>
     </>
