@@ -14,7 +14,7 @@ const Admin = () => {
   };
   return (
     <Routes>
-        <Route path='/login' element={adminAuth? <Navigate to={'/twc/admin/'}/> : <Login />}/>
+        <Route path='/login' element={adminAuth? <Navigate to={'/twc/admin'}/> : <Login />}/>
 
         {/* Private */}
         <Route path='/users' element={<PrivateRoute element={<Users/>}/>}/>
