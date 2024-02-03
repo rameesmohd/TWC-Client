@@ -8,7 +8,7 @@ const Header = () => {
     <>
         <div className='sm:grid grid-cols-2'>
             <div className='col-span-1 flex justify-center pt-12 animate-fade-right'>
-                <div className='pl-16'>
+                <div className=''>
                 <div className='text-5xl font-bold '>
                     Boost your<span className='text-blue-700 mx-2 font'>Trading Career,</span>
                     <br/>be a<span className='text-blue-700'> MONK </span> - ready now<span className='animate-pulse animate-infinite animate-duration-[700ms] animate-ease-linear'>!</span>

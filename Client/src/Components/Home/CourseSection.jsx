@@ -43,7 +43,7 @@ const CourseSection = () => {
 
   return (
     <section id='enroll-course' className='md:grid grid-cols-5 mb-4'>
-    <div className='w-full pl-16 col-span-3 font-sans animate-fade-right'>
+    <div className='w-full pl-4 sm:pl-16 col-span-3 font-sans animate-fade-right'>
       <div className='text-3xl mb-2 font-semibold'> 
           About the course
       </div>
