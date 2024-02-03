@@ -9,9 +9,13 @@ export const UserAuth = createSlice({
     email : null,
     mobile : null,
     is_purchased : false,
-    completed_chapters : []
+    completed_chapters : [],
+    tempStore : null
   },
   reducers: {
+    setTemp: (state, action) => {
+      state.tempStore = action.payload;
+      },
     setUser: (state, action) => {
       state.user_name = action.payload.user_name
       state.user_id = action.payload.user_id

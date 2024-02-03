@@ -6,12 +6,41 @@ import { Spinner } from "@material-tailwind/react";
 import toast from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
 import Useraxios from "../Axios/Useraxios";
+import OTP from "../Components/Common/OTP"
 
 const App = () => {
   const navigate = useNavigate()
   const axiosInstance = Useraxios()
+  const [otpState,setOtpState]=useState('')
+  const [enterOtp,setEnterOtp] = useState(false)
+  const [formData,setFormData]=useState({})
+
+  function generateOTP() {
+    return Math.floor(100000 + Math.random() * 900000);
+  }
+
+  const approveSignup=async()=>{
+    try {
+      const response = await axiosInstance.post("/signup",formData);
+      console.log("Server response:", response.data);
+      toast.success("Created successfully!")
+      setTimeout(() => {
+        navigate('/login')
+      }, 500);
+    } catch (error) {
+      toast.error(error.message)
+      toast.error(error.data.response.data.message)
+      setTimeout(() => {
+        navigate('/signup')
+      }, 500);
+      console.error("Error:", error.message);
+    } 
+  }
+
   return (
+    <>
     <div className="px-6 lg:px-8 flex min-h-full flex-col justify-center py-12  animate-fade-right transition-opacity ">
+   {!enterOtp ?
       <div className=" sm:mx-auto sm:w-full sm:max-w-sm  p-4 rounded-md">
       <div className="sm:mx-auto sm:w-full sm:max-w-sm">
         <img
@@ -70,18 +99,21 @@ const App = () => {
 
           onSubmit={ async (values, { setSubmitting }) => {
             try {
-              const response = await axiosInstance.post("/signup", {
+              setSubmitting(true);
+              const newOtp = generateOTP()   
+              setOtpState(newOtp)
+              setFormData({
                 email: values.email,
                 password: values.password,
                 mobile: values.mobile,
                 name : values.name
+              })
+              await axiosInstance.post("/send-otp", {
+                email: values.email,
+                OTP : newOtp
               });
-              console.log("Server response:", response.data);
-              toast.success("Created successfully!")
-              setTimeout(() => {
-                setSubmitting(false);
-                navigate('/login')
-              }, 500);
+              setSubmitting(false);
+              setEnterOtp(true)
             } catch (error) {
               toast.error(error.message)
               console.error("Error:", error.message);
@@ -277,7 +309,9 @@ const App = () => {
           </Link>
         </p>
       </div>
-    </div>
+    : <OTP verified={approveSignup} otp={otpState} setOtp={setOtpState}/>   }  
+    </div> 
+    </>
   );
 };
 

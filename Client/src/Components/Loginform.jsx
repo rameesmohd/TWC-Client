@@ -11,13 +11,18 @@ import { setUser } from '../Redux/ClientSlice'
 import { Flex, Spin } from "antd";
 const ForgetPasswordForm = React.lazy(() => import('./ForgetPassForm'));
 
+function generateOTP() {
+  return Math.floor(100000 + Math.random() * 900000);
+}
+
 const Login = () => {
   const navigate = useNavigate()
   const [errMsg,setErrMsg] = useState('')
   const [forget,setForget]=useState(false)
   const dispatch = useDispatch()
   const axiosInstance = userAxios()
-
+  const [otpState,setOtpState]=useState('')
+  const [enterOtp,setEnterOtp] = useState(false)
 
   return (
     <>
