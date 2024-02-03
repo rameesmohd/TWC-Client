@@ -206,7 +206,7 @@ const App = () => {
                 <input
                 id="mobile"
                 name="mobile"
-                type="mobile"
+                type="number"
                 autoComplete="mobile"
                 required
                 onChange={handleChange}
