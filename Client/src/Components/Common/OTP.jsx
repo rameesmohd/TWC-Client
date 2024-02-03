@@ -58,7 +58,7 @@ const EmailVerification = ({otp,setOtp,verified}) => {
         <div>
           <form>
             <div className="flex flex-col space-y-12">
-              <div className="flex flex-row items-center justify-between mx-auto w-full max-w-xs">
+              <div className="flex flex-row items-center justify-center mx-auto w-full max-w-xs">
               <OtpInput
                 value={code}
                 onChange={handleChange}
@@ -69,8 +69,8 @@ const EmailVerification = ({otp,setOtp,verified}) => {
                 inputStyle={{
                 border: "1px solid grey",
                 borderRadius: "8px",
-                width: "54px",
-                height: "54px",
+                width: "34px",
+                height: "34px",
                 fontSize: "12px",
                 color: "#000",
                 fontWeight: "400",
