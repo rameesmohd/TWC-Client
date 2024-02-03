@@ -10,9 +10,10 @@ const PhonePay = ({open,setOpen,amount}) => {
   const user_id = useSelector((store)=>store.Client.user_id)
   const [formData,setFormData]=useState({email , amount ,user_id})
   const axiosInstance = userAxios()
+  const userAPI = import.meta.env.VITE_USER_API
 
   const handleSubmit=async()=>{
-    await axiosInstance.post('http://localhost:3000/api/phonepay/payment',{
+    await axiosInstance.post(`${userAPI}/phonepay/payment`,{
           data : formData
         }).then((response)=>{
           console.log(response.data , 'response');
