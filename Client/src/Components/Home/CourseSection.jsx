@@ -43,7 +43,7 @@ const CourseSection = () => {
 
   return (
     <section id='enroll-course' className='md:grid grid-cols-5 mb-4'>
-    <div className='w-full pl-4 sm:pl-16 col-span-3 font-sans animate-fade-right'>
+    <div className='w-full px-2 py-2 sm:pl-14 col-span-3 font-sans animate-fade-right'>
       <div className='text-3xl mb-2 font-semibold'> 
           About the course
       </div>
@@ -85,8 +85,8 @@ const CourseSection = () => {
       </div>
     </div>
 
-    <div className='col-span-2 flex justify-center'>
-      <div className='w-2/3'>
+    <div className='col-span-2 flex py-2 px-2 justify-center'>
+      <div className='sm:w-2/3'>
           <div className='rounded-xl w-full h-48 bg-gray-100 flex justify-center items-center animate-jump'>
                  <img
                  src="https://cdn.dribbble.com/userupload/8570778/file/original-37f90c018a0ac7de55ea7a331e659af1.png?resize=400x300&vertical=center"
