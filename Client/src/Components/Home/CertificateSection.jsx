@@ -22,7 +22,7 @@ const CertificateSection = () => {
     }, []);
   
   return (
-    <section className='w-full bg-yellow-300 border shadow-lg border-b-2 px-16 py-8 sm:grid grid-cols-2 mt-2 '>
+    <section className='w-full bg-yellow-300 border shadow-lg border-b-2 px-4 sm:px-16 py-8 sm:grid grid-cols-2 mt-2 '>
     <div  ref={CerticateRef} className={`col-span-1 ${
         scrolled ? 'animate-fade-right animate-once' : 'opacity-0'
       }`}>

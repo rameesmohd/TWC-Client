@@ -7,7 +7,7 @@ const Header = () => {
   return (
     <>
         <div className='sm:grid grid-cols-2'>
-            <div className='col-span-1 flex justify-center px-2 sm:px-0 pt-6 sm:pt-12 animate-fade-right'>
+            <div className='col-span-1 flex justify-center px-3 sm:px-0 pt-6 sm:pt-12 animate-fade-right'>
                 <div className=''>
                 <div className='text-5xl font-bold '>
                     Boost your<span className='text-blue-700 mx-2 font'>Trading Career,</span>
@@ -32,7 +32,7 @@ const Header = () => {
                 className='animate-bounce-img ' alt="" /> */}
             </div>
         </div>
-        <div className='z-30 my-8'>
+        <div className='z-30 my-4 sm:my-8'>
             <CryptoWidget/>
         </div>
     </>

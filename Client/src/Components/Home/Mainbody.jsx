@@ -75,7 +75,7 @@ const Body = () => {
       <CertificateSection/>
       <ReviewSections/>
     </React.Suspense>
-    <div className='my-12 px-16'>
+    <div className='my-12 px-4 sm:px-16'>
       <div className='text-xl sm:text-3xl my-4'>Frequenly asked questions</div>
       <Collapse items={items} text={text}/>
     </div>       
@@ -91,13 +91,13 @@ const Body = () => {
           <p className='text-sm text-right px-8'>100+ Students joined </p>
       </div>
       <div className='col-span-1 bg-black py-12'>
-            <div className={`w-full text-3xl sm:text-6xl text-center px-36 text-white animate-fade-up ${scrolled.queryScroll ? 'animate-fade-down' : 'opacity-0'}`}>
+            <div className={`w-full text-3xl sm:text-6xl text-center px-16 sm:px-36 text-white animate-fade-up ${scrolled.queryScroll ? 'animate-fade-down' : 'opacity-0'}`}>
               Still have any queries?
             </div>
             <div className='flex justify-center'>
             <img src={stillqueriesgif} className='h-72' alt="" />
             </div>
-            <div className='w-full text-3xl sm:text-6xl text-center px-36 text-white animate-fade-up'>
+            <div className='w-full text-3xl sm:text-6xl text-center px-16 sm:px-36 text-white animate-fade-up'>
               We are here
             </div>
             <div className='p-2 rounded-lg flex items-center justify-center'>
@@ -111,7 +111,7 @@ const Body = () => {
 
     <section ref={MetaAppRef} className={`container relative my-8 mx-auto`}>
                 {/* <img className='-z-20 w-full h-full opacity-50 absolute' src={img} alt="" /> */}
-                <Space className={`gap-5 mt-2 flex justify-center  ${scrolled.footerScroll ? 'animate-fade-up' : 'opacity-0'}`}>
+                <Space className={`gap-5 mt-2 sm:flex justify-center  ${scrolled.footerScroll ? 'animate-fade-up' : 'opacity-0'}`}>
                   <Card className=''>
                     <a href='https://download.mql5.com/cdn/web/metaquotes.software.corp/mt5/mt5setup.exe?utm_source=www.metatrader4.com&utm_campaign=download'  className='col-span-1 mr-1  rounded-md flex flex-col justify-center text-center p-5 hover:scale-110 transition'> 
                       <h4 className='mb-5'>MetaTrader 4</h4>

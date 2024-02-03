@@ -43,7 +43,7 @@ const CourseSection = () => {
 
   return (
     <section id='enroll-course' className='md:grid grid-cols-5 mb-4'>
-    <div className='w-full px-2 py-2 sm:pl-14 col-span-3 font-sans animate-fade-right'>
+    <div className='w-full px-2 py-3 sm:pl-14 col-span-3 font-sans animate-fade-right'>
       <div className='text-3xl mb-2 font-semibold'> 
           About the course
       </div>
@@ -53,7 +53,7 @@ const CourseSection = () => {
         Whether you're a beginner or an experienced trader, this course will equip you with the knowledge and strategies to navigate the financial markets confidently.
       </p>
       <div>
-      <div className='text-3xl my-2 font-semibold'> 
+      <div className='text-3xl my-3 font-semibold'> 
           What you will learn
       </div>
         <div className='flex flex-wrap w-2/3'>
