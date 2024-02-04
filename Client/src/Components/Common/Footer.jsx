@@ -43,7 +43,7 @@ const Footer = () => {
     <div className='z-20 border-t bg-slate-50 pt-2 animate-fade-up'>
     <div className='w-full h-auto py-3 grid grid-cols-1 md:grid-cols-3 gap-2 z-20'>
       {data.map((section, index) => (
-        <div key={index} className='space-x-1 px-10 md:px-20 lg:px-40'>
+        <div key={index} className='space-x-1 px-10'>
           <ul>
             <h3 className='font-bold'>{section.title}</h3>
             {section.links.map((link, idx) => (
