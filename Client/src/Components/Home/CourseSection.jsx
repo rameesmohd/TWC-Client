@@ -89,8 +89,8 @@ const CourseSection = () => {
       <div className='sm:w-2/3'>
           <div className='rounded-xl w-full h-48 bg-gray-100 flex justify-center items-center animate-jump'>
                  <img
-                // src="https://cdn.dribbble.com/userupload/8570778/file/original-37f90c018a0ac7de55ea7a331e659af1.png?resize=400x300&vertical=center"
-                src='https://www.fxclearing.com/files/11.jpg'
+                src="https://cdn.dribbble.com/userupload/8570778/file/original-37f90c018a0ac7de55ea7a331e659af1.png?resize=400x300&vertical=center"
+                // src='https://www.fxclearing.com/files/11.jpg'
                  alt="" className='w-full h-full object-cover '/>
           </div>
           <div className='text-2xl my-2 mx-2 font-extrabold animate-bounce'>

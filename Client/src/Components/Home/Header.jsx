@@ -27,7 +27,8 @@ const Header = () => {
                 </div>
             </div>
             <div className='col-span-1 animate-jump-in'>
-                <img className='animate-bounce-img' src="https://en.windsorbrokers.com/wp-content/uploads/2023/07/WBCopyTrading-news-hero-image.png" alt="" />
+                <img className='animate-bounce-img' 
+                src="https://en.windsorbrokers.com/wp-content/uploads/2023/07/WBCopyTrading-news-hero-image.png" alt="" />
                 {/* <img src={'https://img.freepik.com/free-vector/hand-drawn-stock-market-concept-with-analysts_23-2149163670.jpg?size=626&ext=jpg&ga=GA1.1.1546980028.1703721600&semt=ais'} 
                 className='animate-bounce-img ' alt="" /> */}
             </div>
