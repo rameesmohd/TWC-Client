@@ -240,13 +240,13 @@ const sales = () => {
       <div className='pl-16 md:pl-40'>
         <div className=' py-8 px-2 sm:px-8'>
         <Divider orientation="left" style={{fontSize : '30px'}}>Our Sales</Divider>
-          <Flex justify='space-between' className='my-5 w-full animate-fade-left'>
+          <Flex  justify='space-between' className='my-5 w-full animate-fade-left'>
               <Radio.Group defaultValue="weekly" onChange={(e)=>setOrderBy({...orderBy,timeframe : e.target.value})} buttonStyle="outline">
                 <Radio.Button value="daily">Daily</Radio.Button>
                 <Radio.Button value="weekly">Weekly</Radio.Button>
                 <Radio.Button value="monthly">Monthly</Radio.Button>
               </Radio.Group>
-              <Flex>
+              <div className='sm:flex'>
                 <Flex className='mx-2 flex' direction="vertical" size={12}>
                   <RangePicker onChange={handleDateRangeChange} />
                   <Button icon={<SearchOutlined />} onClick={()=>handleDateRangeFetch()} className='mx-1 p-1'/>
@@ -254,7 +254,7 @@ const sales = () => {
                 <Dropdownbtn items={options} loading={spin.filter} handleSelect={handleFilter}/>
                 <SearchInput search={search}/>
                 <Button className='mx-2' disabled={reloaded} onClick={()=>reload()}><TfiReload  className={`${spin.reload ? 'animate-spin' : ''}`}/></Button>
-              </Flex>
+              </div>
           </Flex>
             <Table className='animate-fade-up border-b shadow-md' 
               columns={columns.map((col) => ({
