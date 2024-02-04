@@ -13,27 +13,27 @@ import {Button} from 'antd'
 const CertificateSection = React.lazy(() => import('./CertificateSection'));
 const ReviewSections = React.lazy(() => import('./ReviewSections'));
 
-const text = `
-  A dog is a type of domesticated animal.
-  Known for its loyalty and faithfulness,
-  it can be found as a welcome guest in many households across the world.
-`;
 
 const items = [
   {
     key: '1',
-    label: 'This is panel header 1',
-    children: <p>{text}</p>,
+    label: 'What is the minimum amount of money needed to start trading?',
+    children: <p>The minimum amount of money needed to start trading varies depending on the broker and the type of trading account. 
+      However, in general, you can start trading with a minimum deposit of around $50 with many brokers.</p>,
   },
   {
     key: '2',
-    label: 'This is panel header 2',
-    children: <p>{text}</p>,
+    label: 'How can I get started with Forex trading?',
+    children: <p>To get started with Forex trading, you need to educate yourself about the fundamentals of the Forex market, 
+      including currency pairs, trading strategies, technical analysis, and risk management principles.We are here for you!</p>,
   },
   {
     key: '3',
-    label: 'This is panel header 3',
-    children: <p>{text}</p>,
+    label: 'What are the risks associated with Forex trading?',
+    children: <p>Forex trading carries inherent risks due to the volatile nature of currency markets.
+       Some common risks include market volatility, leverage, geopolitical events, economic releases, 
+       and liquidity issues.It's essential for traders to develop risk management strategies, including setting stop-loss orders,
+       managing leverage effectively, and diversifying their trading portfolio to mitigate potential losses.</p>,
   }
 ];
 
@@ -77,7 +77,7 @@ const Body = () => {
     </React.Suspense>
     <div className='my-12 px-4 sm:px-16'>
       <div className='text-xl sm:text-3xl my-4'>Frequenly asked questions</div>
-      <Collapse items={items} text={text}/>
+      <Collapse items={items}/>
     </div>       
     <section ref={QueriesRef} className={`sm:grid grid-cols-2 `}>
       <div className='col-span-1 bg-yellow-300 relative'>
