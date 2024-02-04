@@ -77,8 +77,8 @@ const EmailVerification = ({otp,setOtp,generateOTP,email}) => {
                 inputStyle={{
                 border: "1px solid grey",
                 borderRadius: "8px",
-                width: "54px",
-                height: "54px",
+                width: "34px",
+                height: "34px",
                 fontSize: "12px",
                 color: "#000",
                 fontWeight: "400",
