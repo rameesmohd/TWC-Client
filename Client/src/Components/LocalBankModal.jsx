@@ -92,19 +92,19 @@ const LocalBankModal = ({open,setOpen,amount}) => {
                 <div className='bg-slate-50 border p-1 px-2'>
                     <Flex justify='space-between'>
                       <div>Bank name</div>
-                      <div>Federal Bank</div>
+                      <div>ICIC Bank</div>
                     </Flex>
                     <Flex justify='space-between'>
                       <div>Account no.</div>
-                      <div>12345678</div>
+                      <div>626405021557</div>
                     </Flex>
                     <Flex justify='space-between'>
                       <div>IFSC</div>
-                      <div>FDRL001120</div>
+                      <div>ICIC0006264</div>
                     </Flex>
                     <Flex justify='space-between'>
                       <div>Branch</div>
-                      <div>Ernamkulam</div>
+                      <div>EDAPPALLY</div>
                     </Flex>
                 </div>
                 <div className='mt-4'>
