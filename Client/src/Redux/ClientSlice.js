@@ -34,7 +34,6 @@ export const UserAuth = createSlice({
     setCourseData :(state,action)=>{
       state.is_purchased = action.payload.is_purchased
       state.completed_chapters=action.payload.completed_chapters
-      console.log(action.payload,'redux')
     }
   },
 });

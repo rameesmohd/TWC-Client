@@ -7,11 +7,12 @@ import {toast} from 'react-hot-toast'
 import {CheckOutlined, LockOutlined, UnlockOutlined  } from '@ant-design/icons'
 import { Skeleton } from 'antd';
 import { useDispatch, useSelector } from 'react-redux'
-import { setCourseData } from '../../Redux/ClientSlice'
 import Classroom from './Classroom'
 import Congrates from '../../Components/Common/Congrates'
 import { Progress } from 'antd';
 import { useNavigate } from 'react-router-dom'
+import { setCourseData } from '../../Redux/ClientSlice'
+import { setFullData } from '../../Redux/CourseSlice'
 
 const Mycourse = () => {
   const [ course,setCourse ]=useState([])
@@ -22,8 +23,10 @@ const Mycourse = () => {
   const axiosInstance = userAxios()
   const dispatch = useDispatch()
   const completedChapters = useSelector((store)=>store.Client.completed_chapters)
+  const course_data = useSelector((store)=>store.Course.course_data)
   const navigate = useNavigate()
 
+  console.log(course_data);
   const fetchCourseData=async()=>{
       try {
           setLoading(true)
@@ -34,6 +37,7 @@ const Mycourse = () => {
               is_purchased : response.data.user.is_purchased,
               completed_chapters : response.data.user.completed_chapters 
             }))
+            dispatch(setFullData(response.data.result))
           }
           setLoading(false)
       } catch (error) {
@@ -41,7 +45,7 @@ const Mycourse = () => {
         console.log(error);
         setLoading(false)
       } 
-    }
+  }
 
   const handleChapterComplete=async()=>{
       try {
@@ -67,9 +71,17 @@ const Mycourse = () => {
     }
     return Math.floor((completedChapters.length/course.length)*100)
   }
-
+  
   useEffect(()=>{
-    fetchCourseData()
+    if(course_data.length==0) {
+      fetchCourseData()
+    }else {
+      console.log('course : ', course);
+      setCourse(course_data)
+      setTimeout(() => {
+        setLoading(false)
+      }, 1000);
+    }
   },[])
 
   useEffect(()=>{

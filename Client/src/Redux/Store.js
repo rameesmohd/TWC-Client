@@ -3,6 +3,7 @@ import { persistStore, persistReducer } from 'redux-persist';
 import storage from 'redux-persist/lib/storage';
 import { UserAuth } from './ClientSlice';
 import { AdminAuth } from './AdminSclice';
+import { CourseSlice } from './CourseSlice'
 
 const persistConfig = { key: 'Client', storage, version: 1};
 const persistedReducer = persistReducer(persistConfig, UserAuth.reducer);
@@ -13,8 +14,10 @@ const adminPersistorReducer = persistReducer(adminpersistConfig,AdminAuth.reduce
 export const store = configureStore({
   reducer: {
     Client: persistedReducer,
-    Admin : adminPersistorReducer
+    Admin : adminPersistorReducer,
+    Course : CourseSlice.reducer
   },
 });
 
 export const persistor = persistStore(store);
+
