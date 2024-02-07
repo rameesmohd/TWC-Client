@@ -11,6 +11,7 @@ import { setCourseData } from '../../Redux/ClientSlice'
 import Classroom from './Classroom'
 import Congrates from '../../Components/Common/Congrates'
 import { Progress } from 'antd';
+import { useNavigate } from 'react-router-dom'
 
 const Mycourse = () => {
   const [ course,setCourse ]=useState([])
@@ -21,6 +22,7 @@ const Mycourse = () => {
   const axiosInstance = userAxios()
   const dispatch = useDispatch()
   const completedChapters = useSelector((store)=>store.Client.completed_chapters)
+  const navigate = useNavigate()
 
   const fetchCourseData=async()=>{
       try {
@@ -141,7 +143,7 @@ const Mycourse = () => {
           <img className='h-72 ' src="https://img.freepik.com/free-vector/order-paying-contactless-payment-by-credit-card-order-basket-laptop-bank-card-male-online-customer-with-tablet-cartoon-character_335657-2563.jpg" alt="" />
           <p>My course cart is feeling pretty lonely.</p>
           <div className='flex justify-center mt-4 mb-2'>
-            <Button type='primary' style={{backgroundColor :'blue'}} className={'animate-pulse border font-poppins'}>
+            <Button type='primary' onClick={()=>navigate('/checkout')} style={{backgroundColor :'blue'}} className={'animate-pulse border font-poppins'}>
                 Purchase our course now
             </Button>
           </div>
