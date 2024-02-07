@@ -70,7 +70,7 @@ const Login = () => {
               mobile : result.mobile,
               is_purchased : result.is_purchased
           }))
-          navigate('/');
+          navigate('/my-course');
         } catch (error) {
           toast.error(error.response.data.message)
           setErrMsg(error.response.data.message)

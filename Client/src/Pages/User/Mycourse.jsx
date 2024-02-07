@@ -49,6 +49,10 @@ const Mycourse = () => {
 
   const handleChapterComplete=async()=>{
       try {
+        if(classroomChapter.title == 'Introduction'){
+          setClassroomChapter({})
+          return
+        }
         const response = await axiosInstance.patch('/course',{chapterId : classroomChapter._id})
         console.log(response.data.result);
         dispatch(setCourseData({
@@ -102,8 +106,16 @@ const Mycourse = () => {
         { !Object.keys(classroomChapter).length?
          <section className='flex justify-center  my-8'>
           { !loading && course.length ? 
-            <div className='w-full min-h-[500px] animate-fade-right'>
+           <>
+            <div className='flex w-full min-h-[500px] animate-fade-right'>
                  <div className=' h-full md:w-2/3'>
+                <Card onClick={()=>{setClassroomChapter({_id:'0129201',title : 'Introduction',lessons : [{lessonVideoUrl : 'https://player.vimeo.com/video/910898438?h=138dce5979&amp;badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479' ,_id : '3425163723'}]})}} className='font-semibold my-1 bg-slate-300 hover:bg-slate-200 cursor-pointer'> 
+                      <Flex justify={'space-between'} align={'center'}>
+                        <div className='text-lg text-black'>
+                            {'Introduction'}  
+                        </div>
+                      </Flex>
+                </Card>
                  <Card className='bg-slate-300' title={<h3 style={{ fontSize: '20px',color : 'black' }}>Mastering Trading Essentials</h3>}>
                  <Progress percent={progress} />
                   { course.map((chapters,i)=>
@@ -149,8 +161,12 @@ const Mycourse = () => {
                     <Congrates/>
                 </Flex>}
                 </Card>
-                </div>   
+                </div>  
+                <div className='hidden md:block w-1/3'>
+                      <img src="https://ih1.redbubble.net/image.1207220572.5615/st,small,507x507-pad,600x600,f8f8f8.u1.webp" alt="" />
+                </div> 
             </div>
+           </>
           : ( !loading && <div className='my-8 sm:h-96 animate-fade-right'>
           <img className='h-72 ' src="https://img.freepik.com/free-vector/order-paying-contactless-payment-by-credit-card-order-basket-laptop-bank-card-male-online-customer-with-tablet-cartoon-character_335657-2563.jpg" alt="" />
           <p>My course cart is feeling pretty lonely.</p>
