@@ -6,7 +6,7 @@ import userAxios from '../Axios/Useraxios';
 
 const UsdtPayModal = ({open,setOpen,amount}) => {
   const [confirmLoading, setConfirmLoading] = useState(false);
-  const [address, setAddress] = useState('TMxsxcRohW8wGPwW14mZXsBaQYYnQJ21cA');
+  const [address, setAddress] = useState('TF4adoZEMvRi15ao4xAPwuZ17YGE872JQ8');
   const [uploadedFile,setUploadedFile]=useState([])
 
   const axiosInstance = userAxios()
@@ -67,9 +67,9 @@ const UsdtPayModal = ({open,setOpen,amount}) => {
         confirmLoading={confirmLoading}
         onCancel={handleCancel}
       >
-        <div className='flex justify-center my-2'>
-          <img src="https://switch2voip.us/wp-content/uploads/2021/07/Buy-VoIP-with-USDT-Tether-TRC20-wallet.png" alt="" />
-        </div>
+        <Flex align='center' justify='center' className='max-w-72 mx-auto' >
+          <img className='text-center' src="https://res.cloudinary.com/dj5inosqh/image/upload/v1707447503/WhatsApp_Image_2024-02-07_at_17.30.54_fc078d82_ps2hcl.jpg" alt="" />
+        </Flex>
         <Flex align='center' justify='space-between' className='my-8'>
           <p className=''>Amount:</p>
           <p className='font-bold'>${amount}</p>
