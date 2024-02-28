@@ -44,7 +44,7 @@ const App = () => {
       <div className=" sm:mx-auto sm:w-full sm:max-w-sm  p-4 rounded-md">
       <div className="sm:mx-auto sm:w-full sm:max-w-sm">
         <img
-          className="mx-auto h-24 w-32 "
+          className="mx-auto h-28 w-32 "
           src={img}
           alt="Your Company"
         />

@@ -2,8 +2,11 @@ import React, { useEffect, useRef, useState } from 'react'
 import icon1 from '../../assets/Frame.png'
 import icon2 from '../../assets/Framee.png'
 import {Button} from 'antd'
+import {useNavigate} from 'react-router-dom' 
+
 const CertificateSection = () => {
     const CerticateRef = useRef();
+    const navigate = useNavigate()
     const [scrolled, setScrolled] = useState(false);
   
     const handleScroll = () => {
