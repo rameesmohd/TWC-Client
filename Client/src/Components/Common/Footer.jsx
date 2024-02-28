@@ -67,7 +67,7 @@ const Footer = () => {
       <p className='mx-3'>Policy</p>
     </div>
     <div className='w-auto h-auto flex justify-center px-5'>
-      <div className='text-sm'>Trade Walker & Co.</div>
+      <div className='text-sm'>FourCapedu. & Co.</div>
     </div>
     <ScrollToTopButton />
   </div>
