@@ -105,7 +105,7 @@ const CourseSection = () => {
           </Button> */}
           </div>
           {
-            [{key :"Coursemode",value : "Online"},{key :"Duration",value : "2 Months"},{key :"Language",value : "Eng/Mal"},{key : "Students Enrolled",value : "100+"},{},{}].map((value,index)=>{
+            [{key :"Coursemode",value : "Online"},{key :"Duration",value : "2 Months"},{key :"Language",value : "Eng/Mal"},{key : "Students Enrolled",value : "300+"},{},{}].map((value,index)=>{
                   return (
                     <div key={index} className='w-full flex justify-between px-2 py-2'>
                       <div>{value.key}</div>

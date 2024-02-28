@@ -44,7 +44,7 @@ const CertificateSection = () => {
         </div>
     </div>
     <div className='col-span-1 flex justify-center '>
-          <img src="https://res.cloudinary.com/dlcuqdzsh/image/upload/v1707034184/ak1ipcjydp4cintl3mxx.png" className={`h-56 ${scrolled ? 'animate-fade-left animate-once' : 'opacity-0'}`} alt="" />
+          <img src="https://res.cloudinary.com/dj5inosqh/image/upload/v1709130068/SDFSDFSDF_hk1otk.png" className={`h-56 ${scrolled ? 'animate-fade-left animate-once' : 'opacity-0'}`} alt="" />
     </div>
   </section>
   )
