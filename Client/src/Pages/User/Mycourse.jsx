@@ -109,7 +109,7 @@ const Mycourse = () => {
            <>
             <div className='flex w-full min-h-[500px] animate-fade-right'>
                  <div className=' h-full md:w-2/3'>
-                <Card onClick={()=>{setClassroomChapter({_id:'0129201',title : 'Introduction',lessons : [{lessonVideoUrl : 'https://player.vimeo.com/video/910898438?h=138dce5979&amp;badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479' ,_id : '3425163723'}]})}} className='font-semibold my-1 bg-slate-300 hover:bg-slate-200 cursor-pointer'> 
+                <Card onClick={()=>{setClassroomChapter({_id:'0129201',title : 'Introduction',lessons : [{lessonVideoUrl : 'https://player.vimeo.com/video/922543030?h=ae4282b8ad&amp;badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479' ,_id : '3425163723'}]})}} className='font-semibold my-1 bg-slate-300 hover:bg-slate-200 cursor-pointer'> 
                       <Flex justify={'space-between'} align={'center'}>
                         <div className='text-lg text-black'>
                             {'Introduction'}  
