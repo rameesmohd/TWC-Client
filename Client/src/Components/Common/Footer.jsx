@@ -32,8 +32,8 @@ const Footer = () => {
               icon: <AiFillPhone className='mt-1' />,
             },
             {
-              text: 'tradewalker007@gmail.com',
-              icon: <FiMail className='mt-1' />,
+              text: ' FourCapedu007@gmail.com',
+              icon: <FiMail className='mt-1 mr-1' />,
               isLink: true,
             },
           ],

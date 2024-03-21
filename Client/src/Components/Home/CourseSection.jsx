@@ -87,11 +87,12 @@ const CourseSection = () => {
 
     <div className='col-span-2 flex py-2 px-2 justify-center'>
       <div className='sm:w-2/3'>
-          <div className='rounded-xl w-full h-48 bg-gray-100 flex justify-center items-center animate-jump'>
-                 <img
+          <div className='rounded-xl w-full h-48 bg-black flex justify-center items-center animate-jump'>
+                 {/* <img
                 src="https://cdn.dribbble.com/userupload/8570778/file/original-37f90c018a0ac7de55ea7a331e659af1.png?resize=400x300&vertical=center"
                 // src='https://www.fxclearing.com/files/11.jpg'
-                 alt="" className='w-full h-full object-cover '/>
+                 alt="" className='w-full h-full object-cover '/> */}
+                 <iframe src="https://player.vimeo.com/video/925802054?h=9412a5e29c" className='w-full h-full object-cover' frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
           </div>
           <div className='text-2xl my-2 mx-2 font-extrabold animate-bounce'>
           $497 <span className='line-through text-sm text-red-700'>$549</span> 
