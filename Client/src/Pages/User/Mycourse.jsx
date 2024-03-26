@@ -13,6 +13,7 @@ import { Progress } from 'antd';
 import { useNavigate } from 'react-router-dom'
 import { setCourseData } from '../../Redux/ClientSlice'
 import { setFullData } from '../../Redux/CourseSlice'
+import {logout} from '../../Redux/ClientSlice'
 
 const Mycourse = () => {
   const [ course,setCourse ]=useState([])
@@ -24,7 +25,13 @@ const Mycourse = () => {
   const dispatch = useDispatch()
   const completedChapters = useSelector((store)=>store.Client.completed_chapters)
   const course_data = useSelector((store)=>store.Course.course_data)
+  const userId = useSelector((state)=>state.Client.user_id)
   const navigate = useNavigate()
+
+  const signout=async()=>{
+    await axiosInstance.patch('/logout',{id : userId})
+    dispatch(logout())
+  }
 
   console.log(course_data);
   const fetchCourseData=async()=>{
@@ -44,6 +51,7 @@ const Mycourse = () => {
         toast.error(error.message)
         console.log(error);
         setLoading(false)
+        signout()
       } 
   }
 

@@ -8,14 +8,18 @@ import {logout} from '../../Redux/ClientSlice'
 import Drawer from './Drawer'
 import Loginform from '../Loginform'
 import Signupfrom from '../SignupCard'
+import userAxios from "../../Axios/Useraxios";
 
 const Navbar = () => {
   const dispatch = useDispatch()
   const navigate = useNavigate()
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const token = useSelector((state)=>state.Client.token)
+  const userId = useSelector((state)=>state.Client.user_id)
+  const axiosInstance = userAxios()
 
-  const signout=()=>{
+  const signout=async()=>{
+    await axiosInstance.patch('/logout',{id : userId})
     dispatch(logout())
   }
 
