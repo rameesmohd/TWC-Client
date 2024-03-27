@@ -41,16 +41,16 @@ const Checkout = () => {
   );
 
   const calculateSummary=()=>{
-      const currPriceUsd = 550
-      const discount = 61
-      const currPriceInr = 40499
+      const currPriceUsd = 549
+      const discount = 100
+      const currPriceInr = 37599
       if(selectedMethod===0){
           setPrice({
               currency : '$',
               originalPrice : currPriceUsd,
               discount : discount,
               subtotal : currPriceUsd-discount,
-              gst : 0,
+              gst : 6,
               total : currPriceUsd-discount
           })
       }else if(selectedMethod===1){
@@ -59,8 +59,8 @@ const Checkout = () => {
             originalPrice : currPriceInr,
             discount : 0,
             subtotal : currPriceInr,
-            gst : 18,
-            total : Math.floor((currPriceInr/100)*18 + currPriceInr)
+            gst : 6,
+            total : Math.floor((currPriceInr/100)*6 + currPriceInr)
           })
       }else if(selectedMethod===2){
         setPrice({
@@ -68,8 +68,8 @@ const Checkout = () => {
           originalPrice : currPriceInr,
           discount : 0,
           subtotal : currPriceInr,
-          gst : 18,
-          total : Math.floor((currPriceInr/100)*18 + currPriceInr)
+          gst : 6,
+          total : Math.floor((currPriceInr/100)*6 + currPriceInr)
         })
       }
   }

@@ -28,11 +28,11 @@ const Footer = () => {
               icon: <RiHomeOfficeFill className='text-1xl mt-2 md:text-2xl' />,
             },
             {
-              text: '+ 01 234 567 88',
+              text: '+ 91 7736833351',
               icon: <AiFillPhone className='mt-1' />,
             },
             {
-              text: ' FourCapedu007@gmail.com',
+              text: ' fourCapedu007@gmail.com',
               icon: <FiMail className='mt-1 mr-1' />,
               isLink: true,
             },
