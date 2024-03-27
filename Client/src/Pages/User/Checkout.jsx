@@ -43,7 +43,7 @@ const Checkout = () => {
   const calculateSummary=()=>{
       const currPriceUsd = 549
       const discount = 100
-      const currPriceInr = 37599
+      const currPriceInr = 37735
       if(selectedMethod===0){
           setPrice({
               currency : '$',
