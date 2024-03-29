@@ -86,16 +86,16 @@ const CourseSection = () => {
     </div>
 
     <div className='col-span-2 flex py-2 px-2 justify-center'>
-      <div className='sm:w-2/3'>
+      <div className='sm:w-2/3 border p-4 shadow-xl rounded-lg'>
           <div className='rounded-xl w-full h-48 bg-black flex justify-center items-center animate-jump'>
                  {/* <img
                 src="https://cdn.dribbble.com/userupload/8570778/file/original-37f90c018a0ac7de55ea7a331e659af1.png?resize=400x300&vertical=center"
                 // src='https://www.fxclearing.com/files/11.jpg'
                  alt="" className='w-full h-full object-cover '/> */}
-                 <iframe src="https://player.vimeo.com/video/925802054?h=9412a5e29c" className='w-full h-full object-cover' frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
+                 <iframe src="https://player.vimeo.com/video/928817377?h=f1ff6fedb1" className='w-full h-full object-cover' frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
           </div>
           <div className='text-2xl my-2 mx-2 font-extrabold animate-bounce'>
-          $497 <span className='line-through text-sm text-red-700'>$549</span> 
+          $415 <span className='line-through text-sm text-red-700'>$549</span> 
           </div>
           <div className='flex justify-start'>
           <Button type="primary" className='bg-blue-500 font-semibold animate-jump-in' loading={loadings[1]} onClick={() => purchase(1)}>
@@ -117,11 +117,11 @@ const CourseSection = () => {
           }
           <div className='w-full bg-blue-50 rounded-xl py-1'>
                 <div className='text-base text-center'>Share now</div>
-                <div className='flex justify-center py-2'>
-                    <FacebookIcon/>
-                    <InstagramIcon/>
-                    <TwitterIcon/>
-                    <Whatsapp/>
+                <div className='flex justify-around py-2'>
+                    <a href="https://www.facebook.com/share/h2LUdWwkSd4UjvbR/?mibextid=WC7FNe" target="_blank"><FacebookIcon/></a>
+                    <a href="https://www.instagram.com/fourcapedu?igsh=MW00MmJuNG1jMGNubg%3D%3D&utm_source=qr" target="_blank"><InstagramIcon/></a>
+                    {/* <TwitterIcon/> */}
+                    <a href="https://wa.me/917736833351" target="_blank"><Whatsapp/></a>
                 </div>
           </div>
       </div>

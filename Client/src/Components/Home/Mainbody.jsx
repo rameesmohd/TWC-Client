@@ -103,7 +103,7 @@ const Body = () => {
             <div className='p-2 rounded-lg flex items-center justify-center'>
               <div className='bg-green-500 flex items-center rounded-md p-2 text-white'>
               <RiWhatsappLine/>
-              <span className='mx-2 '>Whatsapp Now!</span> 
+              <a href='d' className='mx-2 '>Whatsapp Now!</a> 
               </div>
             </div>
       </div>

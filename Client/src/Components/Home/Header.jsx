@@ -21,7 +21,7 @@ const Header = () => {
                 </div>
                 <div className='flex my-8'>
                     <Button type='primary' className='bg-blue-500 text-white '>
-                        Lets talk!
+                        <a href=" https://wa.me/917736833351 ">Lets talk!</a>
                     </Button>
                 </div>
                 </div>
