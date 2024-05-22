@@ -95,7 +95,7 @@ const CourseSection = () => {
                  <iframe src="https://player.vimeo.com/video/928817377?h=f1ff6fedb1" className='w-full h-full object-cover' frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
           </div>
           <div className='text-2xl my-2 mx-2 font-extrabold animate-bounce'>
-          $415 <span className='line-through text-sm text-red-700'>$549</span> 
+          $335 <span className='line-through text-sm text-red-700'>$549</span> 
           </div>
           <div className='flex justify-start'>
           <Button type="primary" className='bg-blue-500 font-semibold animate-jump-in' loading={loadings[1]} onClick={() => purchase(1)}>

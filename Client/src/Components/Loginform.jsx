@@ -31,7 +31,9 @@ const Login = () => {
       <div className="py-8 px-6 sm:mx-auto sm:w-full sm:max-w-sm rounded-lg">
       <div className="sm:mx-auto sm:w-full sm:max-w-sm mb-8">
         <div className="flex justify-center">
-        <img src={img} alt="" className="w-40" />
+          <Link to="/">
+             <img src={img} alt="" className="w-40" />
+          </Link>
         </div>
         <h2 className="text-center text-2xl font-bold leading-9 tracking-tight text-gray-900">
           Sign in to your account
