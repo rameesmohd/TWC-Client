@@ -9,12 +9,14 @@ function App() {
   return (
     <>
       <BrowserRouter>
-      <div><Toaster
-       position="top-center"
-       reverseOrder={false}
-      /></div>
+      <div>
+      <Toaster
+        position="top-center"
+        reverseOrder={false}
+      />
+      </div>
       <Routes>
-        <Route path="/twc/admin/*" element={<AdminRoutes/>} />
+        <Route path="/admin/*" element={<AdminRoutes/>} />
         <Route path="/*" element={<UserRoutes />} />
       </Routes>
     </BrowserRouter>

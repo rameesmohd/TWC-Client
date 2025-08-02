@@ -15,6 +15,7 @@ const User = () => {
   const PrivateRoute = ({ element, ...rest }) => {
     return userAuth ? element : <Navigate to="/login" />;
   };
+  
   return (
     <Routes>
         <Route path="/" element={<Home />} />
