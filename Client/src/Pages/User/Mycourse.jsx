@@ -103,8 +103,8 @@ const Mycourse = () => {
   return (
     <div className='bg-slate-50'>
     <Navbar/>
-     <div className='container mx-auto pt-28 px-4'>
-        <div className='font-poppins text-2xl my-2 font-bold'>My Course</div>
+     <div className='container mx-auto pt-28 px-8'>
+        <div className='font-poppins text-2xl my-2 font-bold ml-8'>My Course</div>
         <hr />
         <div className='my-8 animate-fade-right'>
           {Array.from({ length: 3 }).map((_, index) => (
@@ -112,7 +112,7 @@ const Mycourse = () => {
           ))}
         </div>
         { !Object.keys(classroomChapter).length?
-         <section className='flex justify-center  my-8'>
+         <section className='flex justify-center px-8 my-8'>
           { !loading && course.length ? 
            <>
             <div className='flex w-full min-h-[500px] animate-fade-right'>
@@ -171,7 +171,7 @@ const Mycourse = () => {
                 </Card>
                 </div>  
                 <div className='hidden md:block w-1/3'>
-                      <img src="https://ih1.redbubble.net/image.1207220572.5615/st,small,507x507-pad,600x600,f8f8f8.u1.webp" alt="" />
+                      {/* <img src="https://ih1.redbubble.net/image.1207220572.5615/st,small,507x507-pad,600x600,f8f8f8.u1.webp" alt="" /> */}
                 </div> 
             </div>
            </>

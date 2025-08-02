@@ -8,7 +8,7 @@ const Home = () => {
   return (
     <>
     <Navbar/>
-    <img className='w-full h-full opacity-20 blur-sm absolute sm:-top-44' src="https://www.tailwindcss-animated.com/images/icons/wave.svg" alt="" />
+    {/* <img className='w-full h-full opacity-20 blur-sm absolute sm:-top-44' src="https://www.tailwindcss-animated.com/images/icons/wave.svg" alt="" /> */}
     <div className='container mx-auto pt-16 sm:pt-28'>
       <Header/>
       <React.Suspense fallback={<Flex justify='center'><Spin size={'lg'}/></Flex>}>

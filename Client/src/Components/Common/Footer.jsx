@@ -32,7 +32,7 @@ const Footer = () => {
               icon: <AiFillPhone className='mt-1' />,
             },
             {
-              text: ' fourCapedu007@gmail.com',
+              text: ' fourcapedu007@gmail.com',
               icon: <FiMail className='mt-1 mr-1' />,
               isLink: true,
             },
@@ -67,7 +67,7 @@ const Footer = () => {
       <p className='mx-3'>Policy</p>
     </div>
     <div className='w-auto h-auto flex justify-center px-5'>
-      <div className='text-sm'>FourCapedu. & Co.</div>
+      <div className='text-xs'>Fourcapedu. & Co.</div>
     </div>
     <ScrollToTopButton />
   </div>

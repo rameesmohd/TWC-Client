@@ -6,7 +6,7 @@ import Collapse from '../Common/Collapse'
 import Footer from '../Common/Footer'
 import { RiWhatsappLine } from 'react-icons/ri'
 import CourseSection from './CourseSection'
-import { Card, Flex, Space, Spin } from 'antd'
+import { Card, Col, Flex, Row, Space, Spin } from 'antd'
 import img from '../../assets/—Pngtree—trading candle stick pattern char_8918768.png'
 import {Button} from 'antd'
 
@@ -76,58 +76,94 @@ const Body = () => {
       <ReviewSections/>
     </React.Suspense>
     <div className='my-12 px-4 sm:px-16'>
-      <div className='text-xl sm:text-3xl my-4'>Frequenly asked questions</div>
+      <div className='text-xl font-semibold sm:text-3xl my-4'>Frequenly asked questions</div>
       <Collapse items={items}/>
     </div>       
-    <section ref={QueriesRef} className={`sm:grid grid-cols-2 `}>
-      <div className='col-span-1 bg-yellow-300 relative'>
-          <img className='opacity-50 absolute' src={img} alt="" />
-          <div className={`text-3xl sm:text-6xl text-center font-semibold px-12 md:px-44 lg:px-64 py-12 ${scrolled.queryScroll ? 'animate-fade-down' : 'opacity-0'}`}>
-                Your Trading career growth just one click away.
+    
+    <section ref={QueriesRef} >
+          <Row className="w-full ">
+            {/* Left Column */}
+      <Col
+      xs={24}
+      md={12}
+      className="bg-lime-500 relative py-8 px-4 sm:px-8 flex flex-col justify-center items-center text-center min-h-[600px] md:rounded-s-lg"
+    >
+      <img
+        className="opacity-50 absolute top-0 left-0 w-full h-full object-cover z-0"
+        src={img}
+        alt="background"
+      />
+
+      <div
+        className={`relative z-10 text-3xl sm:text-5xl text-white outline backdrop-blur-sm bg-black/20 outline-emerald-300 outline-1 font-semibold px-6 sm:px-20 py-8 transition-all duration-500 ${
+          scrolled.queryScroll ? 'animate-fade-down' : 'opacity-0'
+        }`}
+      >
+        Your Trading Career Growth is Just One Click Away.
+      </div>
+
+      <div className="relative z-10 my-4">
+        <Button type="primary" size="large" className="bg-blue-600">
+          Start Learning Now
+        </Button>
+      </div>
+
+      <p className="relative z-10 text-sm text-right w-full pr-4 pb-2">
+        100+ Students Joined
+      </p>
+    </Col>
+
+
+        {/* Right Column */}
+        <Col xs={24} md={12} className="bg-black text-white py-8 px-4 sm:px-12 text-center  md:rounded-e-lg">
+          <div
+            className={`text-3xl sm:text-5xl font-semibold mb-6 transition-all duration-500 ${
+              scrolled.queryScroll ? 'animate-fade-down' : 'opacity-0'
+            }`}
+          >
+            Still Have Any Queries?
           </div>
-        <div className='flex justify-center'>
-            <Button >Start learning now</Button>
-        </div>
-          <p className='text-sm text-right py-4 px-8'>100+ Students joined </p>
-      </div>
-      <div className='col-span-1 bg-black py-12'>
-            <div className={`w-full text-3xl sm:text-6xl text-center px-16 sm:px-36 text-white animate-fade-up ${scrolled.queryScroll ? 'animate-fade-down' : 'opacity-0'}`}>
-              Still have any queries?
-            </div>
-            <div className='flex justify-center'>
-            <img src={stillqueriesgif} className='h-72' alt="" />
-            </div>
-            <div className='w-full text-3xl sm:text-6xl text-center px-16 sm:px-36 text-white animate-fade-up'>
-              We are here
-            </div>
-            <div className='p-2 rounded-lg flex items-center justify-center'>
-              <div className='bg-green-500 flex items-center rounded-md p-2 text-white'>
-              <RiWhatsappLine/>
-              <a href='d' className='mx-2 '>Whatsapp Now!</a> 
-              </div>
-            </div>
-      </div>
+
+          <div className="flex justify-center mb-6">
+            <img src={stillqueriesgif} alt="Still have queries?" className="h-72" />
+          </div>
+
+          <div className="text-3xl sm:text-5xl font-semibold mb-6">We Are Here</div>
+
+          <div className="flex justify-center">
+            <a
+              href="https://wa.me/your-whatsapp-number"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center bg-green-500 hover:bg-green-600 text-white py-2 px-4 rounded-md transition-all"
+            >
+              <RiWhatsappLine className="mr-2 text-xl" />
+              Whatsapp Now!
+            </a>
+          </div>
+        </Col>
+      </Row>
     </section>
 
     <section ref={MetaAppRef} className={`container relative my-8 mx-auto`}>
-                {/* <img className='-z-20 w-full h-full opacity-50 absolute' src={img} alt="" /> */}
-                <div className={`gap-5 mt-2 px-2 sm:flex justify-center  ${scrolled.footerScroll ? 'animate-fade-up' : 'opacity-0'}`}>
-                  <Card className=''>
-                    <a href='https://download.mql5.com/cdn/web/metaquotes.software.corp/mt5/mt5setup.exe?utm_source=www.metatrader4.com&utm_campaign=download'  className='col-span-1 mr-1  rounded-md flex flex-col justify-center text-center p-5 hover:scale-110 transition'> 
-                      <h4 className='mb-5'>MetaTrader 4</h4>
-                      <p className='mb-5'>The world’s most popular trading 
-                      <br />platform</p>
-                      <img  src={mt4Img} alt="" />
-                    </a>
-                  </Card>
-                  <Card className=''>
-                    <a href='https://download.mql5.com/cdn/web/metaquotes.software.corp/mt4/mt4setup.exe?utm_source=www.metatrader4.com&utm_campaign=download' className='col-span-1 mr-1  rounded-md flex flex-col justify-center text-center p-5 hover:scale-110 transition'>
-                      <h4 className='mb-5'>MetaTrader 5</h4>
-                      <p className='mb-5'>Multi-asset trading on one 
-                      <br />powerful platform</p>
-                      <img className='' src={mt5Img} alt="" />
-                    </a>
-                  </Card>
+            {/* <img className='-z-20 w-full h-full opacity-50 absolute' src={img} alt="" /> */}
+            <div className={`gap-5 mt-2 px-2 sm:flex justify-center  ${scrolled.footerScroll ? 'animate-fade-up' : 'opacity-0'}`}>
+              <Card className=''>
+                <a href='https://download.mql5.com/cdn/web/metaquotes.software.corp/mt5/mt5setup.exe?utm_source=www.metatrader4.com&utm_campaign=download'  className='col-span-1 mr-1  rounded-md flex flex-col justify-center text-center p-5 hover:scale-110 transition'> 
+                  <h4 className='mb-5'>MetaTrader 4</h4>
+                  <p className='mb-5'>The world’s most popular trading 
+                  <br />platform</p>
+                  <img  src={mt4Img} alt="" />
+                </a>
+              </Card>
+              <Card className=''>
+                <a href='https://download.mql5.com/cdn/web/metaquotes.software.corp/mt4/mt4setup.exe?utm_source=www.metatrader4.com&utm_campaign=download' className='col-span-1 mr-1  rounded-md flex flex-col justify-center text-center p-5 hover:scale-110 transition'>
+                  <h4 className='mb-5'>MetaTrader 5</h4>
+                  <p className='mb-5'>Multi-asset trading on one 
+                  <br />powerful platform</p>
+                  <img className='' src={mt5Img} alt="" />
+                </a>
+              </Card>
             </div>
       </section>
     <Footer/>

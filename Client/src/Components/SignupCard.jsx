@@ -48,7 +48,7 @@ const App = () => {
           src={img}
           alt="Your Company"
         />
-        <h2 className="text-center text-base font-bold leading-9 tracking-tight text-gray-900">
+        <h2 className="text-center text-base font-semibold leading-9 tracking-tight text-gray-900">
           Create new account
         </h2>
       </div>
@@ -143,7 +143,7 @@ const App = () => {
                 htmlFor="name"
                 className="block text-sm font-medium leading-6 text-gray-900"
             >
-                User name
+                Name
             </label>
             <div className="mt-1">
                 <input
@@ -300,12 +300,12 @@ const App = () => {
         </Formik>
 
         <p className="mt-10 text-center text-sm text-gray-500">
-          already a member?
+          Already a member?
           <Link
             to={"/login"}
             className="font-semibold leading-6 text-indigo-600 mx-2 hover:text-indigo-500"
           >
-            Login in
+            Sign In
           </Link>
         </p>
       </div>
