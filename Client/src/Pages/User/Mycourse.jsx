@@ -29,7 +29,6 @@ const Mycourse = () => {
   const navigate = useNavigate()
 
   const signout=async()=>{
-    await axiosInstance.patch('/logout',{id : userId})
     dispatch(logout())
   }
 
@@ -61,6 +60,7 @@ const Mycourse = () => {
           setClassroomChapter({})
           return
         }
+
         const response = await axiosInstance.patch('/course',{chapterId : classroomChapter._id})
         console.log(response.data.result);
         dispatch(setCourseData({
@@ -101,7 +101,7 @@ const Mycourse = () => {
   },[completedChapters,course])
 
   return (
-    <div className='bg-slate-50'>
+    <div className=''>
     <Navbar/>
      <div className='container mx-auto pt-28 px-8'>
         <div className='font-poppins text-2xl my-2 font-bold ml-8'>My Course</div>

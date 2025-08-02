@@ -193,7 +193,7 @@ const Checkout = () => {
               </div>
               <div className='col-span-2 animate-fade-left px-8 lg:pr-44'>
               <div className='text-xl font-poppins font-semibold my-2 '>Summary</div>
-              <Card cover={<img alt="example" className='object-cover h-44' src="https://courses.tvisi.in/assets/images/course06.jpg" />}>
+              <Card cover={<img alt="example" className='object-cover h-44' src="https://digitalgurusacademy.in/wp-content/uploads/2022/05/Stock-Trading-Course.jpg" />}>
                   <Meta title="Mastering Trading Essentials" description="Master course for 0 to 100% knowledge in trading" />
               </Card>
               <Card className=' my-2'>

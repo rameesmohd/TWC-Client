@@ -18,11 +18,10 @@ const Navbar = () => {
   const navigate = useNavigate();
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const token = useSelector((state) => state.Client.token);
-  const userId = useSelector((state) => state.Client.user_id);
   const axiosInstance = userAxios();
 
   const signout = async () => {
-    await axiosInstance.patch("/logout", { id: userId });
+    await axiosInstance.patch("/logout");
     dispatch(logout());
   };
 
