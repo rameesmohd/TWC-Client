@@ -10,11 +10,11 @@ import NotFoundPage from '../Pages/404'
 const Admin = () => {
   const adminAuth = useSelector((state) => state.Admin.token)
   const PrivateRoute = ({ element, ...rest }) => {
-    return adminAuth ? element : <Navigate to="/twc/admin/login" />;
+    return adminAuth ? element : <Navigate to="/admin/login" />;
   };
   return (
     <Routes>
-        <Route path='/login' element={adminAuth? <Navigate to={'/twc/admin'}/> : <Login />}/>
+        <Route path='/login' element={adminAuth? <Navigate to={'/admin'}/> : <Login />}/>
 
         {/* Private */}
         <Route path='/users' element={<PrivateRoute element={<Users/>}/>}/>

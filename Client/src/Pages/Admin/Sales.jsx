@@ -23,7 +23,7 @@ const sales = () => {
     orderHandle : false
   })
   const [orderBy,setOrderBy]=useState({
-      timeframe : 'weakly',
+      timeframe : 'weekly',
       filter  : '',
       searchInput : '',
       dateRangeFrom : '',
@@ -33,7 +33,14 @@ const sales = () => {
   const fetchOrderData=async()=>{
       try {
         setloading(true)
-        const response = await axiosInstance.get(`/order?timeframe=${orderBy.timeframe}&filter=${orderBy.filter}&search=${orderBy.searchInput}&from=${orderBy.dateRangeFrom}&to=${orderBy.dateRangeTo}`)
+        const response = await axiosInstance
+        .get(
+          `/order?timeframe=${orderBy.timeframe}&
+          filter=${orderBy.filter}&
+          search=${orderBy.searchInput}&
+          from=${orderBy.dateRangeFrom}&
+          to=${orderBy.dateRangeTo}`
+        )
         setSalesData([...response.data.result])
       } catch (error) {
         toast.error(error.message)
@@ -203,19 +210,17 @@ const sales = () => {
   ];
 
   const handleFilter =(key)=>{
-        setSpin((spin) => ({ ...spin, filter: true }));
-        if(key==1){
-          setOrderBy({...orderBy, filter : 'pending'})
-        }else if(key==2){
-          setOrderBy({...orderBy, filter : 'rejected'})
-        }else if(key==3){
-          setOrderBy({...orderBy, filter : 'approved'})
-        }
+      setSpin((spin) => ({ ...spin, filter: true }));
+      if(key==1){
+        setOrderBy({...orderBy, filter : 'pending'})
+      } else if(key==2){
+        setOrderBy({...orderBy, filter : 'rejected'})
+      } else if(key==3){
+        setOrderBy({...orderBy, filter : 'approved'})
+      }
   }
 
   const handleDateRangeChange = (dates, dateStrings) => {
-    // console.log('Selected Date Range:', dates);
-    // console.log('Formatted Date Strings:', dateStrings);
     setOrderBy({...orderBy ,timeframe : '',dateRangeFrom : dateStrings[0],dateRangeTo : dateStrings[1]})
   };
 
@@ -238,22 +243,28 @@ const sales = () => {
       </Modal>
       <Sidebar/>
       <div className='pl-16 md:pl-40'>
-        <div className=' py-8 px-2 sm:px-8'>
+        <div className='py-8 px-2 sm:px-8'>
         <Divider orientation="left" style={{fontSize : '30px'}}>Our Sales</Divider>
-          <Flex  justify='space-between' className='my-5 w-full animate-fade-left'>
-              <Radio.Group defaultValue="weekly" onChange={(e)=>setOrderBy({...orderBy,timeframe : e.target.value})} buttonStyle="outline">
+          <Flex justify='space-between ' className='my-5 w-full animate-fade-left'>
+              <div className='flex justify-between'>
+              <Radio.Group className='my-2' defaultValue="weekly" onChange={(e)=>setOrderBy({...orderBy,timeframe : e.target.value})} buttonStyle="outline">
                 <Radio.Button value="daily">Daily</Radio.Button>
                 <Radio.Button value="weekly">Weekly</Radio.Button>
                 <Radio.Button value="monthly">Monthly</Radio.Button>
               </Radio.Group>
               <div className='sm:flex'>
-                <Flex className='mx-2 flex' direction="vertical" size={12}>
+                <Flex className='flex my-2' direction="vertical" size={12}>
                   <RangePicker onChange={handleDateRangeChange} />
                   <Button icon={<SearchOutlined />} onClick={()=>handleDateRangeFetch()} className='mx-1 p-1'/>
                 </Flex>
-                <Dropdownbtn items={options} loading={spin.filter} handleSelect={handleFilter}/>
-                <SearchInput search={search}/>
-                <Button className='mx-2' disabled={reloaded} onClick={()=>reload()}><TfiReload  className={`${spin.reload ? 'animate-spin' : ''}`}/></Button>
+                <Flex  align='center' direction="vertical">
+                  <Dropdownbtn items={options} loading={spin.filter} handleSelect={handleFilter}/>
+                </Flex>
+                <Flex className='my-2' align='center' direction="vertical" >
+                  <Button className='' disabled={reloaded} onClick={()=>reload()}><TfiReload  className={`${spin.reload ? 'animate-spin' : ''}`}/></Button>
+                  <SearchInput className="mx-0" search={search}/>
+                </Flex>
+              </div>
               </div>
           </Flex>
             <Table className='animate-fade-up border-b shadow-md' 
