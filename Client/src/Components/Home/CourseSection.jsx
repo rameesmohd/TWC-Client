@@ -83,45 +83,71 @@ const CourseSection = () => {
           bodyStyle={{ padding: 0 }}
         >
           <div className="rounded-xl w-full h-48 bg-black flex justify-center items-center animate-jump overflow-hidden">
-            <iframe
+            {/* <iframe
               src="https://player.vimeo.com/video/928817377?h=f1ff6fedb1"
               className="w-full h-full object-cover"
               frameBorder="0"
               allow="autoplay; fullscreen; picture-in-picture"
               allowFullScreen
               title="Course Preview"
-            ></iframe>
+            ></iframe> */}
+            <img 
+              src="https://www.thestartupfounder.com/wp-content/uploads/2022/12/feature-xauusd-1.jpg" 
+              alt=""
+              className="w-full h-full object-cover"
+            />
           </div>
+          <div className='text-lg font-bold my-3'>Gold Specialised Course</div>
+          <hr />
+          {/* Online Option */}
+            <div className='font-bold text-lg pt-2'>Online</div>
+            <Flex className='py-4' justify='space-between' align='center'>
+              <div className="text-2xl font-extrabold text-blue-600">
+                 ₹15900 <span className="line-through text-sm text-gray-500 ml-2">$21000</span>
+              </div>
+              <Button
+                type="primary"
+                shape="round"
+                className="bg-blue-500 font-semibold animate-jump-in"
+                loading={loadings[0]}
+                onClick={() => purchase(0)}
+              >
+                Purchase Now
+              </Button>
+            </Flex>
 
-          <Flex className='py-5' justify='space-between'>
-          <div className="text-2xl my-2 mx-2 font-extrabold animate-bounce">
-            $335 <span className="line-through text-sm text-red-700">$549</span>
-          </div>
+            <Divider className="my-2" />
 
-          <div className="flex justify-start px-2 mb-2">
-            <Button
-              type="primary"
-              className="bg-blue-500 font-semibold animate-jump-in"
-              loading={loadings[1]}
-              onClick={() => purchase(1)}
-            >
-              Purchase Now
-            </Button>
-          </div>
-          </Flex> 
+            {/* Offline Option */}
+            <div className='font-bold text-lg pt-2'>Offline</div>
+            <Flex className='py-4' justify='space-between' align='center'>
+              <div className="text-2xl font-extrabold text-blue-600 animate-bounce">
+                 ₹25000 <span className="line-through text-sm text-gray-500 ml-2 font-base"> ₹32000</span>
+              </div>
+              <Button
+                type="primary"
+                shape="round"
+                className="bg-blue-500 font-semibold animate-jump-in"
+                loading={loadings[1]}
+                onClick={() => purchase(1)}
+              >
+                Purchase Now
+              </Button>
+            </Flex>
+              <hr />
 
           <Divider className="m-0" />
 
           <div className="px-2">
             {[
-              { key: "Coursemode", value: "Online" },
-              { key: "Duration", value: "2 Months" },
+              { key: "Coursemode", value: "Online/Offline" },
+              { key: "Duration", value: "1 Months" },
               { key: "Language", value: "Eng/Mal" },
-              { key: "Students Enrolled", value: "300+" },
+              { key: "Students Enrolled", value: "800+" },
             ].map((item, index) => (
               <div key={index} className="flex justify-between py-2">
                 <div>{item.key}</div>
-                <div>{item.value}</div>
+                <div className='font-semibold'>{item.value}</div>
               </div>
             ))}
           </div>

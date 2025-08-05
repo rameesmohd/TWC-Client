@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react'
-import reviewOne from '../../assets/Harshita-kumari 1.png'
-import reviewTwoImg from '../../assets/kushboo 1.png'
+import reviewOne from '../../assets/IMG-20250805-WA0048.jpg'
+import reviewTwoImg from '../../assets/IMG-20250805-WA0036.jpg'
 import reviewThreeImg from '../../assets/hari_ram 1.png'
 
 const ReviewSections = () => {
@@ -12,13 +12,13 @@ const ReviewSections = () => {
         imgSrc: reviewOne,
         text:
           'I recently completed the trading course, and I must say it exceeded my expectations. The in-depth coverage of indicators and market structure was incredibly insightful. The course strikes the right balance between theory and practical application.',
-        author: 'Shonisha (Intermediate Trader)',
+        author: 'Faheem,Malappuram (Intermediate Trader)',
       },
       {
         imgSrc: reviewTwoImg,
         text:
           'As a beginner in the world of trading, I found this course to be an excellent starting point. The explanations of technical indicators and market liquidity were clear and easy to understand.',
-        author: 'Sarah J (Beginner Trader)',
+        author: 'Deepu kj (Beginner Trader)',
       },
       {
         imgSrc: reviewThreeImg,
@@ -54,8 +54,8 @@ const ReviewSections = () => {
 
     {reviews.map((review, index) => (
       <div key={index} className='h-full'>
-        <div className='flex h-44 justify-center'>
-          <img src={review.imgSrc} alt={`Review ${index + 1}`} />
+        <div className='flex h-44 w-full justify-center align-center'>
+          <img className='rounded-full w-44' src={review.imgSrc} alt={`Review ${index + 1}`} />
         </div>
         <div className='text-sm text-center my-4 px-12'>{review.text}</div>
         <div className='text-center my-8'>{review.author}</div>
