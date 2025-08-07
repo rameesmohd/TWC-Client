@@ -103,7 +103,7 @@ const Classroom = ({chapter,goBack,chapterIndex,handleChapterComplete}) => {
                         <video
                         width="100%"
                         height="auto"
-                        controls
+                        controls={false}
                         controlsList="nodownload"
                         onContextMenu={(e) => e.preventDefault()}
                         src={lesson.lessonVideoUrl}
