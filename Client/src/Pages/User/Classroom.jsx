@@ -37,7 +37,7 @@ const Classroom = ({chapter,goBack,chapterIndex,handleChapterComplete}) => {
             <div className='col-span-6'>
                 <div className='w-full sm:p-4'>
                 <div style={{ position: 'relative' }}>
-                        {ifromeLoading.main && (
+                        { ifromeLoading.main && (
                             <div
                             style={{
                                 position: 'absolute',
@@ -54,13 +54,17 @@ const Classroom = ({chapter,goBack,chapterIndex,handleChapterComplete}) => {
                             <Spin size='large' />
                             </div>
                         )}
-                        <iframe 
-                         src={selectedLesson?.lessonVideoUrl}
-                        className='w-full h-72 md:h-[564px]'
-                        frameborder="0" 
-                        onLoad={()=>setIframeLoading({...ifromeLoading,main : false})}
-                        allow="autoplay; fullscreen" 
-                        allowfullscreen></iframe>
+                   <video
+                    className='w-full h-72 md:h-[564px]'
+                    src={selectedLesson?.lessonVideoUrl}
+                    controls
+                    controlsList="nodownload"
+                    onContextMenu={(e) => e.preventDefault()}
+                    onLoadedData={() => setIframeLoading({ ...ifromeLoading, main: false })}
+                    >
+                    Your browser does not support the video tag.
+                    </video>
+
                     </div>
                 </div>
                 <Flex justify='space-between' className='px-4 pb-4'>
@@ -96,11 +100,15 @@ const Classroom = ({chapter,goBack,chapterIndex,handleChapterComplete}) => {
                             <Spin size='large' />
                             </div>
                         )}
-                        <iframe
-                            className=''
-                            src={`${lesson.lessonVideoUrl}&controls=0`}
-                            onLoad={() => setIframeLoading({...ifromeLoading , list : false})}
-                        ></iframe>
+                        <video
+                        width="100%"
+                        height="auto"
+                        controls
+                        controlsList="nodownload"
+                        onContextMenu={(e) => e.preventDefault()}
+                        src={lesson.lessonVideoUrl}
+                            onLoadedData={() => setIframeLoading({...ifromeLoading , list : false})}
+                        />
                         <div className='font-semibold mx-4'>
                             {chapterIndex + '.' + (i + 1) + ' ' + chapter.title}
                         </div>

@@ -140,7 +140,7 @@ const CourseSection = () => {
 
           <div className="px-2">
             {[
-              { key: "Coursemode", value: "Online/Offline" },
+              // { key: "Course mode", value: "Online/Offline" },
               { key: "Duration", value: "1 Months" },
               { key: "Language", value: "Eng/Mal" },
               { key: "Students Enrolled", value: "800+" },
