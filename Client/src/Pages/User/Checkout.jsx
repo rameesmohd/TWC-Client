@@ -12,6 +12,8 @@ import PhonePay from '../../Components/PhonePayModal';
 import userAxios from '../../Axios/Useraxios';
 import toast from 'react-hot-toast';
 import { ClockCircleOutlined } from '@ant-design/icons';
+import { useDispatch } from 'react-redux';
+import { logout } from '../../Redux/ClientSlice';
 const { Meta } = Card;
 
 const Checkout = () => {
@@ -32,6 +34,15 @@ const Checkout = () => {
   const [modal,setModal]=useState()
   const [openModal,setOpenModal]=useState(false)
   const axiosInstance = userAxios()
+  const dispatch = useDispatch()
+
+  
+  const signout=async()=>{
+    dispatch(logout())
+  }
+
+
+
 
   const PriceItem = ({ label, price,bold }) => (
     <div className={`flex justify-between font-poppins text-gray-600 ${ bold && 'font-bold'}`}>
@@ -81,6 +92,7 @@ const Checkout = () => {
       } catch (error) {
         toast.error(error.message)
         console.log(error);
+        signout()
       }
   }
 

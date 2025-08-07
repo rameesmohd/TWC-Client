@@ -117,14 +117,14 @@ const Mycourse = () => {
            <>
             <div className='flex w-full min-h-[500px] animate-fade-right'>
                  <div className=' h-full md:w-2/3'>
-                <Card onClick={()=>{setClassroomChapter({_id:'0129201',title : 'Introduction',lessons : [{lessonVideoUrl : 'https://player.vimeo.com/video/922543030?h=ae4282b8ad&amp;badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479' ,_id : '3425163723'}]})}} className='font-semibold my-1 bg-slate-300 hover:bg-slate-200 cursor-pointer'> 
+                {/* <Card onClick={()=>{setClassroomChapter({_id:'0129201',title : 'Introduction',lessons : [{lessonVideoUrl : 'https://player.vimeo.com/video/922543030?h=ae4282b8ad&amp;badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479' ,_id : '3425163723'}]})}} className='font-semibold my-1 bg-slate-300 hover:bg-slate-200 cursor-pointer'> 
                       <Flex justify={'space-between'} align={'center'}>
                         <div className='text-lg text-black'>
                             {'Introduction'}  
                         </div>
                       </Flex>
-                </Card>
-                 <Card className='bg-slate-300' title={<h3 style={{ fontSize: '20px',color : 'black' }}>Mastering Trading Essentials</h3>}>
+                </Card> */}
+                 <Card className='bg-slate-300' title={<h3 style={{ fontSize: '20px',color : 'black' }}>Gold Specialised Course</h3>}>
                  <Progress percent={progress} />
                   { course.map((chapters,i)=>
                   <div key={chapters._id}>
