@@ -53,7 +53,7 @@ return (
 
 	{/* component md*/}
 	<div className=" flex-col justify-between items-center w-40 h-full overflow-hidden text-gray-400 bg-black hidden md:block">
-        <p className='text-center p-2'>TWC ADMIN</p>
+        <p className='text-center p-2'>FourCap Admin</p>
 			<div className="w-full flex flex-col justify-between h-full pb-10 px-2">
 			<div className="flex flex-col items-center w-full mt-3 border-t border-gray-700">
 				<Link className={`flex items-center w-full h-12 px-3 mt-2 rounded ${location.pathname === '/admin/sales' ? 'bg-gray-700 text-gray-300' : ''} 
