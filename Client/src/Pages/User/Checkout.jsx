@@ -14,10 +14,11 @@ import toast from 'react-hot-toast';
 import { ClockCircleOutlined } from '@ant-design/icons';
 import { useDispatch } from 'react-redux';
 import { logout } from '../../Redux/ClientSlice';
+import { useLocation } from 'react-router-dom';
 const { Meta } = Card;
 
-const Checkout = () => {
-  const [selectedMethod,setSelectedMethod]=useState(0)
+const Checkout = ({}) => {
+  const [selectedMethod,setSelectedMethod]=useState(1)
   const [salesData,setSalesData] = useState([])
   const [loading,setLoading]= useState({
       paynowButton : false,
@@ -35,7 +36,8 @@ const Checkout = () => {
   const [openModal,setOpenModal]=useState(false)
   const axiosInstance = userAxios()
   const dispatch = useDispatch()
-
+  const location = useLocation();
+  const { rate } = location.state || {};
   
   const signout=async()=>{
     dispatch(logout())
@@ -54,17 +56,18 @@ const Checkout = () => {
   const calculateSummary=()=>{
       const currPriceUsd = 535
       const discount = 200
-      const currPriceInr = 27499
-      if(selectedMethod===0){
-          setPrice({
-              currency : '$',
-              originalPrice : currPriceUsd,
-              discount : discount,
-              subtotal : currPriceUsd-discount,
-              gst : 0,
-              total : currPriceUsd-discount
-          })
-      }else if(selectedMethod===1){
+      const currPriceInr = rate
+      // if(selectedMethod===0){
+      //     setPrice({
+      //         currency : '$',
+      //         originalPrice : currPriceUsd,
+      //         discount : discount,
+      //         subtotal : currPriceUsd-discount,
+      //         gst : 0,
+      //         total : currPriceUsd-discount
+      //     })
+      // }else 
+        if(selectedMethod===1){
           setPrice({
             currency : '₹',
             originalPrice : currPriceInr,
@@ -97,8 +100,10 @@ const Checkout = () => {
   }
 
   useEffect(()=>{
-    fetchTransData()
-  },[])
+    if(!openModal){
+      fetchTransData()
+    }
+  },[openModal])
 
   const handlePayment=()=>{
       setLoading({...loading , paynowButton : true})
@@ -177,12 +182,12 @@ const Checkout = () => {
                 </div>
                 <div className='font-poppins text-sm'>Choose one of the payment method below</div>
 
-                  <Button 
+                  {/* <Button 
                     onClick={()=>setSelectedMethod(0)} 
                     icon={<SiTether />}
                     className={`w-full ${selectedMethod===0 && 'outline-2 outline'} flex items-center bg-white justify-start p-8 text-xl my-2`}>
                     USDT
-                  </Button>
+                  </Button> */}
 
                   <Button 
                     onClick={()=>setSelectedMethod(1)} 

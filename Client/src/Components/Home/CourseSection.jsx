@@ -27,23 +27,30 @@ const CourseSection = () => {
 
   const navigate = useNavigate();
   const [loadings, setLoadings] = useState([]);
+  const [option,setOption]=useState({
+    rate : 0,
+    mode : ''
+  })
 
-  const purchase = (index) => {
+const purchase = (index, rate, mode) => {
+  setLoadings((prev) => {
+    const newState = [...prev];
+    newState[index] = true;
+    return newState;
+  });
+
+  setOption({ rate, mode });
+
+  setTimeout(() => {
     setLoadings((prev) => {
       const newState = [...prev];
-      newState[index] = true;
+      newState[index] = false;
       return newState;
     });
+    navigate('/checkout', { state: { rate, mode } }); // use local variables
+  }, 2000);
+};
 
-    setTimeout(() => {
-      setLoadings((prev) => {
-        const newState = [...prev];
-        newState[index] = false;
-        return newState;
-      });
-      navigate('/checkout');
-    }, 2000);
-  };
 
   return (
     <section id="enroll-course" className="md:grid grid-cols-5 mb-4">
@@ -110,7 +117,7 @@ const CourseSection = () => {
                 shape="round"
                 className="bg-blue-500 font-semibold animate-jump-in"
                 loading={loadings[0]}
-                onClick={() => purchase(0)}
+                onClick={() => purchase(0,15000,'Online')}
               >
                 Purchase Now
               </Button>
@@ -129,7 +136,7 @@ const CourseSection = () => {
                 shape="round"
                 className="bg-blue-500 font-semibold animate-jump-in"
                 loading={loadings[1]}
-                onClick={() => purchase(1)}
+                onClick={() => purchase(1,23584,"Offline")}
               >
                 Purchase Now
               </Button>
