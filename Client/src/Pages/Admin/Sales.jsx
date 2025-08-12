@@ -246,7 +246,7 @@ const sales = () => {
         <div className='py-8 px-2 sm:px-8'>
         <Divider orientation="left" style={{fontSize : '30px'}}>Our Sales</Divider>
           <Flex justify='space-between ' className='my-5 w-full animate-fade-left'>
-              <div className='flex justify-between'>
+              <div className='flex w-full justify-between'>
               <Radio.Group className='my-2' defaultValue="weekly" onChange={(e)=>setOrderBy({...orderBy,timeframe : e.target.value})} buttonStyle="outline">
                 <Radio.Button value="daily">Daily</Radio.Button>
                 <Radio.Button value="weekly">Weekly</Radio.Button>
