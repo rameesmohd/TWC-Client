@@ -60,6 +60,7 @@ const Course = () => {
         console.log('Validation errors:', error.response.data);
       }
     } finally {
+      fetchChapters()
       setTimeout(() => {
         setLoading(false);
         setOpen(false);
@@ -79,6 +80,7 @@ const Course = () => {
         console.log('Validation errors:', error.response.data);
       }
     } finally {
+      fetchChapters()
       setTimeout(() => {
         setLoading(false);
         setOpen(false);
@@ -90,6 +92,7 @@ const Course = () => {
     try {
       await axiosInstance.delete(`/chapter?id=${id}`);
       toast.success('Chapter deleted successfully');
+      fetchChapters()
     } catch (error) {
       console.log(error);
       toast.error(error.message)
@@ -100,6 +103,7 @@ const Course = () => {
     try {
       await axiosInstance.delete(`/lesson?chapterId=${chapterId}&lessonId=${lessonId}`);
       toast.success('Chapter deleted successfully');
+      fetchChapters()
     } catch (error) {
       console.log(error);
       toast.error(error.message)
@@ -114,7 +118,7 @@ const Course = () => {
 
   useEffect(()=>{
     fetchChapters()
-  },[chapters])
+  },[])
 
   return (
     <div>
