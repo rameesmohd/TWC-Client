@@ -103,7 +103,7 @@ const Mycourse = () => {
   return (
     <div className=''>
     <Navbar/>
-     <div className='container mx-auto pt-28 px-8'>
+     <div className='container mx-auto pt-28 md:px-8'>
         <div className='font-poppins text-2xl my-2 font-bold ml-8'>My Course</div>
         <hr />
         <div className='my-8 animate-fade-right'>
@@ -112,11 +112,11 @@ const Mycourse = () => {
           ))}
         </div>
         { !Object.keys(classroomChapter).length?
-         <section className='flex justify-center px-8 my-8'>
+         <section className='flex justify-center px-4 my-8'>
           { !loading && course.length ? 
            <>
             <div className='flex w-full min-h-[500px] animate-fade-right'>
-                 <div className=' h-full md:w-2/3'>
+                 <div className=' h-full w-full md:w-2/3'>
                 {/* <Card onClick={()=>{setClassroomChapter({_id:'0129201',title : 'Introduction',lessons : [{lessonVideoUrl : 'https://player.vimeo.com/video/922543030?h=ae4282b8ad&amp;badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479' ,_id : '3425163723'}]})}} className='font-semibold my-1 bg-slate-300 hover:bg-slate-200 cursor-pointer'> 
                       <Flex justify={'space-between'} align={'center'}>
                         <div className='text-lg text-black'>
