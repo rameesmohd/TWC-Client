@@ -43,7 +43,9 @@ const Checkout = ({}) => {
     dispatch(logout())
   }
 
-
+  useEffect(() => {
+  window.scrollTo({ top: 0, behavior: "smooth" });
+  }, []);
 
 
   const PriceItem = ({ label, price,bold }) => (
