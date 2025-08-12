@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from 'react';
-import { Button, Collapse, Flex, Modal ,notification } from 'antd';
-import { BankOutlined, WarningOutlined } from '@ant-design/icons';
+import { Button, Collapse, Flex, message, Modal ,notification } from 'antd';
+import { BankOutlined, CopyOutlined, WarningOutlined } from '@ant-design/icons';
 import { PiCurrencyInr } from "react-icons/pi";
 import Uploadfile from '../Components/Common/Uploadfile'
 import userAxios from '../Axios/Useraxios'
 import {toast} from 'react-hot-toast'
 import { SmileOutlined } from '@ant-design/icons';
+import UpiScanner from '../assets/photo_2025-08-12_11-34-03.jpg'
 
 const LocalBankModal = ({open,setOpen,amount}) => {
   const [confirmLoading, setConfirmLoading] = useState(false);
@@ -48,6 +49,22 @@ const LocalBankModal = ({open,setOpen,amount}) => {
     setOpen(false);
   };
 
+  const UpiId = '0799289a0220872.bqr@kotak';
+  const BankDetails = [
+    { label: "Bank name", value: "Kotak Bank" },
+    { label: "Name", value: "FourCapedu" },
+    { label: "Account no.", value: "7450489300" },
+    { label: "IFSC", value: "KKBK0009289" },
+    { label: "Branch", value: "Palarivattom,Kochi" },
+  ];
+
+  const handleCopy = (text) => {
+    navigator.clipboard.writeText(text).then(() => {
+      message.success("Copied to Clipboard");
+    });
+  };
+
+
   return (
     <>
       {contextHolder}
@@ -89,26 +106,51 @@ const LocalBankModal = ({open,setOpen,amount}) => {
               label: 'Account Details',
               children: 
               <>
+                <div className="bg-slate-50 border p-1 px-2">
+                    {BankDetails.map((item) => (
+                      <Flex key={item.label} justify="space-between" align="center">
+                        <div>{item.label}</div>
+                        <Flex align="center" gap={4}>
+                          <div>{item.value}</div>
+                          <CopyOutlined
+                            onClick={() => handleCopy(item.value)}
+                            style={{ cursor: 'pointer', color: '#1890ff' }}
+                          />
+                        </Flex>
+                      </Flex>
+                    ))}
+                  </div>
+                  <div className='mt-4'>
+                    <Uploadfile setUploadedFile={setUploadedFile}/> 
+                </div>
+              </>,
+            },
+            
+          ]}
+          className='my-4'
+        />
+        <Collapse
+          size="large"
+          items={[
+            {
+              key: '2',
+              label: 'UPI Details',
+              children: 
+              <>
                 <div className='bg-slate-50 border p-1 px-2'>
                     <Flex justify='space-between'>
-                      <div>Bank name</div>
-                      <div>ICIC Bank</div>
+                      <img src={UpiScanner} alt="" />
                     </Flex>
-                    <Flex justify='space-between'>
-                      <div>Account no.</div>
-                      <div>626405021557</div>
-                    </Flex>
-                    <Flex justify='space-between'>
-                      <div>IFSC</div>
-                      <div>ICIC0006264</div>
-                    </Flex>
-                    <Flex justify='space-between'>
-                      <div>Branch</div>
-                      <div>EDAPPALLY</div>
+                    <Flex justify="center" align="center" gap={8}>
+                      <div>{UpiId}</div>
+                      <CopyOutlined
+                        onClick={()=>handleCopy(UpiId)}
+                        style={{ cursor: 'pointer', color: '#1890ff' }}
+                      />
                     </Flex>
                 </div>
                 <div className='mt-4'>
-                <Uploadfile setUploadedFile={setUploadedFile}/> 
+                    <Uploadfile setUploadedFile={setUploadedFile}/> 
                 </div>
               </>,
             },

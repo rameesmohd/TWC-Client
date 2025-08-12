@@ -54,19 +54,19 @@ const Checkout = ({}) => {
   );
 
   const calculateSummary=()=>{
-      const currPriceUsd = 535
-      const discount = 200
+      const currPriceUsd = (rate/90).toFixed(0)
+      const discount = 0
       const currPriceInr = rate
-      // if(selectedMethod===0){
-      //     setPrice({
-      //         currency : '$',
-      //         originalPrice : currPriceUsd,
-      //         discount : discount,
-      //         subtotal : currPriceUsd-discount,
-      //         gst : 0,
-      //         total : currPriceUsd-discount
-      //     })
-      // }else 
+      if(selectedMethod===0){
+          setPrice({
+              currency : '$',
+              originalPrice : currPriceUsd,
+              discount : discount,
+              subtotal : currPriceUsd-discount,
+              gst : 0,
+              total : currPriceUsd-discount
+          })
+      }else 
         if(selectedMethod===1){
           setPrice({
             currency : '₹',
@@ -196,12 +196,12 @@ const Checkout = ({}) => {
                     Local Bank
                   </Button>
 
-                  <Button 
+                  {/* <Button 
                     onClick={()=>setSelectedMethod(2)} 
                     icon={<img src={phonepayIcon} className='w-7 h-7'/>} 
                     className={`w-full ${selectedMethod===2 && 'outline-2 outline'} flex items-center bg-white justify-start p-8 text-xl my-2`}>
                     Phonepe
-                  </Button>
+                  </Button> */}
 
                   <hr />
                   <Button loading={loading.paynowButton} onClick={()=>handlePayment()} className='bg-blue-700 w-full text-white h-12 my-8'>Pay now</Button>
@@ -210,8 +210,8 @@ const Checkout = ({}) => {
               </div>
               <div className='col-span-2 animate-fade-left px-8 lg:pr-44'>
               <div className='text-xl font-poppins font-semibold my-2 '>Summary</div>
-              <Card cover={<img alt="example" className='object-cover h-44' src="https://digitalgurusacademy.in/wp-content/uploads/2022/05/Stock-Trading-Course.jpg" />}>
-                  <Meta title="Mastering Trading Essentials" description="Master course for 0 to 100% knowledge in trading" />
+              <Card cover={<img alt="example" className='object-cover h-44' src="https://www.thestartupfounder.com/wp-content/uploads/2022/12/feature-xauusd-1.jpg" />}>
+                  <Meta title="Gold Specialised Course" description="Master course for 0 to 100% knowledge in trading" />
               </Card>
               <Card className=' my-2'>
                 <PriceItem label="Original price" price={price.originalPrice} />

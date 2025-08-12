@@ -8,21 +8,19 @@ const { Title, Paragraph } = Typography;
 const CourseSection = () => {
   const whatYouWillLearn = [
     "Introduction to Trading Fundamentals",
-    "Indicators Deep Dive",
-    "Liquidity Dynamics",
-    "Market Structure Analysis",
-    "Insights into Market Makers",
-    "ICT Concepts"
+    "Timeframes & Candlesticks",
+    "Technical Setup",
+    "Different Session Breakdowns",
+    "Impulse Entries",
+    "Live Sessions & Premium Community Membership"
   ];
 
   const SkillsYouWillAchieve = [
-    "Trading in different currency pairs",
-    "Forex analysis",
-    "Technical analysis currency pairs",
-    "Fundamental analysis",
-    "Trading mindset",
-    "Trading in different currency pairs",
-    "Liquidity analysis"
+    "Technical Analysis",
+    "Fundamental Analysis",
+    "Trading Mindset",
+    "Trading in Different Pairs",
+    "Risk Management"
   ];
 
   const navigate = useNavigate();
@@ -55,11 +53,21 @@ const purchase = (index, rate, mode) => {
   return (
     <section id="enroll-course" className="md:grid grid-cols-5 mb-4">
       <div className="w-full px-2 py-3 sm:pl-14 col-span-3 font-sans animate-fade-right">
-        <Title level={3} className="mb-2">About the course</Title>
-        <Paragraph className="text-lg my-2">
-          Mastering Trading Essentials, Unlock the secrets of successful trading with our comprehensive course on indicators, liquidity, market structure, and market maker concepts.
-          Whether you're a beginner or an experienced trader, this course will equip you with the knowledge and strategies to navigate the financial markets confidently.
-        </Paragraph>
+   <Title level={3} className="mb-2">Mission</Title>
+    <Paragraph className="text-lg my-2">
+      To teach people trading for financial freedom. The Forex Flow Trading course and automated trading (algo trading) system are developed for 9-to-5 workers who don't have time or trading knowledge.
+    </Paragraph>
+
+    <Title level={3} className="mb-2">Vision</Title>
+    <Paragraph className="text-lg my-2">
+      Empower people's financial status through forex trading with consistent monthly profits.
+    </Paragraph>
+
+    <Title level={3} className="mb-2">About the Course</Title>
+    <Paragraph className="text-lg my-2">
+      Forex trading is highly accessible, as it can be done online 24 hours a day, five days a week, making it available to both working people and students. 
+      This course is designed to teach an advanced strategy in the forex market, which can be used to generate consistent profits throughout your trading career.
+    </Paragraph>
 
         <div>
           <Title level={3} className="my-3">What you will learn</Title>
