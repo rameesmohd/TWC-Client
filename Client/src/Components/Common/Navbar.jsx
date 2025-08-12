@@ -59,13 +59,13 @@ const Navbar = () => {
             id="navbar-default"
           >
             <ul 
-            className="font-medium md:flex flex-col md:flex-row p-4 md:p-0 mt-4 bg-white text-gray-800 md:bg-transparent md:text-white md:mt-0 rounded-lg md:space-x-8 shadow-lg md:shadow-none"
+            className="font-medium md:flex flex-col md:flex-row p-4 md:p-0 mt-4 bg-white md:bg-none  text-gray-800 md:bg-transparent md:text-white md:mt-0 rounded-lg md:space-x-8 shadow-lg md:shadow-none"
             >
               {options.map((obj, index) => (
                 <li key={index}>
                   <Link
                     to={obj.nav}
-                    className="block py-1 mb-1 px-3 text-blue-800 w-full shadow-md bg-gray-50 rounded border-b-white hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0"
+                    className="block py-1 mb-1 px-3 text-blue-800 w-full shadow-md md:shadow-none   rounded border-b-white hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0"
                   >
                     {obj.option}
                   </Link>
