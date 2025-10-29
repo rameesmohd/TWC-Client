@@ -39,7 +39,7 @@ const CertificateSection = () => {
             Get ahead with course certification
           </Title>
           <Paragraph className="">
-            On successful completion of the course participants will be awarded a certificate of course completion issued by TradeWalkerEdu.com.
+            On successful completion of the course participants will be awarded a certificate of course completion issued by FourCapEdu.
             This certificate is a golden ticket to the job of your dreams at leading finance firms and beyond.
           </Paragraph>
 
