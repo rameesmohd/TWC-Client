@@ -43,24 +43,25 @@ const Header = () => {
         <Row
           gutter={[32, 32]}
           align="middle"
-          className="relative mx-auto px-4 pt-10 sm:px-8 sm:pt-16 lg:px-12"
+          className="relative mx-auto px-4 pt-8 sm:px-8 sm:pt-10 lg:px-12"
         >
           <Col xs={24} md={12} className="animate-fade-right">
             <Title
               level={1}
               className="!mb-0 !text-4xl !font-extrabold !leading-[1.1] !tracking-tight sm:!text-5xl lg:!text-6xl"
             >
-              Boost your
-              <span className="mx-2 text-lime-500">Trading Career,</span>
+              Master the
+              <span className="text-lime-500"> Financial Markets</span>
               <br />
-              be a
-              <span className="text-lime-500"> MONK </span> - ready now
-              <span className="animate-pulse animate-infinite animate-duration-[700ms] animate-ease-linear">!</span>
+              with
+              <span className="text-lime-500"> FourCapEdu</span>
             </Title>
-            <Paragraph className="!mt-5 max-w-xl text-lg leading-relaxed !text-gray-600">
-              Our tutors will walk you through the different steps to make a trade profitable. 
-              With each trade being different, you have to understand how the market works
-              to select a performing trade. This is exactly what you will learn with FourCapedu.
+
+            <Paragraph className="!mt-5 max-w-xl text-md md:text-lg leading-relaxed !text-gray-600">
+              Learn price action, technical analysis, risk management, and trading psychology
+              through structured, mentor-led sessions. Whether you're a beginner or looking
+              to refine your strategy, our practical approach helps you build the confidence
+              and discipline needed to trade consistently.
             </Paragraph>
             <div className="mt-8">
               <Button
@@ -78,7 +79,7 @@ const Header = () => {
             </div>
           </Col>
 
-        <Col xs={24} md={12} className="animate-jump-in">
+        <Col xs={24} md={10} className="animate-jump-in">
           <img
             src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRyp7f6PQzydN1x631G2cyupBCXTdfl5K_ScyCgiQy6fA&s=10"
             alt="Trading Visual"
