@@ -1,5 +1,5 @@
-import React from 'react'
-import { Button, Col, Row } from 'antd'
+import React, { useState } from "react";
+import { Col, Row } from "antd";
 import {
   RiTimeLine,
   RiBookletLine,
@@ -11,96 +11,219 @@ import {
   RiHome4Line,
   RiBriefcaseLine,
   RiStore2Line,
-} from 'react-icons/ri'
+  RiWhatsappLine,
+} from "react-icons/ri";
 
 const benefits = [
-  { icon: RiTimeLine, title: 'Save Your Time', desc: 'The software trades for you, so your day stays free.' },
-  { icon: RiBookletLine, title: 'No Trading Knowledge Required', desc: 'Built-in strategy logic — no charts to learn.' },
-  { icon: RiEmotionHappyLine, title: 'Emotion & Stress Free', desc: 'Rules-based entries and exits, no panic decisions.' },
-  { icon: RiShieldCheckLine, title: 'Reduced Risk', desc: 'A low-risk strategy designed to protect your capital.' },
-  { icon: RiCheckboxCircleLine, title: 'Errorless Trading', desc: 'Consistent execution, every single time.' },
-  { icon: RiWalletLine, title: 'Passive-Style Trading', desc: 'Let the system work while you focus elsewhere.' },
-]
+  {
+    icon: RiTimeLine,
+    title: "Save Your Time",
+    desc: "The software trades for you, so your day stays free.",
+  },
+  {
+    icon: RiBookletLine,
+    title: "No Trading Knowledge Required",
+    desc: "Built-in strategy logic — no charts to learn.",
+  },
+  {
+    icon: RiEmotionHappyLine,
+    title: "Emotion & Stress Free",
+    desc: "Rules-based entries and exits, no panic decisions.",
+  },
+  {
+    icon: RiShieldCheckLine,
+    title: "Reduced Risk",
+    desc: "A low-risk strategy designed to protect your capital.",
+  },
+  {
+    icon: RiCheckboxCircleLine,
+    title: "Errorless Trading",
+    desc: "Consistent execution, every single time.",
+  },
+  {
+    icon: RiWalletLine,
+    title: "Passive-Style Trading",
+    desc: "Let the system work while you focus elsewhere.",
+  },
+];
 
 const audience = [
-  { icon: RiGraduationCapLine, label: 'Students' },
-  { icon: RiHome4Line, label: 'Home Makers' },
-  { icon: RiBriefcaseLine, label: 'Working Professionals' },
-  { icon: RiStore2Line, label: 'Business Persons' },
-]
+  { icon: RiGraduationCapLine, label: "Students" },
+  { icon: RiHome4Line, label: "Home Makers" },
+  { icon: RiBriefcaseLine, label: "Working Professionals" },
+  { icon: RiStore2Line, label: "Business Persons" },
+];
+
+const softwareOptions = [1, 2, 3, 6, 10];
+
+const formatUSD = (n) => `$${n.toLocaleString("en-US")}`;
+const formatINR = (n) => `₹${n.toLocaleString("en-IN")}`;
 
 const MetrixSection = () => {
+  const [qty, setQty] = useState(1);
+
   return (
-    <section className="bg-black py-16 text-white sm:py-20">
-      <div className="mx-auto max-w-5xl px-4 sm:px-8">
+    <section className="bg-gradient-to-b from-white via-gray-50 to-white py-20">
+      <div className="mx-auto max-w-6xl px-4 sm:px-8">
         {/* Header */}
-        <div className="mx-auto max-w-2xl text-center">
-          <span className="text-sm font-semibold uppercase tracking-widest text-emerald-400">
+        <div className="mx-auto max-w-3xl text-center">
+          <span className="rounded-full bg-lime-100 px-4 py-2 text-sm font-semibold uppercase tracking-widest text-lime-700">
             Algo Trading
           </span>
-          <h2 className="mt-3 text-3xl font-extrabold tracking-tight sm:text-5xl">
-            Robotic Trading, Powered by <span className="text-lime-400">Metrix Software</span>
+
+          <h2 className="mt-6 text-4xl font-extrabold tracking-tight text-gray-900 sm:text-5xl">
+            Robotic Trading Powered by{" "}
+            <span className="bg-gradient-to-r from-lime-500 to-emerald-500 bg-clip-text text-transparent">
+              Metrix Software
+            </span>
           </h2>
-          <p className="mt-4 text-white/70">
-            A forex trading bot — also known as algo trading — runs your strategy in the market automatically.
-            Metrix is one of the market's leading robot trading systems, backed by 4.7+ years of live PNL
-            and experience.
+
+          <p className="mt-5 text-lg leading-8 text-gray-600">
+            Metrix is an advanced forex trading bot that automatically executes
+            trades based on proven strategies. Backed by over{" "}
+            <strong>4.7 years of live trading performance</strong>, it helps
+            traders automate their journey with consistency and discipline.
           </p>
-          <div className="mt-6 inline-flex items-center gap-2 rounded-full border border-emerald-400/30 bg-emerald-400/10 px-5 py-2 text-sm font-semibold text-emerald-300">
-            4.7+ Years of Proven PNL
+
+          <div className="mt-8 inline-flex rounded-full bg-emerald-100 px-6 py-3 text-sm font-semibold text-emerald-700">
+            ✅ 4.7+ Years of Proven Live PNL
           </div>
         </div>
 
-        {/* Why robot trading */}
-        <div className="mt-14">
-          <h3 className="text-center text-xl font-bold sm:text-2xl">
-            Why Robot Trading — Automate Your Success
+        {/* Benefits */}
+        <div className="mt-20">
+          <h3 className="text-center text-3xl font-bold text-gray-900">
+            Why Choose Robot Trading?
           </h3>
-          <Row gutter={[16, 16]} className="mt-8">
+
+          <Row gutter={[24, 24]} className="mt-10">
             {benefits.map(({ icon: Icon, title, desc }, i) => (
-              <Col xs={24} sm={12} md={8} key={i}>
-                <div className="h-full rounded-2xl border border-white/10 bg-white/5 p-6 transition-colors hover:border-emerald-400/40 hover:bg-white/10">
-                  <Icon className="text-3xl text-lime-400" />
-                  <h4 className="mt-4 font-semibold">{title}</h4>
-                  <p className="mt-1 text-sm text-white/60">{desc}</p>
+              <Col xs={24} sm={12} lg={8} key={i}>
+                <div className="group h-full rounded-3xl border border-gray-200 bg-white p-7 shadow-sm transition-all duration-300 hover:-translate-y-2 hover:border-lime-400 hover:shadow-xl">
+                  <div className="flex h-14 w-14 items-center justify-center rounded-2xl bg-lime-100 transition-all group-hover:bg-lime-500">
+                    <Icon className="text-3xl text-lime-600 group-hover:text-white" />
+                  </div>
+
+                  <h4 className="mt-6 text-xl font-bold text-gray-900">
+                    {title}
+                  </h4>
+
+                  <p className="mt-3 leading-7 text-gray-600">{desc}</p>
                 </div>
               </Col>
             ))}
           </Row>
         </div>
 
-        {/* Who can choose */}
-        <div className="mt-16">
-          <h3 className="text-center text-xl font-bold sm:text-2xl">Who Can Choose Robotic Trading</h3>
-          <p className="mx-auto mt-2 max-w-lg text-center text-sm text-white/60">
-            Anyone without consistent profit or time can trade with Metrix — including:
+        {/* Audience */}
+        <div className="mt-24">
+          <h3 className="text-center text-3xl font-bold text-gray-900">
+            Who Can Use Metrix?
+          </h3>
+
+          <p className="mx-auto mt-3 max-w-xl text-center text-gray-600">
+            Whether you're a beginner or a busy professional, Metrix helps you
+            automate your trading with ease.
           </p>
-          <Row gutter={[16, 16]} className="mt-8">
+
+          <Row gutter={[24, 24]} className="mt-10">
             {audience.map(({ icon: Icon, label }, i) => (
               <Col xs={12} sm={6} key={i}>
-                <div className="flex flex-col items-center gap-2 rounded-2xl bg-white/5 py-6 text-center">
-                  <Icon className="text-2xl text-emerald-400" />
-                  <span className="text-sm font-medium">{label}</span>
+                <div className="group rounded-3xl border border-gray-200 bg-white p-8 text-center shadow-sm transition-all hover:-translate-y-2 hover:border-lime-400 hover:shadow-lg">
+                  <Icon className="mx-auto text-4xl text-lime-500 transition-transform group-hover:scale-110" />
+
+                  <p className="mt-4 font-semibold text-gray-800">{label}</p>
                 </div>
               </Col>
             ))}
           </Row>
         </div>
 
-        {/* CTA */}
-        <div className="mt-14 text-center">
-          <Button
-            type="primary"
-            size="large"
-            shape="round"
-            className="!h-12 !bg-lime-500 !px-8 !font-semibold !text-black hover:!bg-lime-400"
-          >
-            Explore Metrix Software
-          </Button>
+        {/* Purchase */}
+        <div className="mt-24">
+          <div className="mx-auto max-w-xl text-center">
+            <span className="rounded-full bg-lime-100 px-4 py-2 text-xs font-bold uppercase tracking-[0.25em] text-lime-700">
+              Get Started
+            </span>
+
+            <h3 className="mt-5 text-3xl font-bold text-gray-900">
+              Purchase Metrix Bot
+            </h3>
+
+            <p className="mt-4 text-gray-600">
+              Choose the number of software licenses you require. Capital,
+              consultation charges, and VPS costs are calculated automatically.
+            </p>
+          </div>
+
+          {/* Quantity */}
+          <div className="mt-8 flex flex-wrap justify-center gap-3">
+            {softwareOptions.map((n) => (
+              <button
+                key={n}
+                onClick={() => setQty(n)}
+                className={`rounded-full px-6 py-3 font-semibold transition-all ${
+                  qty === n
+                    ? "bg-gradient-to-r from-lime-500 to-emerald-500 text-white shadow-lg"
+                    : "border border-gray-300 bg-white text-gray-700 hover:border-lime-500 hover:text-lime-600"
+                }`}
+              >
+                {n} Software{n > 1 ? "s" : ""}
+              </button>
+            ))}
+          </div>
+
+          {/* Pricing Card */}
+          <div className="mx-auto mt-10 max-w-lg rounded-[32px] bg-gradient-to-br from-lime-500 via-emerald-500 to-green-400 p-[2px] shadow-2xl">
+            <div className="rounded-[30px] bg-white p-8">
+              <div className="flex items-center justify-between border-b border-gray-200 pb-5">
+                <span className="text-gray-500">Required Capital</span>
+
+                <span className="text-xl font-bold text-lime-600">
+                  {formatUSD(qty * 1000)} – {formatUSD(qty * 2000)}
+                </span>
+              </div>
+
+              <div className="flex items-center justify-between border-b border-gray-200 py-5">
+                <span className="text-gray-500">
+                  Bot One Time Charge (Incl. GST)
+                </span>
+
+                <span className="text-lg font-semibold text-gray-900">
+                  {formatINR(qty * 53000)}
+                </span>
+              </div>
+
+              <div className="flex items-center justify-between py-5">
+                <span className="text-gray-500">VPS / Month</span>
+
+                <span className="text-lg font-semibold text-gray-900">
+                  {formatINR(qty * 1000)} – {formatINR(qty * 1200)}
+                </span>
+              </div>
+
+              <p className="mt-6 text-sm leading-7 text-gray-500">
+                Your capital remains in your personal broker account. Only you
+                have access to deposits and withdrawals. The software purchase
+                is a one-time, non-refundable fee that includes regular updates
+                and maintenance.
+              </p>
+
+              <a
+                href="https://wa.me/917736833351"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="mt-8 flex items-center justify-center gap-2 rounded-full bg-gradient-to-r from-lime-500 to-emerald-500 py-4 text-lg font-semibold text-white transition-all hover:scale-[1.02] hover:shadow-xl"
+              >
+                <RiWhatsappLine className="text-2xl" />
+                Book a Free Consultation
+              </a>
+            </div>
+          </div>
         </div>
       </div>
     </section>
-  )
-}
+  );
+};
 
-export default MetrixSection
+export default MetrixSection;

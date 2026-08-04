@@ -50,7 +50,7 @@ const Navbar = () => {
     >
       <div className="container mx-auto flex flex-wrap items-center justify-between px-4 sm:px-14">
         <Link to="/" className="flex items-center">
-          <img src={img} alt="FourCapEdu" className="h-14 sm:h-16 w-auto object-cover" />
+          <img src={img} alt="FourCapEdu" className="h-14 sm:h-20 md:h-28 w-auto object-cover" />
         </Link>
 
         <button

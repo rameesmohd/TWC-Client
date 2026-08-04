@@ -61,7 +61,7 @@ const CourseSection = () => {
   const plan = pricingPlans[activeTab];
 
   return (
-    <section id="enroll-course" className="md:grid grid-cols-5 mb-4 gap-6 mt-4">
+    <section id="enroll-course" className="md:grid grid-cols-5 mb-4 gap-6 mt-4 sm:pl-8">
       {/* Left column */}
       <div className="w-full px-2 py-3 col-span-3 font-sans animate-fade-right">
         <span className="text-md font-bold uppercase tracking-[0.2em] text-emerald-600">
@@ -153,7 +153,7 @@ const CourseSection = () => {
               </div>
             </div>
 
-            <div className="flex items-end justify-between gap-4 px-6 py-6">
+            <div className="flex items-end justify-between gap-1 px-6 py-6">
               <div>
                 <div className="bg-gradient-to-r from-amber-200 to-amber-500 bg-clip-text text-3xl font-extrabold text-transparent">
                   {plan.display}
@@ -164,7 +164,7 @@ const CourseSection = () => {
                 type="primary"
                 shape="round"
                 size="large"
-                className="!h-11 !bg-lime-400 !px-6 !font-semibold !text-black hover:!bg-lime-300"
+                className="!h-11 !bg-lime-400 !px-4 !font-semibold !text-black hover:!bg-lime-300"
                 loading={loadings[plan.index]}
                 onClick={() => purchase(plan.index, plan.rate, activeTab)}
               >
