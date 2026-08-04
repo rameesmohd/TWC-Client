@@ -16,25 +16,56 @@ const MetrixSection = React.lazy(() => import('./MetrixSection'));
 const items = [
   {
     key: '1',
-    label: 'What is the minimum amount of money needed to start trading?',
-    children: <p>The minimum amount of money needed to start trading varies depending on the broker and the type of trading account. 
-      However, in general, you can start trading with a minimum deposit of around $50 with many brokers.</p>,
+    label: (
+      <span className="flex items-center gap-3 text-base font-semibold text-gray-900">
+        <span className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-lime-100 text-xs font-bold text-lime-700">
+          01
+        </span>
+        What is the minimum amount of money needed to start trading?
+      </span>
+    ),
+    children: (
+      <p className="pl-10 text-sm leading-relaxed text-gray-600">
+        The minimum amount needed varies by broker and account type — in general, you can start trading with
+        a deposit of around $50 with many brokers.
+      </p>
+    ),
   },
   {
     key: '2',
-    label: 'How can I get started with Forex trading?',
-    children: <p>To get started with Forex trading, you need to educate yourself about the fundamentals of the Forex market, 
-      including currency pairs, trading strategies, technical analysis, and risk management principles.We are here for you!</p>,
+    label: (
+      <span className="flex items-center gap-3 text-base font-semibold text-gray-900">
+        <span className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-emerald-100 text-xs font-bold text-emerald-700">
+          02
+        </span>
+        How can I get started with Forex trading?
+      </span>
+    ),
+    children: (
+      <p className="pl-10 text-sm leading-relaxed text-gray-600">
+        Start by learning the fundamentals of the Forex market — currency pairs, trading strategies, technical
+        analysis, and risk management. We're here to guide you through it.
+      </p>
+    ),
   },
   {
     key: '3',
-    label: 'What are the risks associated with Forex trading?',
-    children: <p>Forex trading carries inherent risks due to the volatile nature of currency markets.
-       Some common risks include market volatility, leverage, geopolitical events, economic releases, 
-       and liquidity issues.It's essential for traders to develop risk management strategies, including setting stop-loss orders,
-       managing leverage effectively, and diversifying their trading portfolio to mitigate potential losses.</p>,
-  }
-];
+    label: (
+      <span className="flex items-center gap-3 text-base font-semibold text-gray-900">
+        <span className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-amber-100 text-xs font-bold text-amber-700">
+          03
+        </span>
+        What are the risks associated with Forex trading?
+      </span>
+    ),
+    children: (
+      <p className="pl-10 text-sm leading-relaxed text-gray-600">
+        Forex trading carries risk due to market volatility, leverage, geopolitical events, economic releases,
+        and liquidity. Manage it with stop-loss orders, careful leverage, and a diversified approach.
+      </p>
+    ),
+  },
+]
 
 // Same two cards as before — just paired up so each logo/heading matches its
 // own installer link (the previous version linked MT4's card to the MT5
@@ -91,83 +122,116 @@ const Body = () => {
       <ReviewSections/>
     </React.Suspense>
 
-    <div className='mx-auto max-w-4xl px-4 py-16 sm:px-16 sm:py-20'>
-      <div className='mb-8 text-2xl font-extrabold tracking-tight sm:text-4xl'>Frequenly asked questions</div>
-      <div className='overflow-hidden rounded-2xl border border-gray-100 shadow-sm'>
-        <Collapse items={items}/>
+    <div className="mx-auto max-w-3xl px-4 py-8 sm:px-8 sm:py-12">
+      <div className="text-center">
+        <span className="text-xs font-semibold uppercase tracking-[0.2em] text-emerald-600">Support</span>
+        <h2 className="mt-2 text-2xl font-extrabold tracking-tight text-gray-900 sm:text-4xl">
+          Frequently Asked Questions
+        </h2>
+        <p className="mt-3 text-gray-500">Answers to the most common questions before you enroll.</p>
       </div>
-    </div>       
 
-   
+      <div className="mt-10 overflow-hidden rounded-2xl border border-gray-100 bg-white shadow-sm">
+        <Collapse items={items} />
+      </div>
+    </div>  
 
-    <section ref={QueriesRef}>
-      <Row className="w-full">
-        {/* Left Column */}
-        <Col
-          xs={24}
-          md={12}
-          className="relative flex min-h-[520px] flex-col items-center justify-center overflow-hidden bg-lime-500 px-4 py-16 text-center sm:px-8 md:rounded-s-2xl"
-        >
-          <img
-            className="absolute left-0 top-0 z-0 h-full w-full object-cover opacity-40"
-            src={img}
-            alt=""
-          />
+   <section ref={QueriesRef} className="px-4 py-4 sm:px-8">
+      <div className="mx-auto max-w-6xl overflow-hidden rounded-3xl shadow-2xl shadow-black/10 ring-1 ring-black/5">
+        <div className="relative grid md:grid-cols-2">
+          {/* Left panel */}
+          <div className="relative flex min-h-[480px] flex-col items-center justify-center overflow-hidden bg-lime-400 px-6 py-16 text-center sm:px-10">
+            <img
+              className="pointer-events-none absolute -bottom-10 -right-10 h-72 w-72 object-contain opacity-10"
+              src={img}
+              alt=""
+            />
 
-          <div
-            className={`relative z-10 max-w-lg bg-black/20 px-6 py-8 text-3xl font-extrabold tracking-tight text-white outline outline-1 outline-emerald-300 backdrop-blur-sm transition-all duration-500 sm:px-10 sm:text-5xl ${
-              scrolled.queryScroll ? 'animate-fade-down' : 'opacity-0'
-            }`}
-          >
-            Your Trading Career Growth is Just One Click Away.
+            <span
+              className={`relative z-10 text-xs font-semibold uppercase tracking-[0.2em] text-black/60 transition-all duration-500 ${
+                scrolled.queryScroll ? 'translate-y-0 opacity-100' : 'translate-y-4 opacity-0'
+              }`}
+            >
+              Start Today
+            </span>
+
+            <h3
+              className={`relative z-10 mt-3 max-w-md text-3xl font-extrabold leading-tight tracking-tight text-black transition-all delay-100 duration-500 sm:text-5xl ${
+                scrolled.queryScroll ? 'translate-y-0 opacity-100' : 'translate-y-4 opacity-0'
+              }`}
+            >
+              Your Trading Career Growth Is Just One Click Away
+            </h3>
+
+            <p
+              className={`relative z-10 mt-4 max-w-sm text-sm text-black/70 transition-all delay-150 duration-500 ${
+                scrolled.queryScroll ? 'translate-y-0 opacity-100' : 'translate-y-4 opacity-0'
+              }`}
+            >
+              Join a gold-specialised course built for people who don't have time to learn trading the hard way.
+            </p>
+
+            <Button
+              type="primary"
+              size="large"
+              shape="round"
+              className={`relative z-10 !mt-7 !h-12 !border-none !bg-black !px-8 !font-semibold !text-lime-400 transition-all delay-200 duration-500 hover:!scale-105 hover:!bg-gray-900 ${
+                scrolled.queryScroll ? 'translate-y-0 opacity-100' : 'translate-y-4 opacity-0'
+              }`}
+            >
+              Start Learning Now
+            </Button>
+
+            <p className="relative z-10 mt-5 font-mono text-xs text-black/50">100+ Students Joined</p>
           </div>
 
-          <Button
-            type="primary"
-            size="large"
-            shape="round"
-            className="relative z-10 !mt-6 !h-12 !bg-blue-600 !px-8 !font-semibold hover:!bg-blue-700"
-          >
-            Start Learning Now
-          </Button>
+          {/* Right panel */}
+          <div className="flex flex-col items-center justify-center bg-black px-6 py-16 text-center text-white sm:px-10">
+            <span
+              className={`text-xs font-semibold uppercase tracking-[0.2em] text-emerald-400 transition-all duration-500 ${
+                scrolled.queryScroll ? 'translate-y-0 opacity-100' : 'translate-y-4 opacity-0'
+              }`}
+            >
+              Support
+            </span>
 
-          <p className="relative z-10 mt-6 font-mono text-sm text-white/90">
-            100+ Students Joined
-          </p>
-        </Col>
-  
-  
-        {/* Right Column */}
-        <Col
-          xs={24}
-          md={12}
-          className="flex flex-col items-center justify-center bg-black px-4 py-16 text-center text-white sm:px-12 md:rounded-e-2xl"
-        >
-          <div
-            className={`text-3xl font-extrabold tracking-tight transition-all duration-500 sm:text-5xl ${
-              scrolled.queryScroll ? 'animate-fade-down' : 'opacity-0'
-            }`}
-          >
-            Still Have Any Queries?
+            <h3
+              className={`mt-3 text-3xl font-extrabold tracking-tight transition-all delay-100 duration-500 sm:text-5xl ${
+                scrolled.queryScroll ? 'translate-y-0 opacity-100' : 'translate-y-4 opacity-0'
+              }`}
+            >
+              Still Have Any Queries?
+            </h3>
+
+            <img
+              src={stillqueriesgif}
+              alt="Still have queries?"
+              className={`my-6 h-48 transition-all delay-150 duration-500 sm:h-64 ${
+                scrolled.queryScroll ? 'scale-100 opacity-100' : 'scale-95 opacity-0'
+              }`}
+            />
+
+            <p className="mb-6 text-sm text-white/60">We're one message away — real answers, no bots.</p>
+
+            <a
+              href="https://wa.me/917736833351"
+              target="_blank"
+              rel="noopener noreferrer"
+              className={`flex items-center gap-2 rounded-full bg-green-500 px-6 py-3 font-semibold text-white transition-all delay-200 duration-500 hover:scale-105 hover:bg-green-600 ${
+                scrolled.queryScroll ? 'translate-y-0 opacity-100' : 'translate-y-4 opacity-0'
+              }`}
+            >
+              <RiWhatsappLine className="text-xl" />
+              WhatsApp Now
+            </a>
           </div>
 
-          <div className="my-6 flex justify-center">
-            <img src={stillqueriesgif} alt="Still have queries?" className="h-56 sm:h-72" />
+          {/* Seam badge, desktop only */}
+          <div className="pointer-events-none absolute left-1/2 top-1/2 z-20 hidden h-12 w-12 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full bg-white text-xs font-bold text-black shadow-lg ring-4 ring-black/5 md:flex">
+            OR
           </div>
-
-          <div className="mb-6 text-3xl font-extrabold tracking-tight sm:text-5xl">We Are Here</div>
-
-          <a
-            href="https://wa.me/917736833351"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="flex items-center gap-2 rounded-full bg-green-500 px-6 py-3 font-semibold text-white transition-transform hover:scale-105 hover:bg-green-600"
-          >
-            <RiWhatsappLine className="text-xl" />
-            Whatsapp Now!
-          </a>
-        </Col>
-      </Row>
+        </div>
+      </div>
     </section>
 
     <section ref={MetaAppRef} className="mx-auto max-w-5xl px-4 py-16 sm:px-8 sm:py-20">
