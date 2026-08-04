@@ -6,72 +6,112 @@ import { RiHomeOfficeFill } from 'react-icons/ri';
 import ScrollToTopButton from './ScrollToTop';
 
 const Footer = () => {
-    const data=[
-        { title: 'NAVIGATIONS', 
-            links: [ 
-                { text: 'Home', url: '/' },  
-                { text: 'My Course', url: '/my-course' }] },
+  const data = [
+    {
+      title: 'NAVIGATIONS',
+      links: [
+        { text: 'Home', url: '/' },
+        { text: 'My Course', url: '/my-course' },
+      ],
+    },
+    {
+      title: 'USEFUL LINKS',
+      links: [
+        { text: 'Metatrader.com', url: 'https://www.metatrader4.com/en' },
+        { text: 'ForexFactory.com', url: 'https://www.forexfactory.com/' },
+        { text: 'Investing.com', url: 'https://www.investing.com/' },
+        { text: 'coinmarketcap.com', url: 'https://coinmarketcap.com/' },
+      ],
+    },
+    {
+      title: 'CONTACT',
+      links: [
         {
-          title: 'USEFUL LINKS',
-          links: [
-            { text: 'Metatrader.com', url: 'https://www.metatrader4.com/en' },
-            { text: 'ForexFactory.com', url: 'https://www.forexfactory.com/' },
-            { text: 'Investing.com', url: 'https://www.investing.com/' },
-            { text: 'coinmarketcap.com', url: 'https://coinmarketcap.com/' },
-          ],
+          text: 'Door No 2, First Floor, Oryx Arcade, Vmb Road, Pathadipalam, Ernakulam, Kerala',
+          icon: <RiHomeOfficeFill />,
         },
         {
-          title: 'CONTACT',
-          links: [
-            {
-              text: 'Door No 2,First Floor,Oryx Arcade,Vmb Road,Pathadipalam,Ernamkulam,Kerala',
-              icon: <RiHomeOfficeFill className='text-1xl mt-2 md:text-2xl' />,
-            },
-            {
-              text: '+ 91 7736833351',
-              icon: <AiFillPhone className='mt-1' />,
-            },
-            {
-              text: ' fourcapedu007@gmail.com',
-              icon: <FiMail className='mt-1 mr-1' />,
-              isLink: true,
-            },
-          ],
+          text: '+91 7736833351',
+          url: 'tel:+917736833351',
+          icon: <AiFillPhone />,
         },
-      ]
-    return (
-    <div className='z-20 border-t bg-slate-50 pt-2 animate-fade-up'>
-    <div className='w-full h-auto py-3 grid grid-cols-1 md:grid-cols-3 gap-2 z-20'>
-      {data.map((section, index) => (
-        <div key={index} className='space-x-1 px-10'>
-          <ul>
-            <h3 className='font-bold'>{section.title}</h3>
-            {section.links.map((link, idx) => (
-                <li key={idx} className={`my-2 ${link.isLink ? 'flex items-center underline' : ''}`}>
-                {link.icon && <>{link.icon}</>}
-                {link.url ? (
-                  <a href={link.url} target='_blank'>
-                    {link.text}
-                  </a>
-                ) : (
-                  <>{link.text}</>
-                )}
-              </li>
-            ))}
-          </ul>
+        {
+          text: 'fourcapedu007@gmail.com',
+          url: 'mailto:fourcapedu007@gmail.com',
+          icon: <FiMail />,
+        },
+      ],
+    },
+  ];
+
+  return (
+    <footer className="relative overflow-hidden bg-black pt-16 text-white animate-fade-up">
+      <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-amber-400/60 to-transparent" />
+
+      <div className="mx-auto grid max-w-6xl grid-cols-1 gap-12 px-6 sm:px-10 md:grid-cols-[1.3fr_1fr_1fr_1.3fr]">
+        {/* Brand column */}
+        <div>
+          <div className="text-xl font-extrabold tracking-tight">
+            FourCap<span className="text-lime-400">Edu</span>
+          </div>
+          <p className="mt-3 max-w-xs text-sm text-white/50">
+            Gold-specialised forex education and algo trading tools for people who don't have time to learn
+            the hard way.
+          </p>
         </div>
-      ))}
-    </div>
-    <div className='w-auto h-auto flex justify-center text-center text-gray-500 md:text-xs my-2'>
-      <p className='mx-3'>Terms</p>
-      <p className='mx-3'>Policy</p>
-    </div>
-    <div className='w-auto h-auto flex justify-center px-5'>
-      <div className='text-xs'>Fourcapedu. & Co.</div>
-    </div>
-    <ScrollToTopButton />
-  </div>
-);
-}
+
+        {data.map((section, index) => (
+          <div key={index}>
+            <h3 className="text-xs font-semibold uppercase tracking-[0.15em] text-white/40">
+              {section.title}
+            </h3>
+            <ul className="mt-4 space-y-3">
+              {section.links.map((link, idx) => {
+                const isInternal = link.url && link.url.startsWith('/');
+                return (
+                  <li key={idx} className="flex items-start gap-2.5 text-sm text-white/70">
+                    {link.icon && (
+                      <span className="mt-0.5 flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-white/10 text-xs text-emerald-400">
+                        {link.icon}
+                      </span>
+                    )}
+                    {link.url ? (
+                      isInternal ? (
+                        <Link to={link.url} className="transition-colors hover:text-lime-400">
+                          {link.text}
+                        </Link>
+                      ) : (
+                        <a
+                          href={link.url}
+                          target={link.url.startsWith('http') ? '_blank' : undefined}
+                          rel="noopener noreferrer"
+                          className="transition-colors hover:text-lime-400"
+                        >
+                          {link.text}
+                        </a>
+                      )
+                    ) : (
+                      <span>{link.text}</span>
+                    )}
+                  </li>
+                );
+              })}
+            </ul>
+          </div>
+        ))}
+      </div>
+
+      <div className="mx-auto mt-14 flex max-w-6xl flex-col items-center justify-between gap-4 border-t border-white/10 px-6 py-6 text-xs text-white/40 sm:flex-row sm:px-10">
+        <div>© {new Date().getFullYear()} FourCapEdu & Co. All rights reserved.</div>
+        <div className="flex gap-6">
+          <Link to="/terms" className="transition-colors hover:text-white">Terms</Link>
+          <Link to="/policy" className="transition-colors hover:text-white">Policy</Link>
+        </div>
+      </div>
+
+      <ScrollToTopButton />
+    </footer>
+  );
+};
 
 export default Footer;
