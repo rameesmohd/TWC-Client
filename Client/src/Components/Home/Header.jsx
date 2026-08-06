@@ -45,7 +45,7 @@ const Header = () => {
           align="middle"
           className="relative mx-auto px-4 pt-8 sm:px-8 sm:pt-10 lg:px-12"
         >
-          <Col xs={24} md={12} className="animate-fade-right">
+          <Col xs={24} md={10} className="animate-fade-right">
             <Title
               level={1}
               className="!mb-0 !text-4xl !font-extrabold !leading-[1.1] !tracking-tight sm:!text-5xl lg:!text-6xl"
@@ -79,9 +79,10 @@ const Header = () => {
             </div>
           </Col>
 
-        <Col xs={24} md={10} className="animate-jump-in">
+        <Col xs={24} md={14} className="animate-jump-in">
           <img
-            src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRyp7f6PQzydN1x631G2cyupBCXTdfl5K_ScyCgiQy6fA&s=10"
+            // src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRyp7f6PQzydN1x631G2cyupBCXTdfl5K_ScyCgiQy6fA&s=10"
+            src="https://api.edoxi.com/assets/studyhub/Hadoop_Training_Institutes_In_UAE3.webp"
             alt="Trading Visual"
             className="animate-bounce-img w-full"
           />
